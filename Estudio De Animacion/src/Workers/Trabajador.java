@@ -9,5 +9,20 @@ package Workers;
  * @author danieldangelo
  */
 public class Trabajador {
+    private boolean trabaja;
+    private int salario;
+    private int drive;
+
+    public Trabajador(boolean trabaja, int salario, int drive) {
+        this.trabaja = trabaja;
+        this.salario = salario;
+        this.drive = drive;
+    }
+    
+    public Trabajador(){
+        this.trabaja = true;
+        this.salario = 0;
+        this.drive = 0;
+    }
     
 }
