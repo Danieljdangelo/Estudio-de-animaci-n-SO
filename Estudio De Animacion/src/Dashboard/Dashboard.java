@@ -4,11 +4,17 @@
  */
 package Dashboard;
 
+import Class.ManejoDeData;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -20,11 +26,15 @@ public class Dashboard extends javax.swing.JFrame {
      * Creates new form Dashboard
      */
     
+    ManejoDeData data = new ManejoDeData();
     
     
     public Dashboard() {
 //        ImagePanel1 panel = new ImagePanel1("/Images/Disney_vs_Nick.jpg");
         initComponents();
+//        SpinnerNumberModel modeloSpinner = new SpinnerNumberModel();
+//        modeloSpinner.setMinimum(1);
+//        spnDuracion.setModel(modeloSpinner);
     }
 
     /**
@@ -45,20 +55,20 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         saveConfigBtn = new javax.swing.JButton();
         startSimBtn = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner5 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
+        spnDuracion = new javax.swing.JSpinner();
+        spnAnimadores = new javax.swing.JSpinner();
+        spnEntrega = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
+        spnDiseñadores = new javax.swing.JSpinner();
+        spnActores = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jSpinner6 = new javax.swing.JSpinner();
-        jSpinner7 = new javax.swing.JSpinner();
-        jSpinner8 = new javax.swing.JSpinner();
+        spnPlotTwists = new javax.swing.JSpinner();
+        spnGuionistas = new javax.swing.JSpinner();
+        spnEnsambladores = new javax.swing.JSpinner();
         pnlImage1 = new ImagePanel1("/Images/Disney_vs_Nick.jpg");
         jPanel2 = new ImagePanel1("/Images/Nick.jpg");
         jPanel3 = new ImagePanel1("/Images/Disney.jpg");
@@ -73,18 +83,33 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel3.setText("Número de Guionistas:");
 
-        saveConfigBtn.setText("Guardar Configuracón");
+        saveConfigBtn.setText("Guardar Configuración");
+        saveConfigBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveConfigBtnActionPerformed(evt);
+            }
+        });
 
-        startSimBtn.setText("Inicial Simulación");
+        startSimBtn.setText("Iniciar Simulación");
         startSimBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startSimBtnActionPerformed(evt);
             }
         });
 
+        spnDuracion.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        spnAnimadores.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        spnEntrega.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
         jLabel4.setText("Número de Diseñadores de Escenarios:");
 
         jLabel5.setText("Número de Animadores de Personajes:");
+
+        spnDiseñadores.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        spnActores.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         jLabel6.setText("Número de Actores de Dobalje:");
 
@@ -92,7 +117,13 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel8.setText("Número de Ensambladores:");
 
-        jLabel9.setText("Días eisponibles para la entrega:");
+        jLabel9.setText("Días disponibles para la entrega:");
+
+        spnPlotTwists.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        spnGuionistas.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        spnEnsambladores.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -101,43 +132,30 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saveConfigBtn)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(saveConfigBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(startSimBtn))
-                    .addComponent(jLabel1))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(startSimBtn)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(spnEntrega, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                .addComponent(spnEnsambladores, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(spnPlotTwists, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(spnActores, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(spnAnimadores, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(spnDiseñadores, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(spnGuionistas, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(spnDuracion, javax.swing.GroupLayout.Alignment.TRAILING)))))
                 .addGap(0, 181, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -147,35 +165,35 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(78, 78, 78)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnGuionistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnDiseñadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnAnimadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnActores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnPlotTwists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnEnsambladores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -249,7 +267,43 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void startSimBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimBtnActionPerformed
         // TODO add your handling code here:
+        
+        int[] valores = data.leerTXT();
+        for(int n = 0; n < valores.length; n++){
+            JOptionPane.showMessageDialog(null, valores[n]);
+        }
     }//GEN-LAST:event_startSimBtnActionPerformed
+
+    private void saveConfigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveConfigBtnActionPerformed
+        // TODO add your handling code here:
+        
+//        int duration = Integer.parseInt(spnDuracion.getValue().toString());
+//        int screenwriters = Integer.parseInt(spnGuionistas.getValue().toString());
+//        int designers = Integer.parseInt(spnDiseñadores.getValue().toString());
+//        int animators = Integer.parseInt(spnAnimadores.getValue().toString());
+//        int actors = Integer.parseInt(spnActores.getValue().toString());
+//        int plotTwists = Integer.parseInt(spnPlotTwists.getValue().toString());
+//        int assemblers = Integer.parseInt(spnEnsambladores.getValue().toString());
+//        int delivery  =Integer.parseInt(spnEntrega.getValue().toString());
+        
+        String duration = spnDuracion.getValue().toString();
+        String screenwriters = spnGuionistas.getValue().toString();
+        String designers = spnDiseñadores.getValue().toString();
+        String animators = spnAnimadores.getValue().toString();
+        String actors = spnActores.getValue().toString();
+        String plotTwists = spnPlotTwists.getValue().toString();
+        String assemblers = spnEnsambladores.getValue().toString();
+        String delivery = spnEntrega.getValue().toString();
+        
+        int totalWorkers = Integer.parseInt(screenwriters) + Integer.parseInt(designers) + Integer.parseInt(animators) + Integer.parseInt(actors) + Integer.parseInt(plotTwists) + Integer.parseInt(assemblers);
+        JOptionPane.showMessageDialog(null, totalWorkers);
+        
+        if( totalWorkers <= 21){
+            data.escribirTXT(duration, screenwriters, designers, animators, actors, plotTwists, assemblers, delivery);  
+        }else{
+            JOptionPane.showMessageDialog(null, "La suma total de los trabajadores supera la cantidad disponible");
+        }
+    }//GEN-LAST:event_saveConfigBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,17 +355,17 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JPanel pnlImage1;
     private javax.swing.JButton saveConfigBtn;
+    private javax.swing.JSpinner spnActores;
+    private javax.swing.JSpinner spnAnimadores;
+    private javax.swing.JSpinner spnDiseñadores;
+    private javax.swing.JSpinner spnDuracion;
+    private javax.swing.JSpinner spnEnsambladores;
+    private javax.swing.JSpinner spnEntrega;
+    private javax.swing.JSpinner spnGuionistas;
+    private javax.swing.JSpinner spnPlotTwists;
     private javax.swing.JButton startSimBtn;
     // End of variables declaration//GEN-END:variables
 
