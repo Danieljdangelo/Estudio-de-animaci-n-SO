@@ -61,6 +61,14 @@ public class Dashboard extends javax.swing.JFrame {
         jSpinner8 = new javax.swing.JSpinner();
         pnlImage1 = new ImagePanel1("/Images/Disney_vs_Nick.jpg");
         jPanel2 = new ImagePanel1("/Images/Nick.jpg");
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel3 = new ImagePanel1("/Images/Disney.jpg");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,9 +81,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel3.setText("Número de Guionistas:");
 
-        saveConfigBtn.setText("Guardar Configuracón");
+        saveConfigBtn.setText("Guardar Configuración");
 
-        startSimBtn.setText("Inicial Simulación");
+        startSimBtn.setText("Iniciar Simulación");
         startSimBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startSimBtnActionPerformed(evt);
@@ -216,15 +224,61 @@ public class Dashboard extends javax.swing.JFrame {
 
         disneyTabbedPane.addTab("Configuración", jPanel1);
 
+        jLabel10.setText("Ganancias en bruto: ");
+
+        jLabel11.setText("Costos operativos:");
+
+        jLabel12.setText("Utilidad total:");
+
+        jLabel13.setText("Deadline:");
+
+        jLabel14.setText("Project Manager:");
+
+        jLabel15.setText("Director:");
+
+        jLabel16.setText("Cantidad de faltas:");
+
+        jLabel17.setText("Salario descontado:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1450, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10))
+                .addGap(422, 422, 422)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel15))
+                .addContainerGap(694, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel14)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel16))
+                .addGap(31, 31, 31)
+                .addComponent(jLabel17)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel12)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel15)
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         disneyTabbedPane.addTab("Nickelodeon", jPanel2);
@@ -289,6 +343,14 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane disneyTabbedPane;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
