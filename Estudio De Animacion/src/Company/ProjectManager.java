@@ -8,6 +8,15 @@ package Company;
  *
  * @author danieldangelo
  */
-public class ProjectManager {
+public class ProjectManager extends Thread{
     
+    private int salario;
+
+    public ProjectManager(int salario) {
+        this.salario = salario;
+    }
+    
+    public void MandarCap(){
+        
+    }
 }

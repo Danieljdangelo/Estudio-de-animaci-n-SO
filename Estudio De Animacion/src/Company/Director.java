@@ -8,7 +8,7 @@ package Company;
  *
  * @author danieldangelo
  */
-public class Director {
+public class Director extends Thread{
     
     private int salary;
 }

@@ -12,8 +12,8 @@ import java.util.logging.Logger;
  *
  * @author danieldangelo
  */
-public class Guionistas{
-        private int salario;
+public class Guionistas extends Thread{
+    private int salario;
     private Drive drive;
     private Semaphore sem;
     private float salarioAcumulado;
