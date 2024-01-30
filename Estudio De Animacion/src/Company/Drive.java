@@ -18,14 +18,20 @@ public class Drive {
     
     
     public Drive(){
-        this.animations=0;
+        this.animations = 0;
+        this.doblajes = 0;
+        this.escenarios = 0;
+        this.guiones = 0;
+        this.plotTwist = 0;
     }
     
     public void addAnimation(int type){
-        if (type == 0){
-            this.animations += 1;
-            System.out.println("animaciones disponibles:" + this.animations);
-        }
+        if (animations <= 55){
+            if (type == 0){
+                this.animations += 1;
+                System.out.println("animaciones disponibles:" + this.animations);
+            }
+        }else System.out.println("El drive esta lleno.");
     }
     
     public void addPlotTwist(int type){
