@@ -18,13 +18,17 @@ public class Guionistas extends Thread{
     private Semaphore sem;
     private float salarioAcumulado;
     private float contador;
+    private int guionesListos;
+    private float duracionDia;
 
-    public Guionistas(int salario, Drive d, Semaphore m) {
-        this.salario = salario;
+    public Guionistas(Drive d, Semaphore m, int dia) {
+        this.salario = 20;
         this.drive = d;
         this.salarioAcumulado = 0;
         this.sem = m;
         this.contador = 0;
+        this.guionesListos = 0;
+        this.duracionDia = dia;
     }
     
     public void obtenerSalario(){
@@ -32,11 +36,11 @@ public class Guionistas extends Thread{
     }
     
     public void trabajando(){
-        this.contador += 0.34;
-        if (this.contador >= 1) {
+        this.contador += 1;
+        if (this.contador >= 4) {
             try {
                 this.sem.acquire();
-                this.drive.addAnimation(salario);
+                this.drive.addAnimation(1);//no se que parametro va aqui
                 this.sem.release();
                 this.contador = 0;
                 
@@ -45,5 +49,14 @@ public class Guionistas extends Thread{
             }
             
         }
+    }
+    
+    @Override
+    public void run(){//Esta funcion es la que hay que arreglar y replicar en las demás clases
+        while (true){
+            obtenerSalario();
+            trabajando();
+        }
+
     }
 }

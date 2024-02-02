@@ -21,10 +21,10 @@ public class Ensambladores extends Thread {
     private Semaphore s;
     private Drive drive;
 
-    public Ensambladores(int salary, int tiempo, Semaphore sem, Drive driv) {
+    public Ensambladores(Semaphore sem, Drive driv, int dia) {
         this.salary = salary;
         this.salaryAcc = 0;
-        this.duracionDia = tiempo;
+        this.duracionDia = dia;
         this.s = sem;
         this.drive = driv;
     }

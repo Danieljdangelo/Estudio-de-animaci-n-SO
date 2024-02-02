@@ -18,13 +18,15 @@ public class GuionistasPlot extends Thread{
     private Semaphore sem;
     private float salarioAcumulado;
     private float contador;
+    private int duracionDia;
 
-    public GuionistasPlot(int salario, Drive d, Semaphore m) {
+    public GuionistasPlot(Drive d, Semaphore m, int dia) {
         this.salario = salario;
         this.drive = d;
         this.salarioAcumulado = 0;
         this.sem = m;
         this.contador = 0;
+        this.duracionDia = dia;
     }
     
     public void obtenerSalario(){
