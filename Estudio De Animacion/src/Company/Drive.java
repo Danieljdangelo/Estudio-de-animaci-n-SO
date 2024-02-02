@@ -31,7 +31,7 @@ public class Drive {
     //Los print son para correr en frio pero hay que mostrarlo en la interfaz
     public void addAnimation(int type){
         if (animations < 55){
-            if (type == 0){
+            if (type == 2){
                 this.animations += 1;
                 System.out.println("animaciones disponibles:" + this.animations);
             }
@@ -40,7 +40,7 @@ public class Drive {
     
     public void addPlotTwist(int type){
         if (plotTwist < 10){
-            if (type == 0) {
+            if (type == 4) {
                 this.plotTwist += 1;
                 System.out.println("PlotTwists disponibles:" + this.plotTwist);
             }
@@ -58,7 +58,7 @@ public class Drive {
     
     public void addEscenarios(int type){
         if (escenarios < 20){
-            if (type == 0){
+            if (type == 1){
                 this.escenarios += 1;
                 System.out.println("escenarios disponibles:" + this.escenarios);
             }
@@ -67,7 +67,7 @@ public class Drive {
     
     public void addDoblajes(int type){
         if(doblajes < 35){
-            if (type == 0){
+            if (type == 3){
                 this.doblajes += 1;
                 System.out.println("doblajes disponibles:" + this.doblajes);
             }

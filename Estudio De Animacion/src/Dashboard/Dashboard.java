@@ -5,6 +5,7 @@
 package Dashboard;
 
 import Class.ManejoDeData;
+import Company.Empresa;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -317,7 +318,21 @@ public class Dashboard extends javax.swing.JFrame {
     private void startSimBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimBtnActionPerformed
         // TODO add your handling code here:
         
-//        int[] valores = data.leerTXT();
+        int[] valores = data.leerTXT();
+        int duration = valores[0];
+        int screenWriters = valores[1];
+        int designers = valores[2];
+        int animators = valores[3];
+        int actors = valores[4];
+        int plotTwists = valores[5];
+        int assemblers = valores[6];
+        int delivery = valores[7];  
+        
+        Empresa company = new Empresa(duration, screenWriters, designers, animators, actors, plotTwists, assemblers, delivery);
+        
+        company.createThreads();
+        
+        
 //        for(int n = 0; n < valores.length; n++){
 //            JOptionPane.showMessageDialog(null, valores[n]);
 //        }
@@ -347,7 +362,7 @@ public class Dashboard extends javax.swing.JFrame {
         int totalWorkers = Integer.parseInt(screenwriters) + Integer.parseInt(designers) + Integer.parseInt(animators) + Integer.parseInt(actors) + Integer.parseInt(plotTwists) + Integer.parseInt(assemblers);
         JOptionPane.showMessageDialog(null, totalWorkers);
         
-        if( totalWorkers <= 21){
+        if( totalWorkers <= 15){
             data.escribirTXT(duration, screenwriters, designers, animators, actors, plotTwists, assemblers, delivery);  
         }else{
             JOptionPane.showMessageDialog(null, "La suma total de los trabajadores supera la cantidad disponible");

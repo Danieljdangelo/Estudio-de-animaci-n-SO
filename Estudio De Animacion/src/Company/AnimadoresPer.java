@@ -13,14 +13,18 @@ import java.util.logging.Logger;
  * @author danieldangelo
  */
 public class AnimadoresPer extends Thread{
+    private int type;
+    private int name;
+    private int duracionDia;
+    private float salarioAcumulado;
     private int salario;
+    private float contador;
     private Drive drive;
     private Semaphore sem;
-    private float salarioAcumulado;
-    private float contador;
-    private int duracionDia;
 
-    public AnimadoresPer(Drive d, Semaphore m, int dia) {
+    public AnimadoresPer(int type, int name, Drive d, Semaphore m, int dia) {
+        this.type = type;
+        this.name = name;
         this.salario = 40;
         this.drive = d;
         this.salarioAcumulado = 0;
@@ -29,6 +33,24 @@ public class AnimadoresPer extends Thread{
         this.duracionDia = dia;
     }
     
+    @Override
+        public void run(){
+            while(true){
+                
+                try {
+                    obtenerSalario();
+                    System.out.println("Trabajador: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
+                    trabajando();
+                    sleep(this.duracionDia);
+                    
+                    
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(AnimadoresPer.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        
+        }
+    
     public void obtenerSalario(){
         this.salarioAcumulado += this.salario*24;
     }
@@ -36,11 +58,11 @@ public class AnimadoresPer extends Thread{
     public void trabajando(){
         this.contador += 0.34;
         if (this.contador >= 1) {
+            this.contador = 0;
             try {
                 this.sem.acquire();
-                this.drive.addAnimation(salario);
+                this.drive.addAnimation(2);
                 this.sem.release();
-                this.contador = 0;
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(AnimadoresPer.class.getName()).log(Level.SEVERE, null, ex);
