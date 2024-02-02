@@ -317,10 +317,10 @@ public class Dashboard extends javax.swing.JFrame {
     private void startSimBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimBtnActionPerformed
         // TODO add your handling code here:
         
-        int[] valores = data.leerTXT();
-        for(int n = 0; n < valores.length; n++){
-            JOptionPane.showMessageDialog(null, valores[n]);
-        }
+//        int[] valores = data.leerTXT();
+//        for(int n = 0; n < valores.length; n++){
+//            JOptionPane.showMessageDialog(null, valores[n]);
+//        }
     }//GEN-LAST:event_startSimBtnActionPerformed
 
     private void saveConfigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveConfigBtnActionPerformed
