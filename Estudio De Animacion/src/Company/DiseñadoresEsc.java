@@ -18,13 +18,17 @@ public class DiseñadoresEsc extends Thread{
     private Semaphore sem;
     private float salarioAcumulado;
     private float contador;
+    private int escenariosListos;
+    private int duracionDia;
 
-    public DiseñadoresEsc(int salario, Drive d, Semaphore m) {
-        this.salario = salario;
+    public DiseñadoresEsc(Drive d, Semaphore m, int dia) {
+        this.salario = 26;
         this.drive = d;
         this.salarioAcumulado = 0;
         this.sem = m;
         this.contador = 0;
+        this.escenariosListos = 0;
+        this.duracionDia = dia;
     }
     
     public void obtenerSalario(){
@@ -32,11 +36,11 @@ public class DiseñadoresEsc extends Thread{
     }
     
     public void trabajando(){
-        this.contador += 0.34;
-        if (this.contador >= 1) {
+        this.contador += 1;
+        if (this.contador >= 4) {
             try {
                 this.sem.acquire();
-                this.drive.addAnimation(salario);
+                this.drive.addAnimation(1);//no se que parametro va aqui
                 this.sem.release();
                 this.contador = 0;
                 
