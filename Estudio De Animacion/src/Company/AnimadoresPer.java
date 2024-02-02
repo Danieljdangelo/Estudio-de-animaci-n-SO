@@ -18,13 +18,15 @@ public class AnimadoresPer extends Thread{
     private Semaphore sem;
     private float salarioAcumulado;
     private float contador;
+    private int duracionDia;
 
-    public AnimadoresPer(int salario, Drive d, Semaphore m) {
-        this.salario = salario;
+    public AnimadoresPer(Drive d, Semaphore m, int dia) {
+        this.salario = 40;
         this.drive = d;
         this.salarioAcumulado = 0;
         this.sem = m;
         this.contador = 0;
+        this.duracionDia = dia;
     }
     
     public void obtenerSalario(){

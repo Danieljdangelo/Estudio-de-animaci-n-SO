@@ -4,6 +4,8 @@
  */
 package Company;
 
+import java.util.concurrent.Semaphore;
+
 /**
  *
  * @author danieldangelo
@@ -11,9 +13,13 @@ package Company;
 public class ProjectManager extends Thread{
     
     private int salario;
+    private Drive drive;
+    private Semaphore sem;
 
-    public ProjectManager(int salario) {
-        this.salario = salario;
+    public ProjectManager(Drive d, Semaphore s) {
+        this.salario = 40;
+        this.drive = d;
+        this.sem = s;
     }
     
     public void MandarCap(){

@@ -4,11 +4,21 @@
  */
 package Company;
 
+import java.util.concurrent.Semaphore;
+
 /**
  *
  * @author danieldangelo
  */
 public class Director extends Thread{
     
-    private int salary;
+    private int salario;
+    private Drive drive;
+    private Semaphore sem;
+    
+    public Director(Drive d, Semaphore s){
+        this.salario = 100;
+        this.drive = d;
+        this.sem = s;
+    }
 }
