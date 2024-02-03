@@ -17,6 +17,7 @@ public class Drive {
     public int doblajes;
     public int capacidadTotal;
     public int deadline;
+    public int capsDisponibles;
     
     
     public Drive(int deadline){
@@ -27,6 +28,7 @@ public class Drive {
         this.plotTwist = 0;
         this.capacidadTotal = 0;
         this.deadline = deadline;
+        this.capsDisponibles = 0;
         
     }
 
@@ -81,6 +83,24 @@ public class Drive {
         
         return this.capacidadTotal = animations + plotTwist + guiones + escenarios + doblajes;
         
+    }
+    
+    public void CrearCap(int type){
+        if (type == 5){//type 5 para los ensamladores de Nick
+            if(guiones == 2 && escenarios == 1 && animations == 4 && doblajes == 4){
+                this.capsDisponibles += 1;
+            }else{
+                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
+            }
+            
+        }else if (type == 7){//type 8 para los ensambladores de Disney
+            if (guiones == 1 && escenarios == 2 && animations == 6 && doblajes == 5){
+                this.capsDisponibles +=1;
+            }else{
+                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
+            }
+        }
+                
     }
     
     public int ActualizarDeadline(){

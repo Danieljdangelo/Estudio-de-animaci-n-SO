@@ -32,8 +32,8 @@ public class ProjectManager extends Thread{
     
     @Override
     public void run(){
-        while(true){
-            try {
+        while (true){
+            try{
                 getSalario();
                 work();
                 sleep(dia);
@@ -53,15 +53,44 @@ public class ProjectManager extends Thread{
 //        
 //    }
     
+    private String verAnime(double horas) {
+        String estado = "Viendo anime";
+        try {
+            Thread.sleep((long) (horas * 60 * 60 * 1000)); // Convierte horas a milisegundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return estado;
+    }
+    
+    private String trabajar(double horas) {
+        String estado = "Trabajando";
+        try {
+            Thread.sleep((long) (horas * 60 * 60 * 1000));
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return estado;
+    }
+    
     public void work(){
-        if(deadline > 0){
-            try {
-                this.sem.acquire();
-                drive.ActualizarDeadline();
-                this.sem.release();
-                        
-            } catch (Exception e) {
+        while (deadline > 0) {
+            // Fanatismo al anime durante las primeras 16 horas
+            for (int hora = 1; hora <= 16; hora++) {
+                if (hora % 2 == 1) {
+                    verAnime(0.5); // Ve anime durante 30 minutos
+                } else {
+                    trabajar(0.5); // Trabaja durante 30 minutos
+                }
             }
+
+            // Las últimas 8 horas cambian el contador con los días restantes para la entrega
+            for (int hora = 17; hora <= 24; hora++) {
+                trabajar(1);
+            }
+
+            // Al final del día de trabajo, disminuye el contador de días de entrega en 1
+            deadline--;
         }
     }
     
