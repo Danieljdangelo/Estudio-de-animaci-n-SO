@@ -4,6 +4,9 @@
  */
 package Company;
 
+import Dashboard.Dashboard;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author danieldangelo
@@ -17,6 +20,8 @@ public class Drive {
     public int doblajes;
     public int capacidadTotal;
     
+//    Dashboard db = new Dashboard();
+    
     
     public Drive(){
         this.animations = 0;
@@ -25,6 +30,24 @@ public class Drive {
         this.guiones = 0;
         this.plotTwist = 0;
         this.capacidadTotal = 0;
+    }
+    
+    public void setGuiones(int guiones){
+//        Dashboard db = new Dashboard();
+        this.guiones = guiones;
+//        db.mostrar(this.guiones);
+//        Dashboard db = new Dashboard();
+//        db.cmpGuiones.setText(String.valueOf(this.guiones));
+//        JOptionPane.showMessageDialog(null, this.guiones);
+    }
+    
+//    public int getGuiones(){
+//        return guiones;
+//    }
+    
+    public int getGuiones(){
+//        JOptionPane.showMessageDialog(null, this.guiones);
+        return this.guiones;
     }
     
     
@@ -48,10 +71,19 @@ public class Drive {
     }
     
     public void addGuiones(int type){
+        Dashboard db = new Dashboard();
         if (guiones < 25){
             if (type == 0){
                 this.guiones += 1;
+                setGuiones(this.guiones);
+                db.mostrar(this.guiones);
+//                db.guionesDB += 1;
+//                db.setGuiones(this.guiones);
+//                JOptionPane.showMessageDialog(null, db.guionesDB);
+//                getGuiones();
                 System.out.println("guiones disponibles:" + this.guiones);
+//                JOptionPane.showMessageDialog(null, getGuiones());
+//                db.lblGuiones.setText(String.valueOf(this.guiones));
             }
         }else System.out.println("El drive esta lleno");
     }
