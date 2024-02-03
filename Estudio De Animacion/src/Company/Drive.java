@@ -16,17 +16,20 @@ public class Drive {
     public int escenarios;
     public int doblajes;
     public int capacidadTotal;
+    public int deadline;
     
     
-    public Drive(){
+    public Drive(int deadline){
         this.animations = 0;
         this.doblajes = 0;
         this.escenarios = 0;
         this.guiones = 0;
         this.plotTwist = 0;
         this.capacidadTotal = 0;
+        this.deadline = deadline;
+        
     }
-    
+
     
     //Los print son para correr en frio pero hay que mostrarlo en la interfaz
     public void addAnimation(int type){
@@ -73,10 +76,16 @@ public class Drive {
             }
         }else System.out.println("El drive esta lleno.");
     }
-    
+
     public int CapacidadDrive(){
         
         return this.capacidadTotal = animations + plotTwist + guiones + escenarios + doblajes;
+        
+    }
+    
+    public int ActualizarDeadline(){
+        
+        return deadline --;
         
     }
 }

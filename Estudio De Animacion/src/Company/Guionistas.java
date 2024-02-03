@@ -41,7 +41,7 @@ public class Guionistas extends Thread{
                 
                 try {
                     obtenerSalario();
-                    System.out.println("Trabajador: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
+                    System.out.println("Guionista: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     trabajando();
                     sleep(this.duracionDia);
                     
@@ -63,7 +63,7 @@ public class Guionistas extends Thread{
             this.contador = 0;
             try {
                 this.sem.acquire();
-                this.drive.addGuiones(0);//no se que parametro va aqui
+                this.drive.addGuiones(0);
                 this.sem.release();
  
             } catch (InterruptedException ex) {

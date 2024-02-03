@@ -40,8 +40,10 @@ public class Empresa {
             int counter5 = screenWriters + designers + animators + actors + plotTwists + assemblers;
             
             Semaphore mainMutex = new Semaphore(1);
-            Drive drive = new Drive();
+            Drive drive = new Drive(delivery);
             Thread threads[] = new Thread[counter5];
+            Director director = new Director(drive, mainMutex);
+            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery);
             
             for(int i = 0; i < threads.length; i++){
                 if(i < screenWriters){
@@ -101,13 +103,6 @@ public class Empresa {
 //            threads[13].start();
 //            threads[14].start();
         }
-       
-        
-        
-        
-        
-        
-        
         
 //    public Drive drive;
 //    public Semaphore semaphore;

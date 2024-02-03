@@ -39,7 +39,7 @@ public class Ensambladores extends Thread {
                 
                 try {
                     obtenerSalario();
-                    System.out.println("Trabajador: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
+                    System.out.println("Ensamblador: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     trabajando();
                     sleep(this.duracionDia);
                     
