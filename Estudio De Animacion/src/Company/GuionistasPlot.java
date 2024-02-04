@@ -39,7 +39,7 @@ public class GuionistasPlot extends Thread{
                 
                 try {
                     obtenerSalario();
-                    System.out.println("Guionista de Plot: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
+                    System.out.println("Guionista de PlotTwists: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     trabajando();
                     sleep(this.duracionDia);
                     
@@ -61,7 +61,7 @@ public class GuionistasPlot extends Thread{
             this.contador = 0;
             try {
                 this.sem.acquire();
-                this.drive.addPlotTwist(type);
+                this.drive.addPlotTwist(4);
                 this.sem.release();
                 
             } catch (InterruptedException ex) {

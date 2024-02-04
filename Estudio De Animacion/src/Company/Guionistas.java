@@ -47,6 +47,8 @@ public class Guionistas extends Thread{
                     System.out.println("Guionista: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     trabajando();
                     sleep(this.duracionDia);
+                    
+                    
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Guionistas.class.getName()).log(Level.SEVERE, null, ex);
                 }

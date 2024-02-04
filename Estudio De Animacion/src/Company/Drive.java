@@ -5,7 +5,6 @@
 package Company;
 
 import Dashboard.Dashboard;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,8 +41,17 @@ public class Drive {
 
     
     public void setGuiones(int guiones){
+//        Dashboard db = new Dashboard();
         this.guiones = guiones;
+//        db.mostrar(this.guiones);
+//        Dashboard db = new Dashboard();
+//        db.cmpGuiones.setText(String.valueOf(this.guiones));
+//        JOptionPane.showMessageDialog(null, this.guiones);
     }
+    
+//    public int getGuiones(){
+//        return guiones;
+//    }
     
     public int getGuiones(){
 //        JOptionPane.showMessageDialog(null, this.guiones);
@@ -66,6 +74,7 @@ public class Drive {
         if (plotTwist < 10){
             if (type == 4) {
                 this.plotTwist += 1;
+                db.getFieldPlotTwists().setText(Integer.toString(guiones));
                 System.out.println("PlotTwists disponibles:" + this.plotTwist);
             }
         }else System.out.println("El drive de plottwists esta lleno.");
@@ -75,16 +84,7 @@ public class Drive {
         if (guiones < 25){
             if (type == 0){
                 this.guiones += 1;
-<<<<<<< HEAD
-//                db.getGuionesLbl();
-//                db.setGuionesLbl(this.guiones);
-//                db.mostrar(db.getGuionesLbl());
-
-                
-                
-=======
                 db.getField().setText(Integer.toString(guiones));//Esta es la instrucción que muestra en el textfield
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
                 System.out.println("guiones disponibles:" + this.guiones);
             }
         }else System.out.println("El drive de guiones esta lleno");
@@ -116,8 +116,6 @@ public class Drive {
         
     }
     
-<<<<<<< HEAD
-=======
     public void CrearCap(String name, int type){
         if (name.equals("Nickelodeon")){//para los ensamladores de Nick
             if(type == 2 && guiones == 2 && escenarios == 1 && animations == 4 && doblajes == 4){
@@ -141,5 +139,4 @@ public class Drive {
         return deadline --;
         
     }
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
 }

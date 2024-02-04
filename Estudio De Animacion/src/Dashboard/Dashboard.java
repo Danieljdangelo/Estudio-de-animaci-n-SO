@@ -16,19 +16,12 @@ import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import static java.lang.Thread.sleep;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-<<<<<<< HEAD
-import javax.swing.SwingUtilities;
-=======
 import javax.swing.JTextField;
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -42,35 +35,17 @@ public class Dashboard extends javax.swing.JFrame {
     public Empresa company;
     public Empresa company2;
     ManejoDeData data = new ManejoDeData();
-<<<<<<< HEAD
-    Drive drive = new Drive();
-    public String guionesDB;
-
-    public Dashboard() {
-        initComponents();
-    }
-
-    public void mostrar(int guiones){
-//        cmpGuiones.setText(String.valueOf(getGuionesLbl()));
-//        JOptionPane.showMessageDialog(null, guiones);
-//        lblGuionesD.setText(String.valueOf(guiones));
-
-=======
     //Drive drive = new Drive();
     public int guionesDB;
     
     public Dashboard() {
         initComponents();
     //this.guionesDB = drive.guiones;
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
     }
     
-    public void setGuionesLbl(String guiones){
-        this.guionesDB = guiones;
-    }
-    
-    public JLabel getGuionesLbl(){
-        return lblGuionesD;
+    public void mostrar(int guiones){
+        cmpGuiones.setText(String.valueOf(guiones));
+//        JOptionPane.showMessageDialog(null, guionesDB);
     }
     
     public JTextField getField(){
@@ -96,6 +71,13 @@ public class Dashboard extends javax.swing.JFrame {
         return cmpDoblajes;
 
     }
+    
+    public JTextField getFieldPlotTwists(){
+
+        return cmpPlotDrive;
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,6 +153,7 @@ public class Dashboard extends javax.swing.JFrame {
         cmpActores = new javax.swing.JTextField();
         cmpPlotTwists = new javax.swing.JTextField();
         cmpEnsambladores = new javax.swing.JTextField();
+        cmpGuiones = new javax.swing.JTextField();
         cmpEscenarios = new javax.swing.JTextField();
         cmpAnimaciones = new javax.swing.JTextField();
         cmpDoblajes = new javax.swing.JTextField();
@@ -180,17 +163,12 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         cmpDia = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-<<<<<<< HEAD
-        cmpGuiones = new javax.swing.JTextField();
-        lblGuionesD = new javax.swing.JLabel();
-=======
         jLabel39 = new javax.swing.JLabel();
         gbEnUso = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
         jPanel3 = new ImagePanel1("/Images/Disney.jpg");
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -504,8 +482,6 @@ public class Dashboard extends javax.swing.JFrame {
         cmpEnsambladores.setEditable(false);
         cmpEnsambladores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-<<<<<<< HEAD
-=======
         cmpGuiones.setEditable(false);
         cmpGuiones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         cmpGuiones.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -518,7 +494,6 @@ public class Dashboard extends javax.swing.JFrame {
         });
 
         cmpEscenarios.setEditable(false);
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
         cmpEscenarios.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         cmpAnimaciones.setEditable(false);
@@ -551,9 +526,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel38.setText("ms");
 
-<<<<<<< HEAD
-        lblGuionesD.setText("0");
-=======
         jLabel39.setText("Uso del Drive: ");
 
         gbEnUso.setText("45");
@@ -570,7 +542,6 @@ public class Dashboard extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -641,8 +612,8 @@ public class Dashboard extends javax.swing.JFrame {
                                     .addComponent(cmpPlotDrive, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                                     .addComponent(cmpDoblajes)
                                     .addComponent(cmpAnimaciones)
-                                    .addComponent(cmpEscenarios)
-                                    .addComponent(cmpGuiones))
+                                    .addComponent(cmpGuiones)
+                                    .addComponent(cmpEscenarios))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -660,17 +631,6 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(jLabel42))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel32)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblGuionesD, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel33)
-                                    .addComponent(jLabel34)
-                                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel36))))
-                        .addGap(0, 724, Short.MAX_VALUE))
-=======
                                     .addComponent(jLabel18)
                                     .addComponent(jLabel19)
                                     .addComponent(jLabel20)
@@ -682,7 +642,6 @@ public class Dashboard extends javax.swing.JFrame {
                                     .addComponent(cmpAnimadores, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmpActores, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 389, Short.MAX_VALUE))
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel31)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -729,9 +688,8 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGap(54, 54, 54)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
-                            .addComponent(jLabel32)
                             .addComponent(cmpGuiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGuionesD))
+                            .addComponent(jLabel32))
                         .addGap(16, 16, 16)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
@@ -1214,10 +1172,11 @@ public class Dashboard extends javax.swing.JFrame {
         cmpPlotTwists.setText(String.valueOf(plotTwists));
         cmpEnsambladores.setText(String.valueOf(assemblers));
         cmpDeadline.setText(String.valueOf(delivery));
+        
+//        mostrar(guionesDB);
+        
+//        cmpGuiones.setText(String.valueOf(guionesDB));
 
-//        cmpGuiones.setText(String.valueOf(guionesDB)); 
-//        lblGuionesD.setText(String.valueOf(getGuionesLbl()));
-//        getGuionesLbl();
     }//GEN-LAST:event_startSimBtnActionPerformed
 
     private void saveConfigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveConfigBtnActionPerformed
@@ -1246,8 +1205,6 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmpAnimacionesActionPerformed
 
-<<<<<<< HEAD
-=======
     private void cmpGuionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmpGuionesKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_cmpGuionesKeyReleased
@@ -1284,7 +1241,6 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
     /**
      * @param args the command line arguments
      */
@@ -1448,12 +1404,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane4;
-<<<<<<< HEAD
-    private javax.swing.JLabel lblGuionesD;
-=======
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
->>>>>>> 19e3a6b96bb21d28ce7a435761d0874441c0705d
     private javax.swing.JPanel pnlImage1;
     public javax.swing.JButton saveConfigBtn;
     private javax.swing.JSpinner spnActores;
