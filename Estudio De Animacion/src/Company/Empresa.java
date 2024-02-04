@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  * @author danieldangelo
  */
 public class Empresa {
+        public String name;
         public int dayDuration;
         public int screenWriters;
         public int designers;
@@ -24,7 +25,8 @@ public class Empresa {
         public Drive drive;
         public Dashboard db;
         
-        public Empresa(int dayDuration, int screenWriters, int designers, int animators, int actors, int plotTwists, int assemblers, int delivery, Dashboard db){
+        public Empresa(String name, int dayDuration, int screenWriters, int designers, int animators, int actors, int plotTwists, int assemblers, int delivery, Dashboard db){
+            this.name = name;
             this.dayDuration  = dayDuration;
             this.screenWriters = screenWriters;
             this.designers = designers;

@@ -58,11 +58,11 @@ public class Ensambladores extends Thread {
     public void ArmandoCaps(){
         this.contador += 0.34;
         if (this.contador >= 1) {
-            this.contador = 0;
             try {
                 this.sem.acquire();
 //                this.drive.addDoblajes(3);
                 this.sem.release();
+                this.contador = 0;
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(ActoresDoblaje.class.getName()).log(Level.SEVERE, null, ex);
