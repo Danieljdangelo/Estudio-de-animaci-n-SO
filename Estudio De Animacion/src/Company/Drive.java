@@ -21,11 +21,12 @@ public class Drive {
     public int capacidadTotal;
     public int deadline;
     public int capsDisponibles;
+    public Dashboard db;
     
 //    Dashboard db = new Dashboard();
     
     
-    public Drive(int deadline){
+    public Drive(int deadline, Dashboard db){
         this.animations = 0;
         this.doblajes = 0;
         this.escenarios = 0;
@@ -34,6 +35,7 @@ public class Drive {
         this.capacidadTotal = 0;
         this.deadline = deadline;
         this.capsDisponibles = 0;
+        this.db = db;
         
     }
 
@@ -62,6 +64,7 @@ public class Drive {
         if (animations < 55){
             if (type == 2){
                 this.animations += 1;
+                db.getFieldAnimaciones().setText(Integer.toString(animations));
                 System.out.println("animaciones disponibles:" + this.animations);
             }
         }else System.out.println("El drive esta lleno.");
@@ -77,12 +80,13 @@ public class Drive {
     }
     
     public void addGuiones(int type){
-        Dashboard db = new Dashboard();
+        //Dashboard db = new Dashboard();
         if (guiones < 25){
             if (type == 0){
                 this.guiones += 1;
-                setGuiones(this.guiones);
-                db.mostrar(this.guiones);
+                db.getField().setText(Integer.toString(guiones));//Esta es la instrucción que muestra en el textfield
+                //setGuiones(this.guiones);
+                //db.mostrar(this.guiones);
 //                db.guionesDB += 1;
 //                db.setGuiones(this.guiones);
 //                JOptionPane.showMessageDialog(null, db.guionesDB);
@@ -98,6 +102,7 @@ public class Drive {
         if (escenarios < 20){
             if (type == 1){
                 this.escenarios += 1;
+                db.getFieldEscenarios().setText(Integer.toString(escenarios));
                 System.out.println("escenarios disponibles:" + this.escenarios);
             }
         }else System.out.println("El drive esta lleno.");
@@ -107,6 +112,7 @@ public class Drive {
         if(doblajes < 35){
             if (type == 3){
                 this.doblajes += 1;
+                db.getFieldDoblajes().setText(Integer.toString(doblajes));
                 System.out.println("doblajes disponibles:" + this.doblajes);
             }
         }else System.out.println("El drive esta lleno.");

@@ -18,6 +18,7 @@ import static java.lang.Thread.sleep;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -31,21 +32,44 @@ public class Dashboard extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard
      */
-    
+    public Empresa company;
     ManejoDeData data = new ManejoDeData();
-    Drive drive = new Drive();
+    //Drive drive = new Drive();
     public int guionesDB;
     
     public Dashboard() {
         initComponents();
-   this.guionesDB = drive.guiones;
+    //this.guionesDB = drive.guiones;
     }
     
     public void mostrar(int guiones){
         cmpGuiones.setText(String.valueOf(guiones));
 //        JOptionPane.showMessageDialog(null, guionesDB);
     }
+    
+    public JTextField getField(){
+        
+        return cmpGuiones;
+        
+    }
+    
+    public JTextField getFieldEscenarios(){
 
+        return cmpEscenarios;
+
+    }
+
+    public JTextField getFieldAnimaciones(){
+
+        return cmpAnimaciones;
+
+    }
+
+    public JTextField getFieldDoblajes(){
+
+        return cmpDoblajes;
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -349,26 +373,45 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel36.setText("/ 10");
 
+        cmpDeadline.setEditable(false);
         cmpDeadline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpGanancias.setEditable(false);
         cmpGanancias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpCostos.setEditable(false);
         cmpCostos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpUtilidad.setEditable(false);
         cmpUtilidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpPM.setEditable(false);
+
+        cmpFaltas.setEditable(false);
+
+        cmpSalarioDesc.setEditable(false);
+
+        cmpDirector.setEditable(false);
+
+        cmpGuionistas.setEditable(false);
         cmpGuionistas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpDiseñadores.setEditable(false);
         cmpDiseñadores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpAnimadores.setEditable(false);
         cmpAnimadores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpActores.setEditable(false);
         cmpActores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpPlotTwists.setEditable(false);
         cmpPlotTwists.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpEnsambladores.setEditable(false);
         cmpEnsambladores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        cmpGuiones.setEditable(false);
         cmpGuiones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         cmpGuiones.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -379,8 +422,10 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        cmpEscenarios.setEditable(false);
         cmpEscenarios.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
+        cmpAnimaciones.setEditable(false);
         cmpAnimaciones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         cmpAnimaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -388,16 +433,19 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        cmpDoblajes.setEditable(false);
         cmpDoblajes.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         cmpPlotDrive.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
+        cmpCapEst.setEditable(false);
         cmpCapEst.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         cmpCapPlot.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel37.setText("Duración del día:");
 
+        cmpDia.setEditable(false);
         cmpDia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jLabel38.setText("ms");
@@ -481,16 +529,16 @@ public class Dashboard extends javax.swing.JFrame {
                                     .addComponent(cmpGuiones)
                                     .addComponent(cmpEscenarios))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel32)
-                                    .addComponent(jLabel33)
-                                    .addComponent(jLabel34)
-                                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel36))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 750, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel31)
-                        .addGap(430, 1000, Short.MAX_VALUE))))
+                        .addGap(430, 944, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,7 +648,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel30)
                             .addComponent(cmpCapPlot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         disneyTabbedPane.addTab("Nickelodeon", jPanel2);
@@ -636,7 +684,7 @@ public class Dashboard extends javax.swing.JFrame {
         int assemblers = valores[6];
         int delivery = valores[7];  
         
-        Empresa company = new Empresa(duration, screenWriters, designers, animators, actors, plotTwists, assemblers, delivery);
+        company = new Empresa(duration, screenWriters, designers, animators, actors, plotTwists, assemblers, delivery, this);
         
         company.createThreads();
         
@@ -683,7 +731,6 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void cmpGuionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmpGuionesKeyReleased
         // TODO add your handling code here:
-        cmpGuiones.setText(String.valueOf(drive.guiones));
     }//GEN-LAST:event_cmpGuionesKeyReleased
 
     private void cmpGuionesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmpGuionesKeyPressed
