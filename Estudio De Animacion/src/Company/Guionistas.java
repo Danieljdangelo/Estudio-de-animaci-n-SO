@@ -4,6 +4,7 @@
  */
 package Company;
 
+import Dashboard.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,8 @@ public class Guionistas extends Thread{
     private int guionesListos;
     private int duracionDia;
 
+    Dashboard db = new Dashboard();
+    
     public Guionistas(int type, int name, Drive d, Semaphore m, int dia) {
         this.type = type;
         this.name = name;
@@ -58,7 +61,7 @@ public class Guionistas extends Thread{
     }
     
     public void trabajando(){
-        this.contador += 0.34;
+        this.contador += 0.34f;
         if (this.contador >= 1) {
             this.contador = 0;
             try {
