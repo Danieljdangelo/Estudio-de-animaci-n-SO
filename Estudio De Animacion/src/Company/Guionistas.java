@@ -44,7 +44,7 @@ public class Guionistas extends Thread{
                 
                 try {
                     obtenerSalario();
-                    System.out.println("Trabajador: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
+                    System.out.println("Guionista: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     trabajando();
                     sleep(this.duracionDia);
                 } catch (InterruptedException ex) {

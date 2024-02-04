@@ -4,6 +4,7 @@
  */
 package Company;
 
+import Dashboard.Dashboard;
 import java.util.concurrent.Semaphore;
 import javax.swing.JOptionPane;
 
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
  * @author danieldangelo
  */
 public class Empresa {
+        public String name;
         public int dayDuration;
         public int screenWriters;
         public int designers;
@@ -20,8 +22,11 @@ public class Empresa {
         public int plotTwists;
         public int assemblers;
         public int delivery;
+        public Drive drive;
+        public Dashboard db;
         
-        public Empresa(int dayDuration, int screenWriters, int designers, int animators, int actors, int plotTwists, int assemblers, int delivery){
+        public Empresa(String name, int dayDuration, int screenWriters, int designers, int animators, int actors, int plotTwists, int assemblers, int delivery, Dashboard db){
+            this.name = name;
             this.dayDuration  = dayDuration;
             this.screenWriters = screenWriters;
             this.designers = designers;
@@ -30,8 +35,17 @@ public class Empresa {
             this.plotTwists = plotTwists;
             this.assemblers = assemblers;
             this.delivery = delivery;
+            this.drive = new Drive(delivery, db);
+            this.db = db;
+            
         }
     
+        public Drive getDrive(){
+            
+            return this.drive;
+            
+        }
+        
         public void createThreads(){
             int counter1 = screenWriters + designers;
             int counter2 = screenWriters + designers + animators;
@@ -40,8 +54,10 @@ public class Empresa {
             int counter5 = screenWriters + designers + animators + actors + plotTwists + assemblers;
             
             Semaphore mainMutex = new Semaphore(1);
-            Drive drive = new Drive();
+            Drive drive = new Drive(delivery, db);
             Thread threads[] = new Thread[counter5];
+            Director director = new Director(drive, mainMutex);
+            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery);
             
             for(int i = 0; i < threads.length; i++){
                 if(i < screenWriters){
@@ -106,13 +122,6 @@ public class Empresa {
 //            threads[13].start();
 //            threads[14].start();
         }
-       
-        
-        
-        
-        
-        
-        
         
 //    public Drive drive;
 //    public Semaphore semaphore;
