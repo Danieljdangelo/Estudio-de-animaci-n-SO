@@ -39,8 +39,8 @@ public class Ensambladores extends Thread {
                 
                 try {
                     obtenerSalario();
-                    System.out.println("Trabajador: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
-                    trabajando();
+                    System.out.println("Ensamblador: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
+                    ArmandoCaps();
                     sleep(this.duracionDia);
                     
                     
@@ -55,7 +55,7 @@ public class Ensambladores extends Thread {
         this.salarioAcumulado += this.salario*24;
     }
     
-    public void trabajando(){
+    public void ArmandoCaps(){
         this.contador += 0.34;
         if (this.contador >= 1) {
             this.contador = 0;
