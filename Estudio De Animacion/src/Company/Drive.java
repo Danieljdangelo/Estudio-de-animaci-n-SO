@@ -5,6 +5,7 @@
 package Company;
 
 import Dashboard.Dashboard;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,17 +34,8 @@ public class Drive {
     }
     
     public void setGuiones(int guiones){
-//        Dashboard db = new Dashboard();
         this.guiones = guiones;
-//        db.mostrar(this.guiones);
-//        Dashboard db = new Dashboard();
-//        db.cmpGuiones.setText(String.valueOf(this.guiones));
-//        JOptionPane.showMessageDialog(null, this.guiones);
     }
-    
-//    public int getGuiones(){
-//        return guiones;
-//    }
     
     public int getGuiones(){
 //        JOptionPane.showMessageDialog(null, this.guiones);
@@ -75,15 +67,13 @@ public class Drive {
         if (guiones < 25){
             if (type == 0){
                 this.guiones += 1;
-                setGuiones(this.guiones);
-                db.mostrar(this.guiones);
-//                db.guionesDB += 1;
-//                db.setGuiones(this.guiones);
-//                JOptionPane.showMessageDialog(null, db.guionesDB);
-//                getGuiones();
+//                db.getGuionesLbl();
+//                db.setGuionesLbl(this.guiones);
+//                db.mostrar(db.getGuionesLbl());
+
+                
+                
                 System.out.println("guiones disponibles:" + this.guiones);
-//                JOptionPane.showMessageDialog(null, getGuiones());
-//                db.lblGuiones.setText(String.valueOf(this.guiones));
             }
         }else System.out.println("El drive esta lleno");
     }
@@ -111,4 +101,5 @@ public class Drive {
         return this.capacidadTotal = animations + plotTwist + guiones + escenarios + doblajes;
         
     }
+    
 }
