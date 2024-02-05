@@ -59,20 +59,22 @@ public class ProjectManager extends Thread{
 //        
 //    }
     
-    private String verAnime(double horas) {
+    private String verAnime(int dias) {
         String estado = "Viendo anime";
         try {
-            Thread.sleep((long) (horas * 60 * 60 * 1000)); // Convierte horas a milisegundos
+            sleep(dias); // Convierte horas a milisegundos
+            
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return estado;
     }
     
-    private String trabajar(double horas) {
+    private String trabajar(int dias) {
         String estado = "Trabajando";
         try {
-            Thread.sleep((long) (horas * 60 * 60 * 1000));
+            sleep(dias);
+            
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -84,9 +86,9 @@ public class ProjectManager extends Thread{
             // Fanatismo al anime durante las primeras 16 horas
             for (int hora = 1; hora <= 16; hora++) {
                 if (hora % 2 == 1) {
-                    verAnime(0.5); // Ve anime durante 30 minutos
+                    db.getPmLabel().setText(verAnime(hora/2)); // Ve anime durante 30 minutos
                 } else {
-                    trabajar(0.5); // Trabaja durante 30 minutos
+                    db.getPmLabel().setText(trabajar(hora/2)); // Trabaja durante 30 minutos
                 }
             }
 
