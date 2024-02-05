@@ -61,7 +61,7 @@ public class GuionistasPlot extends Thread{
             this.contador = 0;
             try {
                 this.sem.acquire();
-                this.drive.addPlotTwist(type);
+                this.drive.addPlotTwist(4);
                 this.sem.release();
                 
             } catch (InterruptedException ex) {

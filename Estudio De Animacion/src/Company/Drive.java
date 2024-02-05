@@ -21,12 +21,14 @@ public class Drive {
     public int capacidadTotal;
     public int deadline;
     public int capsDisponibles;
+    public int capsPlotTwist;
     public Dashboard db;
+    public Empresa empresa;
     
 //    Dashboard db = new Dashboard();
     
     
-    public Drive(int deadline, Dashboard db){
+    public Drive(int deadline, Dashboard db, Empresa empresa){
         this.animations = 0;
         this.doblajes = 0;
         this.escenarios = 0;
@@ -35,29 +37,11 @@ public class Drive {
         this.capacidadTotal = 0;
         this.deadline = deadline;
         this.capsDisponibles = 0;
+        this.capsPlotTwist = 0;
         this.db = db;
+        this.empresa = empresa;
         
     }
-
-    
-    public void setGuiones(int guiones){
-//        Dashboard db = new Dashboard();
-        this.guiones = guiones;
-//        db.mostrar(this.guiones);
-//        Dashboard db = new Dashboard();
-//        db.cmpGuiones.setText(String.valueOf(this.guiones));
-//        JOptionPane.showMessageDialog(null, this.guiones);
-    }
-    
-//    public int getGuiones(){
-//        return guiones;
-//    }
-    
-    public int getGuiones(){
-//        JOptionPane.showMessageDialog(null, this.guiones);
-        return this.guiones;
-    }
-    
     
     //Los print son para correr en frio pero hay que mostrarlo en la interfaz
     public void addAnimation(int type){
@@ -74,6 +58,7 @@ public class Drive {
         if (plotTwist < 10){
             if (type == 4) {
                 this.plotTwist += 1;
+                db.getFieldPlot().setText(Integer.toString(plotTwist));
                 System.out.println("PlotTwists disponibles:" + this.plotTwist);
             }
         }else System.out.println("El drive de plottwists esta lleno.");
@@ -115,20 +100,41 @@ public class Drive {
         
     }
     
-    public void CrearCap(String name, int type){
-        if (name.equals("Nickelodeon")){//para los ensamladores de Nick
-            if(type == 2 && guiones == 2 && escenarios == 1 && animations == 4 && doblajes == 4){
+    //Solo crea capitulos de nick
+    public void CrearCap(int type){
+        //if (this.empresa.name.equals("Nickelodeon")){//para los ensamladores de Nick
+            if(type == 5 && this.guiones >= 2 && this.escenarios >= 1 && this.animations >= 4 && this.doblajes >= 4){
                 this.capsDisponibles += 1;
+                guiones -= 2;
+                escenarios -= 1;
+                animations -= 4;
+                doblajes -= 4;
+                System.out.println("Capitulos disponibles: " + this.capsDisponibles);
+                db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
+                if(this.capsDisponibles >= 5){
+                    this.capsPlotTwist += 1;
+                    this.plotTwist -= 2;
+                    this.guiones -= 2;
+                    this.escenarios -= 1;
+                    this.animations -= 4;
+                    this.doblajes -= 4;
+                    db.getFieldCapPlot().setText(Integer.toString(capsPlotTwist));
+                }
             }else{
                 System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
-            }
+  //          }
             
-        }else if (name.equals("Disney")){//para los ensambladores de Disney
-            if (guiones == 1 && escenarios == 2 && animations == 6 && doblajes == 5){
-                this.capsDisponibles +=1;
-            }else{
-                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
-            }
+       // }else { System.out.println("No está entrando el type");//if (empresa.name.equals("Disney")){//para los ensambladores de Disney
+//            if (type == 5 && guiones == 1 && escenarios == 2 && animations == 6 && doblajes == 5){
+//                this.capsDisponibles +=1;
+//                guiones -= 1;
+//                escenarios -= 2;
+//                animations -= 6;
+//                doblajes -= 5;
+//                db.getFieldCapitulos2().setText(Integer.toString(capsDisponibles));
+//            }else{
+//                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
+//            }
         }
                 
     }

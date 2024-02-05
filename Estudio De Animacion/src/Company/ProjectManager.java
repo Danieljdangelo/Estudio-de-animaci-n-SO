@@ -4,6 +4,7 @@
  */
 package Company;
 
+import Dashboard.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,21 +21,26 @@ public class ProjectManager extends Thread{
     private boolean trabaja;
     public int dia;
     private int deadline;
+    private Dashboard db;
 
-    public ProjectManager(Drive d, Semaphore s, int dia, int delivery) {
+    public ProjectManager(Drive d, Semaphore s, int dia, int delivery, Dashboard db) {
         this.salario = 40;
         this.drive = d;
         this.sem = s;
         this.trabaja = false;
         this.dia = dia;
         this.deadline = delivery;
+        this.db = db;
     }
     
+    
+    //Poner en el run el estado de lo que esta haciendo el pm usando los getters de los labels del dashboard
     @Override
     public void run(){
         while (true){
             try{
                 getSalario();
+                db.getGbEnUso().setText(Integer.toString(drive.CapacidadDrive()));//Para mostrar cuantos gb hay en uso
                 work();
                 sleep(dia);
             } catch (InterruptedException ex) {
@@ -57,8 +63,8 @@ public class ProjectManager extends Thread{
         String estado = "Viendo anime";
         try {
             Thread.sleep((long) (horas * 60 * 60 * 1000)); // Convierte horas a milisegundos
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return estado;
     }

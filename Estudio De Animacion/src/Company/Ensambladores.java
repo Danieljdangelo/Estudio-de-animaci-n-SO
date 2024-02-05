@@ -41,9 +41,8 @@ public class Ensambladores extends Thread {
                     obtenerSalario();
                     System.out.println("Ensamblador: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     ArmandoCaps();
+                    System.out.println("armando cap");
                     sleep(this.duracionDia);
-                    
-                    
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Ensambladores.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -56,11 +55,11 @@ public class Ensambladores extends Thread {
     }
     
     public void ArmandoCaps(){
-        this.contador += 0.34;
-        if (this.contador >= 1) {
+        this.contador += 1;
+        if (this.contador >= 2) {//Contador son los días que faltan para que completen la tarea, si son cada 4, diariamente tienen que sumarle 1 al contador hasta llegar a 4
             try {
                 this.sem.acquire();
-//                this.drive.addDoblajes(3);
+                this.drive.CrearCap(5);
                 this.sem.release();
                 this.contador = 0;
                 
