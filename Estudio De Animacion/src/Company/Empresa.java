@@ -35,11 +35,17 @@ public class Empresa {
             this.plotTwists = plotTwists;
             this.assemblers = assemblers;
             this.delivery = delivery;
-            this.drive = new Drive(delivery, db, this);
+            this.drive = new Drive(this.name, delivery, db, this);
             this.db = db;
             
         }
+
+    public String getName() {
+        return name;
+    }
     
+        
+        
         public Drive getDrive(){
             
             return this.drive;
@@ -56,8 +62,8 @@ public class Empresa {
             Semaphore mainMutex = new Semaphore(1);
             //Drive drive = new Drive(delivery, db);
             Thread threads[] = new Thread[counter5];
-            Director director = new Director(drive, mainMutex);
             ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
+            Director director = new Director(drive, mainMutex, pm, delivery, dayDuration);
             
             for(int i = 0; i < threads.length; i++){
                 if(i < screenWriters){

@@ -39,8 +39,8 @@ public class ProjectManager extends Thread{
     public void run(){
         while (true){
             try{
-                getSalario();
                 db.getGbEnUso().setText(Integer.toString(drive.CapacidadDrive()));//Para mostrar cuantos gb hay en uso
+                getSalario();
                 work();
                 sleep(dia);
             } catch (InterruptedException ex) {
@@ -52,12 +52,6 @@ public class ProjectManager extends Thread{
     public void getSalario(){
         this.salario += salario*24;
     }
-    
-//    public int DueDate(int deadline){
-//        
-//        return deadline--;
-//        
-//    }
     
     private String verAnime(int dias) {
         String estado = "Viendo anime";
@@ -98,7 +92,7 @@ public class ProjectManager extends Thread{
             }
 
             // Al final del día de trabajo, disminuye el contador de días de entrega en 1
-            deadline--;
+            db.getCmpDeadline().setText(Integer.toString(drive.ActualizarDeadline()));
         }
     }
     

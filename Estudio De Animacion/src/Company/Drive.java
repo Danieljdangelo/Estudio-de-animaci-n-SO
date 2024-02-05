@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Drive {
     
+    public String name;
     public int animations;
     public int plotTwist;
     public int guiones;
@@ -25,10 +26,10 @@ public class Drive {
     public Dashboard db;
     public Empresa empresa;
     
-//    Dashboard db = new Dashboard();
     
     
-    public Drive(int deadline, Dashboard db, Empresa empresa){
+    public Drive(String name, int deadline, Dashboard db, Empresa empresa){
+        this.name = name;
         this.animations = 0;
         this.doblajes = 0;
         this.escenarios = 0;
@@ -139,6 +140,7 @@ public class Drive {
                 
     }
     
+
     public int ActualizarDeadline(){
         
         return deadline --;

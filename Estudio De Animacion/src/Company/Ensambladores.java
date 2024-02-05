@@ -69,29 +69,4 @@ public class Ensambladores extends Thread {
             
         }
     }
-    
-    
-    
-//    public void GetSalario(){
-//        
-//        this.salaryAcc += this.salary*24;
-//        
-//    }
-//    
-//    public void Run(){
-//        while (true){
-//            try{
-//                GetSalario();
-//                EnsamblarCap();
-//                //Tiene que retornar el cap listo, mostrarlo y agregarlo al drive
-//                sleep(this.duracionDia);
-//            }catch (InterruptedException ex) {
-//                Logger.getLogger(Ensambladores.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//    }
-//    
-//    public void EnsamblarCap(){
-//        //Tiene que ingresar al drive y ver cuantas partes hay para poder armar un cap, si estan las suficientes, las junta y sube al drive.
-//    }
 }
