@@ -58,7 +58,7 @@ public class ActoresDoblaje extends Thread{
     }
     
     public void trabajando(){
-        this.contador += 0.34;
+        this.contador += 1;
         if (this.contador >= 1) {
             this.contador = 0;
             try {

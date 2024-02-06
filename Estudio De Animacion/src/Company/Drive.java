@@ -41,20 +41,10 @@ public class Drive {
 
     
     public void setGuiones(int guiones){
-//        Dashboard db = new Dashboard();
         this.guiones = guiones;
-//        db.mostrar(this.guiones);
-//        Dashboard db = new Dashboard();
-//        db.cmpGuiones.setText(String.valueOf(this.guiones));
-//        JOptionPane.showMessageDialog(null, this.guiones);
     }
     
-//    public int getGuiones(){
-//        return guiones;
-//    }
-    
     public int getGuiones(){
-//        JOptionPane.showMessageDialog(null, this.guiones);
         return this.guiones;
     }
     
@@ -63,7 +53,7 @@ public class Drive {
     public void addAnimation(int type){
         if (animations < 55){
             if (type == 2){
-                this.animations += 1;
+                this.animations += 3;
                 db.getFieldAnimaciones().setText(Integer.toString(animations));
                 System.out.println("animaciones disponibles:" + this.animations);
             }
@@ -85,7 +75,7 @@ public class Drive {
             if (type == 0){
                 this.guiones += 1;
                 db.getField().setText(Integer.toString(guiones));//Esta es la instrucción que muestra en el textfield
-                System.out.println("guiones disponibles:" + this.guiones);
+                System.out.println("Guiones disponibles:" + this.guiones);
             }
         }else System.out.println("El drive de guiones esta lleno");
     }
@@ -103,11 +93,11 @@ public class Drive {
     public void addDoblajes(int type){
         if(doblajes < 35){
             if (type == 3){
-                this.doblajes += 1;
+                this.doblajes += 5;
                 db.getFieldDoblajes().setText(Integer.toString(doblajes));
                 System.out.println("doblajes disponibles:" + this.doblajes);
             }
-        }else System.out.println("El drive de doblajesg esta lleno.");
+        }else System.out.println("El drive de doblajes està lleno.");
     }
 
     public int CapacidadDrive(){
@@ -116,10 +106,11 @@ public class Drive {
         
     }
     
-    public void CrearCap(String name, int type){
+    public void CrearCap(String name){
         if (name.equals("Nickelodeon")){//para los ensamladores de Nick
-            if(type == 2 && guiones == 2 && escenarios == 1 && animations == 4 && doblajes == 4){
+            if(guiones == 2 && escenarios == 1 && animations == 4 && doblajes == 4){
                 this.capsDisponibles += 1;
+                db.getFieldComCapNick().setText(Integer.toString(capsDisponibles));
             }else{
                 System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
             }

@@ -61,7 +61,7 @@ public class Guionistas extends Thread{
     }
     
     public void trabajando(){
-        this.contador += 0.34f;
+        this.contador += 0.34;
         if (this.contador >= 1) {
             this.contador = 0;
             try {
