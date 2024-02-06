@@ -4,6 +4,7 @@
  */
 package Company;
 
+import Dashboard.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,10 +22,12 @@ public class Director extends Thread{
     private ProjectManager pm;
     private int deadline;
     private int dia;
+    private Dashboard db;
     
-    public Director(Drive d, Semaphore s, ProjectManager pm, int deadline, int dia){
+    public Director(Dashboard db, Drive d, Semaphore s, ProjectManager pm, int deadline, int dia){
         
         this.salarioAcc = 0;
+        this.db = db;
         this.drive = d;
         this.sem = s;
         this.pm = pm;
@@ -42,6 +45,16 @@ public class Director extends Thread{
         while(true){
             try {
                 ObtenerSalario();
+                if(this.drive.deadline <= 0){
+                    EnviarCaps();
+                    //db.getCmpDeadline().setText(Integer.toString(deadline));//Encontrar forma de actualizar deadline de la interfaz
+                    sleep(this.dia);
+                }else{
+                    //LaboresAdmin();
+                    //SupervisarPm();
+                    sleep(this.dia);
+                }
+                
                 System.out.println("El director ha ganado: " + this.salarioAcc + "$");
                 sleep(this.dia);
             } catch (InterruptedException ex) {
@@ -52,7 +65,18 @@ public class Director extends Thread{
     
     
     public void EnviarCaps(){
-        
+        if (this.drive.deadline == 0){
+            try {
+                this.sem.acquire();
+                this.drive.EntregarCaps(10);
+                this.sem.release();
+                //this.drive.capsDisponibles = 0;//tiene que ir en la funcion del drive
+                //this.drive.capsPlotTwist = 0;//tiene que ir en la funcion del drive
+                
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
     public void LaboresAdmin(){

@@ -92,7 +92,8 @@ public class ProjectManager extends Thread{
             }
 
             // Al final del día de trabajo, disminuye el contador de días de entrega en 1
-            db.getCmpDeadline().setText(Integer.toString(drive.ActualizarDeadline()));
+            //db.getCmpDeadline().setText(Integer.toString(drive.ActualizarDeadlinePm()));
+            this.drive.ActualizarDeadlinePm();
         }
     }
     

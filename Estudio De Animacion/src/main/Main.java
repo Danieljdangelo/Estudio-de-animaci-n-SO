@@ -25,6 +25,8 @@ public class Main {
         
         Dashboard d = new Dashboard();
         d.setVisible(true);
+        d.setResizable(false);
+        d.setLocationRelativeTo(null);
         
 //        File masterdata = cargarMasterData();
 //        if (masterdata != null) {

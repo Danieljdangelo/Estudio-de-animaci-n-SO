@@ -53,17 +53,21 @@ public class Empresa {
         }
         
         public void createThreads(){
+            
+            Semaphore mainMutex = new Semaphore(1);
+            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
+            Director director = new Director(db, drive, mainMutex, pm, delivery, dayDuration);
+            
             int counter1 = screenWriters + designers;
             int counter2 = screenWriters + designers + animators;
             int counter3 = screenWriters + designers + animators + actors;
             int counter4 = screenWriters + designers + animators + actors + plotTwists;
             int counter5 = screenWriters + designers + animators + actors + plotTwists + assemblers;
             
-            Semaphore mainMutex = new Semaphore(1);
+            
             //Drive drive = new Drive(delivery, db);
             Thread threads[] = new Thread[counter5];
-            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
-            Director director = new Director(drive, mainMutex, pm, delivery, dayDuration);
+            
             
             for(int i = 0; i < threads.length; i++){
                 if(i < screenWriters){
