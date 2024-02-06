@@ -63,7 +63,7 @@ public class Empresa {
             //Drive drive = new Drive(delivery, db);
             Thread threads[] = new Thread[counter5];
             ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
-            Director director = new Director(drive, mainMutex, pm, delivery, dayDuration);
+//            Director director = new Director(drive, mainMutex, pm, delivery, dayDuration);
             
             for(int i = 0; i < threads.length; i++){
                 if(i < screenWriters){
@@ -112,23 +112,20 @@ public class Empresa {
 
 
 
-<<<<<<< HEAD
 //            threads[0].start();
 //            threads[1].start();
 //            threads[2].start();
 //            threads[3].start();
 //            threads[4].start();
 //            threads[5].start();
-=======
-            threads[0].start();
-            threads[1].start();
-            threads[2].start();
-            threads[3].start();
-            threads[4].start();
-            threads[5].start();
+//            threads[0].start();
+//            threads[1].start();
+//            threads[2].start();
+//            threads[3].start();
+//            threads[4].start();
+//            threads[5].start();
             pm.start();
-            director.start();
->>>>>>> b5cfe36cfa2e966726d0c336100a4b1e3fde3508
+//            director.start();
 //            threads[6].start();
 //            threads[7].start();
 //            threads[8].start();

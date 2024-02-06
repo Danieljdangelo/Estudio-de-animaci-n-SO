@@ -22,7 +22,7 @@ public class ManejoDeData {
     }
     
     public ManejoDeData(){
-        this(new File ("test\\dataSimulación.txt"));
+        this(new File ("test\\dataSimulacion.txt"));
     }
     
     public int[] leerTXT(){

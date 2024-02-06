@@ -70,14 +70,12 @@ public class Dashboard extends javax.swing.JFrame {
 
     }
     
-<<<<<<< HEAD
     public JTextField getFieldPlotTwists(){
 
         return cmpPlotDrive;
 
     }
     
-=======
     public JTextField getFieldCapitulos(){
         
         return cmpCapEst;
@@ -112,7 +110,6 @@ public class Dashboard extends javax.swing.JFrame {
         
         return cmpDeadline;
     }
->>>>>>> b5cfe36cfa2e966726d0c336100a4b1e3fde3508
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
