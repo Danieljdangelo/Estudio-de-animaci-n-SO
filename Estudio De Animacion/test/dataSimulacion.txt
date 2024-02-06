@@ -1,8 +1,27 @@
+<<<<<<< HEAD
+<<<<<<<< HEAD:Estudio De Animacion/test/dataSimulacion.txt
 0
+========
+30
+>>>>>>>> b5cfe36cfa2e966726d0c336100a4b1e3fde3508:Estudio De Animacion/test\dataSimulación.txt
 1
 1
 1
 1
 1
 1
+<<<<<<<< HEAD:Estudio De Animacion/test/dataSimulacion.txt
 0
+========
+12
+>>>>>>>> b5cfe36cfa2e966726d0c336100a4b1e3fde3508:Estudio De Animacion/test\dataSimulación.txt
+=======
+2000
+4
+3
+2
+2
+2
+2
+5
+>>>>>>> b5cfe36cfa2e966726d0c336100a4b1e3fde3508

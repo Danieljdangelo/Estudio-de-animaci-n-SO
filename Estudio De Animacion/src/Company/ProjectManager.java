@@ -4,6 +4,7 @@
  */
 package Company;
 
+import Dashboard.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,20 +21,25 @@ public class ProjectManager extends Thread{
     private boolean trabaja;
     public int dia;
     private int deadline;
+    private Dashboard db;
 
-    public ProjectManager(Drive d, Semaphore s, int dia, int delivery) {
+    public ProjectManager(Drive d, Semaphore s, int dia, int delivery, Dashboard db) {
         this.salario = 40;
         this.drive = d;
         this.sem = s;
         this.trabaja = false;
         this.dia = dia;
         this.deadline = delivery;
+        this.db = db;
     }
     
+    
+    //Poner en el run el estado de lo que esta haciendo el pm usando los getters de los labels del dashboard
     @Override
     public void run(){
         while (true){
             try{
+                db.getGbEnUso().setText(Integer.toString(drive.CapacidadDrive()));//Para mostrar cuantos gb hay en uso
                 getSalario();
                 work();
                 sleep(dia);
@@ -47,26 +53,22 @@ public class ProjectManager extends Thread{
         this.salario += salario*24;
     }
     
-//    public int DueDate(int deadline){
-//        
-//        return deadline--;
-//        
-//    }
-    
-    private String verAnime(double horas) {
+    private String verAnime(int dias) {
         String estado = "Viendo anime";
         try {
-            Thread.sleep((long) (horas * 60 * 60 * 1000)); // Convierte horas a milisegundos
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            sleep(dias); // Convierte horas a milisegundos
+            
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return estado;
     }
     
-    private String trabajar(double horas) {
+    private String trabajar(int dias) {
         String estado = "Trabajando";
         try {
-            Thread.sleep((long) (horas * 60 * 60 * 1000));
+            sleep(dias);
+            
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -78,9 +80,9 @@ public class ProjectManager extends Thread{
             // Fanatismo al anime durante las primeras 16 horas
             for (int hora = 1; hora <= 16; hora++) {
                 if (hora % 2 == 1) {
-                    verAnime(0.5); // Ve anime durante 30 minutos
+                    db.getPmLabel().setText(verAnime(hora/2)); // Ve anime durante 30 minutos
                 } else {
-                    trabajar(0.5); // Trabaja durante 30 minutos
+                    db.getPmLabel().setText(trabajar(hora/2)); // Trabaja durante 30 minutos
                 }
             }
 
@@ -90,7 +92,7 @@ public class ProjectManager extends Thread{
             }
 
             // Al final del día de trabajo, disminuye el contador de días de entrega en 1
-            deadline--;
+            db.getCmpDeadline().setText(Integer.toString(drive.ActualizarDeadline()));
         }
     }
     
