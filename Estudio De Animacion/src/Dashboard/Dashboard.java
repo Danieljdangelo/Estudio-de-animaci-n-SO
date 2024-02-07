@@ -103,6 +103,16 @@ public class Dashboard extends javax.swing.JFrame {
         return cmpPM;
     }
     
+    public JTextField getPmFaltas(){
+        
+        return cmpFaltas;
+    }
+    
+    public JTextField getSalarioDesc(){
+        
+        return cmpSalarioDesc;
+    }
+    
     public JTextField getCmpDeadline(){
         
         return cmpDeadline;
@@ -244,6 +254,9 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         CapPlot = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
         jPanel3 = new ImagePanel1("/Images/Disney.jpg");
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -677,6 +690,15 @@ public class Dashboard extends javax.swing.JFrame {
         });
         jPanel2.add(CapPlot, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, 98, -1));
 
+        jLabel30.setText("K");
+        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 10, -1));
+
+        jLabel76.setText("K");
+        jPanel2.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 10, -1));
+
+        jLabel77.setText("K");
+        jPanel2.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 10, -1));
+
         disneyTabbedPane.addTab("Nickelodeon", jPanel2);
 
         jLabel43.setText("PlotTwists en Drive:");
@@ -1087,7 +1109,7 @@ public class Dashboard extends javax.swing.JFrame {
         cmpActores.setText(String.valueOf(actors));
         cmpPlotTwists.setText(String.valueOf(plotTwists));
         cmpEnsambladores.setText(String.valueOf(assemblers));
-        cmpDeadline.setText(String.valueOf(delivery));
+        cmpDeadline.setText(String.valueOf(company.drive.delivery));
         
 //        mostrar(guionesDB);
         
@@ -1267,6 +1289,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -1316,6 +1339,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

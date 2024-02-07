@@ -110,18 +110,18 @@ public class Empresa {
 
 
 //               Descomentar para ejecutar todos los hilos
-            for(int i = 0; i < threads.length; i++){
-                threads[i].start();
-            }
+//            for(int i = 0; i < threads.length; i++){
+//                threads[i].start();
+//            }
 
 
 
-//            threads[0].start();
-//            threads[1].start();
-//            threads[2].start();
-//            threads[3].start();
-//            threads[4].start();
-//            threads[5].start();
+            threads[0].start();
+            threads[1].start();
+            threads[2].start();
+            threads[3].start();
+            threads[4].start();
+            threads[5].start();
             pm.start();
             director.start();
 //            threads[6].start();

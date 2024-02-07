@@ -20,18 +20,18 @@ public class Director extends Thread{
     private Drive drive;
     private Semaphore sem;
     private ProjectManager pm;
-    private int deadline;
+    private int delivery;
     private int dia;
     private Dashboard db;
     
-    public Director(Dashboard db, Drive d, Semaphore s, ProjectManager pm, int deadline, int dia){
+    public Director(Dashboard db, Drive d, Semaphore s, ProjectManager pm, int delivery, int dia){
         
         this.salarioAcc = 0;
         this.db = db;
         this.drive = d;
         this.sem = s;
         this.pm = pm;
-        this.deadline = deadline;
+        this.delivery = delivery;
         this.dia = dia;
     }
     
@@ -45,8 +45,11 @@ public class Director extends Thread{
         while(true){
             try {
                 ObtenerSalario();
-                if(this.drive.deadline <= 0){
+                SupervisarPm();
+                
+                if(this.drive.delivery <= 0){
                     EnviarCaps();
+                    this.drive.ReiniciarDeadline();
                     //db.getCmpDeadline().setText(Integer.toString(deadline));//Encontrar forma de actualizar deadline de la interfaz
                     sleep(this.dia);
                 }else{
@@ -63,15 +66,15 @@ public class Director extends Thread{
         }
     }
     
-    
+    //no funciona
     public void EnviarCaps(){
-        if (this.drive.deadline == 0){
+        if (this.drive.delivery == 0){
             try {
                 this.sem.acquire();
-                this.drive.EntregarCaps(10);
+                this.drive.EntregarCaps();
                 this.sem.release();
-                //this.drive.capsDisponibles = 0;//tiene que ir en la funcion del drive
-                //this.drive.capsPlotTwist = 0;//tiene que ir en la funcion del drive
+//                this.drive.setCapsDisponibles(0);//tiene que ir en la funcion del drive
+//                this.drive.setCapsPlotTwist(0);//tiene que ir en la funcion del drive
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,7 +87,15 @@ public class Director extends Thread{
     }
     
     public void SupervisarPm(){
-        
+        if("Viendo anime".equals(db.getPmLabel().getText())){
+            pm.setCantidadFaltas(pm.getCantidadFaltas()+1);
+            pm.setSalarioDescontado(pm.getSalarioDescontado()+100);
+            db.getPmFaltas().setText(Integer.toString(pm.getCantidadFaltas()));
+            db.getSalarioDesc().setText(Integer.toString(pm.getSalarioDescontado()));
+        }else{
+            System.out.println("El PM está trabajando");
+        }
+            
     }
     
     public double GananciasCap(){
