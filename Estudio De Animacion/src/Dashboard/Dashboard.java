@@ -618,6 +618,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, -1, -1));
 
         CapPlot.setEditable(false);
+        CapPlot.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CapPlot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CapPlotActionPerformed(evt);
