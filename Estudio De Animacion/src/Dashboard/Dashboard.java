@@ -37,6 +37,9 @@ public class Dashboard extends javax.swing.JFrame {
     public Empresa company2;
     ManejoDeData data = new ManejoDeData();
     public int guionesDB;
+    public float costosOP;
+    public float utilidadTTL;
+    public float gananciaBruto;
     
     public Dashboard() {
         initComponents();
@@ -104,6 +107,50 @@ public class Dashboard extends javax.swing.JFrame {
         
         return cmpDeadline;
     }
+    
+    public JTextField getCmpCostos(){
+        
+        return cmpCostos;
+    }
+    
+    public void setCostosOP(float costos){
+        this.costosOP += costos;
+//        getCmpCostos().setText(Float.toString(this.costosOP));
+    }
+    
+    public float getCostosOP(){
+        
+        return this.costosOP;
+    }
+    
+    public void setUtilidadTTL(float utilidad){
+        this.utilidadTTL += utilidad;
+    }
+    
+    public float getUtilidadTTL(){
+       return this.utilidadTTL;
+    }
+    
+    public JTextField getCmpUtilidad(){
+        
+        return cmpUtilidad;
+    }
+    
+    public void setGanaciaBruto(){
+        this.gananciaBruto = this.utilidadTTL - this.costosOP;
+    }
+    
+    public float getGananciaBruto(){
+        return this.gananciaBruto;
+    }
+    
+    public JTextField getCmpGanancia(){
+        
+        return cmpGanancias;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -500,15 +547,15 @@ public class Dashboard extends javax.swing.JFrame {
 
         cmpGanancias.setEditable(false);
         cmpGanancias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel2.add(cmpGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 231, 129, -1));
+        jPanel2.add(cmpGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 231, 170, -1));
 
         cmpCostos.setEditable(false);
         cmpCostos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel2.add(cmpCostos, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 273, 129, -1));
+        jPanel2.add(cmpCostos, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 273, 170, -1));
 
         cmpUtilidad.setEditable(false);
         cmpUtilidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel2.add(cmpUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 315, 129, -1));
+        jPanel2.add(cmpUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 315, 170, -1));
 
         cmpPM.setEditable(false);
         jPanel2.add(cmpPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 357, 129, -1));
@@ -517,7 +564,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2.add(cmpFaltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 399, 129, -1));
 
         cmpSalarioDesc.setEditable(false);
-        jPanel2.add(cmpSalarioDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 441, 129, -1));
+        jPanel2.add(cmpSalarioDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 441, 170, -1));
 
         cmpDirector.setEditable(false);
         jPanel2.add(cmpDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 483, 129, -1));
@@ -1006,6 +1053,7 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().add(disneyTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1470, 690));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void startSimBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimBtnActionPerformed

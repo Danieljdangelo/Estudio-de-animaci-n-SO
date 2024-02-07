@@ -23,10 +23,11 @@ public class Guionistas extends Thread{
     private float contador;
     private int guionesListos;
     private int duracionDia;
+    public Dashboard db;
 
-    Dashboard db = new Dashboard();
+//    Dashboard db = new Dashboard();
     
-    public Guionistas(int type, int name, Drive d, Semaphore m, int dia) {
+    public Guionistas(int type, int name, Drive d, Semaphore m, int dia, Dashboard db) {
         this.type = type;
         this.name = name;
         this.salario = 20;
@@ -36,6 +37,7 @@ public class Guionistas extends Thread{
         this.contador = 0;
         this.guionesListos = 0;
         this.duracionDia = dia;
+        this.db = db;
     }
     
     @Override
@@ -44,6 +46,8 @@ public class Guionistas extends Thread{
                 
                 try {
                     obtenerSalario();
+//                    db.setCostosOP(this.salarioAcumulado);
+//                    db.getCmpCostos().setText(Float.toString(this.salarioAcumulado));
                     System.out.println("Guionista: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     trabajando();
                     sleep(this.duracionDia);
@@ -58,6 +62,8 @@ public class Guionistas extends Thread{
     
     public void obtenerSalario(){
         this.salarioAcumulado += this.salario*24;
+        db.setCostosOP(this.salarioAcumulado);
+        db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
     }
     
     public void trabajando(){
