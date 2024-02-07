@@ -4,6 +4,7 @@
  */
 package Company;
 
+import Dashboard.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,8 +22,9 @@ public class GuionistasPlot extends Thread{
     private float salarioAcumulado;
     private float contador;
     private int duracionDia;
+    public Dashboard db;
 
-    public GuionistasPlot(int type, int name, Drive d, Semaphore m, int dia) {
+    public GuionistasPlot(int type, int name, Drive d, Semaphore m, int dia, Dashboard db) {
         this.type = type;
         this.name = name;
         this.salario = 34;
@@ -31,6 +33,7 @@ public class GuionistasPlot extends Thread{
         this.sem = m;
         this.contador = 0;
         this.duracionDia = dia;
+        this.db= db;
     }
     
     @Override
@@ -39,7 +42,7 @@ public class GuionistasPlot extends Thread{
                 
                 try {
                     obtenerSalario();
-                    System.out.println("Guionista de Plot: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
+                    System.out.println("Guionista de PlotTwists: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     trabajando();
                     sleep(this.duracionDia);
                     
@@ -53,6 +56,8 @@ public class GuionistasPlot extends Thread{
     
     public void obtenerSalario(){
         this.salarioAcumulado += this.salario*24;
+        db.setCostosOP(this.salarioAcumulado);
+        db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
     }
     
     public void trabajando(){

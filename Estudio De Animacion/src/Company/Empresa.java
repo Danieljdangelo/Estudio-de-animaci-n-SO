@@ -71,17 +71,17 @@ public class Empresa {
             
             for(int i = 0; i < threads.length; i++){
                 if(i < screenWriters){
-                    threads[i] = new Guionistas(0, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new Guionistas(0, i+1, drive, mainMutex, dayDuration, db);
                 }else if(i < counter1){
-                    threads[i] = new DiseñadoresEsc(1, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new DiseñadoresEsc(1, i+1, drive, mainMutex, dayDuration, db);
                 }else if(i < counter2){
-                    threads[i] = new AnimadoresPer(2, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new AnimadoresPer(2, i+1, drive, mainMutex, dayDuration, db);
                 }else if(i < counter3){
-                    threads[i] = new ActoresDoblaje(3, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new ActoresDoblaje(3, i+1, drive, mainMutex, dayDuration, db);
                 }else if (i < counter4){
-                    threads[i] = new GuionistasPlot(4, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new GuionistasPlot(4, i+1, drive, mainMutex, dayDuration, db);
                 }else if (i <= counter5){
-                    threads[i] = new Ensambladores(5,  i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new Ensambladores(5,  i+1, drive, mainMutex, dayDuration, db);
                 }
             }
             
@@ -110,18 +110,18 @@ public class Empresa {
 
 
 //               Descomentar para ejecutar todos los hilos
-//            for(int i = 0; i < threads.length; i++){
-//                threads[i].start();
-//            }
+            for(int i = 0; i < threads.length; i++){
+                threads[i].start();
+            }
 
 
 
-            threads[0].start();
-            threads[1].start();
-            threads[2].start();
-            threads[3].start();
-            threads[4].start();
-            threads[5].start();
+//            threads[0].start();
+//            threads[1].start();
+//            threads[2].start();
+//            threads[3].start();
+//            threads[4].start();
+//            threads[5].start();
             pm.start();
             director.start();
 //            threads[6].start();

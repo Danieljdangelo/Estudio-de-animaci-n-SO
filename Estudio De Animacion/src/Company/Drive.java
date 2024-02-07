@@ -61,6 +61,7 @@ public class Drive {
             if (type == 4) {
                 this.plotTwist += 1;
                 db.getFieldPlot().setText(Integer.toString(plotTwist));
+//                db.getFieldPlotTwists().setText(Integer.toString(guiones));
                 System.out.println("PlotTwists disponibles:" + this.plotTwist);
             }
         }else System.out.println("El drive de plottwists esta lleno.");
@@ -107,14 +108,23 @@ public class Drive {
         //if (this.empresa.name.equals("Nickelodeon")){//para los ensamladores de Nick
             if(type == 5 && this.guiones >= 2 && this.escenarios >= 1 && this.animations >= 4 && this.doblajes >= 4){
                 this.capsDisponibles += 1;
+                db.setUtilidadTTL((float) 450000);
+                db.setGanaciaBruto();
+                db.getCmpUtilidad().setText(Float.toString(db.getGananciaBruto()));
+                db.getCmpGanancia().setText(Float.toString(db.getUtilidadTTL()));
                 guiones -= 2;
                 escenarios -= 1;
                 animations -= 4;
                 doblajes -= 4;
                 System.out.println("Capitulos disponibles: " + this.capsDisponibles);
                 db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
-                if(this.capsDisponibles >= 5){
-                    this.capsPlotTwist += 1;
+//                this.capsDisponibles >= 5
+                if(this.capsDisponibles % 5 == 0){
+                    this.capsPlotTwist += 2;
+                    db.setUtilidadTTL((float) 500000*2);
+                    db.setGanaciaBruto();
+                    db.getCmpUtilidad().setText(Float.toString(db.getGananciaBruto()));
+                    db.getCmpGanancia().setText(Float.toString(db.getUtilidadTTL()));
                     this.plotTwist -= 2;
                     this.guiones -= 2;
                     this.escenarios -= 1;
