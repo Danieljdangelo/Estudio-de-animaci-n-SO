@@ -53,31 +53,40 @@ public class Empresa {
         }
         
         public void createThreads(){
+            
+            Semaphore mainMutex = new Semaphore(1);
+            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
+            Director director = new Director(db, drive, mainMutex, pm, delivery, dayDuration);
+            
             int counter1 = screenWriters + designers;
             int counter2 = screenWriters + designers + animators;
             int counter3 = screenWriters + designers + animators + actors;
             int counter4 = screenWriters + designers + animators + actors + plotTwists;
             int counter5 = screenWriters + designers + animators + actors + plotTwists + assemblers;
             
-            Semaphore mainMutex = new Semaphore(1);
+            
             //Drive drive = new Drive(delivery, db);
             Thread threads[] = new Thread[counter5];
+<<<<<<< HEAD
             ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
 //            Director director = new Director(drive, mainMutex, pm, delivery, dayDuration);
+=======
+            
+>>>>>>> 40c4607920393759aecfb66da5d64fce8e56e724
             
             for(int i = 0; i < threads.length; i++){
                 if(i < screenWriters){
-                    threads[i] = new Guionistas(0, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new Guionistas(0, i+1, drive, mainMutex, dayDuration, db);
                 }else if(i < counter1){
-                    threads[i] = new DiseñadoresEsc(1, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new DiseñadoresEsc(1, i+1, drive, mainMutex, dayDuration, db);
                 }else if(i < counter2){
-                    threads[i] = new AnimadoresPer(2, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new AnimadoresPer(2, i+1, drive, mainMutex, dayDuration, db);
                 }else if(i < counter3){
-                    threads[i] = new ActoresDoblaje(3, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new ActoresDoblaje(3, i+1, drive, mainMutex, dayDuration, db);
                 }else if (i < counter4){
-                    threads[i] = new GuionistasPlot(4, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new GuionistasPlot(4, i+1, drive, mainMutex, dayDuration, db);
                 }else if (i <= counter5){
-                    threads[i] = new Ensambladores(5,  i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new Ensambladores(5,  i+1, drive, mainMutex, dayDuration, db);
                 }
             }
             
@@ -106,12 +115,13 @@ public class Empresa {
 
 
 //               Descomentar para ejecutar todos los hilos
-            for(int i = 0; i < threads.length; i++){
-                threads[i].start();
-            }
+//            for(int i = 0; i < threads.length; i++){
+//                threads[i].start();
+//            }
 
 
 
+<<<<<<< HEAD
 //            threads[0].start();
 //            threads[1].start();
 //            threads[2].start();
@@ -126,6 +136,16 @@ public class Empresa {
 //            threads[5].start();
             pm.start();
 //            director.start();
+=======
+            threads[0].start();
+            threads[1].start();
+            threads[2].start();
+            threads[3].start();
+            threads[4].start();
+            threads[5].start();
+            pm.start();
+            director.start();
+>>>>>>> 40c4607920393759aecfb66da5d64fce8e56e724
 //            threads[6].start();
 //            threads[7].start();
 //            threads[8].start();

@@ -20,7 +20,8 @@ public class Drive {
     public int escenarios;
     public int doblajes;
     public int capacidadTotal;
-    public int deadline;
+    public int delivery;
+    public int valorDeadline;
     public int capsDisponibles;
     public int capsPlotTwist;
     public Dashboard db;
@@ -28,7 +29,7 @@ public class Drive {
     
     
     
-    public Drive(String name, int deadline, Dashboard db, Empresa empresa){
+    public Drive(String name, int delivery, Dashboard db, Empresa empresa){
         this.name = name;
         this.animations = 0;
         this.doblajes = 0;
@@ -36,13 +37,35 @@ public class Drive {
         this.guiones = 0;
         this.plotTwist = 0;
         this.capacidadTotal = 0;
-        this.deadline = deadline;
+        this.delivery = delivery;
         this.capsDisponibles = 0;
         this.capsPlotTwist = 0;
         this.db = db;
         this.empresa = empresa;
         
     }
+
+    public void setCapsDisponibles(int capsDisponibles) {
+        
+        this.capsDisponibles = capsDisponibles;
+    }
+
+    public void setCapsPlotTwist(int capsPlotTwist) {
+        
+        this.capsPlotTwist = capsPlotTwist;
+    }
+
+    public int getDelivery() {
+        
+        return delivery;
+    }
+
+    public void setDelivery(int delivery) {
+        
+        this.delivery = delivery;
+    }
+    
+    
     
     //Los print son para correr en frio pero hay que mostrarlo en la interfaz
     public void addAnimation(int type){
@@ -59,8 +82,13 @@ public class Drive {
         if (plotTwist < 10){
             if (type == 4) {
                 this.plotTwist += 1;
+<<<<<<< HEAD
                 db.getFieldPlotTwists().setText(Integer.toString(guiones));
                 db.getFieldPlot().setText(Integer.toString(plotTwist));
+=======
+                db.getFieldPlot().setText(Integer.toString(plotTwist));
+//                db.getFieldPlotTwists().setText(Integer.toString(guiones));
+>>>>>>> 40c4607920393759aecfb66da5d64fce8e56e724
                 System.out.println("PlotTwists disponibles:" + this.plotTwist);
             }
         }else System.out.println("El drive de plottwists esta lleno.");
@@ -93,12 +121,12 @@ public class Drive {
                 db.getFieldDoblajes().setText(Integer.toString(doblajes));
                 System.out.println("doblajes disponibles:" + this.doblajes);
             }
-        }else System.out.println("El drive de doblajesg esta lleno.");
+        }else System.out.println("El drive de doblajes esta lleno.");
     }
 
     public int CapacidadDrive(){
         
-        return this.capacidadTotal = animations + plotTwist + guiones + escenarios + doblajes;
+        return this.capacidadTotal = this.animations + this.plotTwist + this.guiones + this.escenarios + this.doblajes;
         
     }
     
@@ -107,14 +135,23 @@ public class Drive {
         //if (this.empresa.name.equals("Nickelodeon")){//para los ensamladores de Nick
             if(type == 5 && this.guiones >= 2 && this.escenarios >= 1 && this.animations >= 4 && this.doblajes >= 4){
                 this.capsDisponibles += 1;
+                db.setUtilidadTTL((float) 450);
+                db.setGanaciaBruto();
+                db.getCmpUtilidad().setText(Float.toString(db.getGananciaBruto()));
+                db.getCmpGanancia().setText(Float.toString(db.getUtilidadTTL()));
                 guiones -= 2;
                 escenarios -= 1;
                 animations -= 4;
                 doblajes -= 4;
                 System.out.println("Capitulos disponibles: " + this.capsDisponibles);
                 db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
-                if(this.capsDisponibles >= 5){
-                    this.capsPlotTwist += 1;
+//                this.capsDisponibles >= 5
+                if(this.capsDisponibles % 5 == 0){
+                    this.capsPlotTwist += 2;
+                    db.setUtilidadTTL((float) 500*2);
+                    db.setGanaciaBruto();
+                    db.getCmpUtilidad().setText(Float.toString(db.getGananciaBruto()));
+                    db.getCmpGanancia().setText(Float.toString(db.getUtilidadTTL()));
                     this.plotTwist -= 2;
                     this.guiones -= 2;
                     this.escenarios -= 1;
@@ -140,11 +177,50 @@ public class Drive {
         }
                 
     }
+    // hay que hacer que el contador baje hasta 0, poner variables de ingresos para capitulos
+    public void EntregarCaps(){
+        
+ //       if(empresa.delivery == 0){
+            System.out.println("Enviando capitulos");
+            //this.capsDisponibles = 0;
+            //setCapsPlotTwist(0);
+            System.out.println("Se han enviado los capitulos");
+                
+//        }
+//        if(this.capsDisponibles > 0 && this.capsPlotTwist > 0){
+//            if(type == 10){
+//                setCapsDisponibles(0);
+//                setCapsPlotTwist(0);
+//                MostrarCapsDisponibles(capsDisponibles);
+//                MostrarCapsPlotDisponibles(capsPlotTwist);
+//                
+//                System.out.println("Los capitulos se han enviado");
+//            }else{
+//                System.out.println("No hay capitulos para enviar");
+//            }
+//        }
+    }
     
 
-    public int ActualizarDeadline(){
+    public void MostrarCapsDisponibles(int capsDisponibles){
+        db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
+    }
+    
+    public void MostrarCapsPlotDisponibles(int capsPlotTwist){
+        db.getFieldCapPlot().setText(Integer.toString(capsPlotTwist));
+    }
+    
+    public void ActualizarDeadlinePm(){
         
-        return deadline --;
-        
+        db.getCmpDeadline().setText(Integer.toString(empresa.delivery--));
+    }
+    
+    //no funciona
+    public void ReiniciarDeadline(){
+        int deadline = Integer.parseInt(db.getCmpDeadline().getText());
+        if(deadline == 0){
+            this.capsDisponibles = 0;
+            this.capsPlotTwist = 0;
+        }
     }
 }
