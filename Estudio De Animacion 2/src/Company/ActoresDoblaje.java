@@ -4,7 +4,6 @@
  */
 package Company;
 
-import Dashboard.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,27 +12,27 @@ import java.util.logging.Logger;
  *
  * @author danieldangelo
  */
-public class GuionistasPlot extends Thread{
+public class ActoresDoblaje extends Thread{
     private int type;
     private int name;
+    private int duracionDia;
+    private float salarioAcumulado;
     private int salario;
+    private float contador;
     private Drive drive;
     private Semaphore sem;
-    private float salarioAcumulado;
-    private float contador;
-    private int duracionDia;
-    public Dashboard db;
+    
+    
 
-    public GuionistasPlot(int type, int name, Drive d, Semaphore m, int dia, Dashboard db) {
+    public ActoresDoblaje(int type, int name, Drive d, Semaphore m, int dia) {
         this.type = type;
         this.name = name;
-        this.salario = 34;
+        this.salario = 16;
         this.drive = d;
         this.salarioAcumulado = 0;
         this.sem = m;
         this.contador = 0;
         this.duracionDia = dia;
-        this.db= db;
     }
     
     @Override
@@ -42,13 +41,13 @@ public class GuionistasPlot extends Thread{
                 
                 try {
                     obtenerSalario();
-                    System.out.println("Guionista de PlotTwists: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
+                    System.out.println("Actor: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     trabajando();
                     sleep(this.duracionDia);
                     
                     
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(GuionistasPlot.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ActoresDoblaje.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         
@@ -56,8 +55,6 @@ public class GuionistasPlot extends Thread{
     
     public void obtenerSalario(){
         this.salarioAcumulado += this.salario*24;
-        db.setCostosOP(this.salarioAcumulado);
-        db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
     }
     
     public void trabajando(){
@@ -66,11 +63,11 @@ public class GuionistasPlot extends Thread{
             this.contador = 0;
             try {
                 this.sem.acquire();
-                this.drive.addPlotTwist(4);
+                this.drive.addDoblajes(3);
                 this.sem.release();
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(GuionistasPlot.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ActoresDoblaje.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }

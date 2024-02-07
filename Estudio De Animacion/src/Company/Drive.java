@@ -61,6 +61,7 @@ public class Drive {
             if (type == 4) {
                 this.plotTwist += 1;
                 db.getFieldPlot().setText(Integer.toString(plotTwist));
+//                db.getFieldPlotTwists().setText(Integer.toString(guiones));
                 System.out.println("PlotTwists disponibles:" + this.plotTwist);
             }
         }else System.out.println("El drive de plottwists esta lleno.");
