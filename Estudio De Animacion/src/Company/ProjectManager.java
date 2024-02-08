@@ -106,8 +106,10 @@ public class ProjectManager extends Thread{
             for (int hora = 1; hora <= 16; hora++) {
                 if (hora % 2 == 1) {
                     db.getPmLabel().setText(verAnime(hora/2));
+                    db.getPmLabel1().setText(verAnime(hora/2));
                 } else {
                     db.getPmLabel().setText(trabajar(hora/2));
+                    db.getPmLabel1().setText(trabajar(hora/2));
                 }
             }
             for (int hora = 17; hora <= 24; hora++) {

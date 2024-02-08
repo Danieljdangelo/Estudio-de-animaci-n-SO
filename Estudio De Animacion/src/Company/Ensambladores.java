@@ -57,6 +57,7 @@ public class Ensambladores extends Thread {
         this.salarioAcumulado += this.salario*24;
         db.setCostosOP(this.salarioAcumulado);
         db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
+        db.getCmpCostos1().setText(Float.toString(db.getCostosOP()));
     }
     
     public void ArmandoCaps(){
@@ -64,7 +65,8 @@ public class Ensambladores extends Thread {
         if (this.contador >= 2) {//Contador son los días que faltan para que completen la tarea, si son cada 4, diariamente tienen que sumarle 1 al contador hasta llegar a 4
             try {
                 this.sem.acquire();
-                this.drive.CrearCap(5);
+                this.drive.CrearCapNick(5);
+                this.drive.CrearCapDisney(5);
                 this.sem.release();
                 this.contador = 0;
                 

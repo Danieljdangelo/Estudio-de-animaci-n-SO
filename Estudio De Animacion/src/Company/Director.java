@@ -77,6 +77,7 @@ public class Director extends Thread{
         
     }
     
+
     public void LaboresAdmin() throws InterruptedException{
         boolean estado = SupervisarPm();
         try {
@@ -90,6 +91,7 @@ public class Director extends Thread{
             } catch (InterruptedException ex) {
                 
                 Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+
         }
     }
         
