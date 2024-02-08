@@ -30,15 +30,13 @@ public class Drive {
     public int sumaSalarios;
     static float CostosTotalesDisney;
     static float CostosTotalesNick;
-<<<<<<< HEAD
-    
-=======
+
     static float GananciasBrutoDisney;
     static float GananciasBrutoNick;
     static float UtilidadTotalDisney;
     static float UtilidadTotalNick; 
     public int SalarioDescPM;
->>>>>>> Develop-OG
+
     
     
     public Drive(String name, int delivery, Dashboard db, Empresa empresa){
@@ -253,29 +251,29 @@ public class Drive {
         }
     }
     //Solo crea capitulos de nick
-    public void CrearCapNick(int type){
-//        if (empresa.getName().equals("Nickelodeon")){//para los ensamladores de Nick
-            if(type == 5 && this.guiones >= 2 && this.escenarios >= 1 && this.animations >= 4 && this.doblajes >= 4){
-                this.capsDisponibles += 1;
-                
-                db.setUtilidadTTL((float) 450);
-                db.setGanaciaBruto();
-                db.getCmpUtilidad().setText(Float.toString(db.getGananciaBruto()));
-                db.getCmpGanancia().setText(Float.toString(db.getUtilidadTTL()));
-  
-                guiones -= 2;
-                escenarios -= 1;
-                animations -= 4;
-                doblajes -= 4;
-                System.out.println("Capitulos disponibles: " + this.capsDisponibles);
-                db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
-
-//                this.capsDisponibles >= 5
-                if(this.capsDisponibles % 5 == 0){
-                    this.capsPlotTwist += 2;
-                }
-            }
-    }
+//    public void CrearCapNick(int type){
+////        if (empresa.getName().equals("Nickelodeon")){//para los ensamladores de Nick
+//            if(type == 5 && this.guiones >= 2 && this.escenarios >= 1 && this.animations >= 4 && this.doblajes >= 4){
+//                this.capsDisponibles += 1;
+//                
+////                db.setUtilidadTTL((float) 450);
+////                db.setGanaciaBruto();
+////                db.getCmpUtilidad().setText(Float.toString(db.getGananciaBruto()));
+////                db.getCmpGanancia().setText(Float.toString(db.getUtilidadTTL()));
+//  
+//                guiones -= 2;
+//                escenarios -= 1;
+//                animations -= 4;
+//                doblajes -= 4;
+//                System.out.println("Capitulos disponibles: " + this.capsDisponibles);
+//                db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
+//
+////                this.capsDisponibles >= 5
+//                if(this.capsDisponibles % 5 == 0){
+//                    this.capsPlotTwist += 2;
+//                }
+//            }
+//    }
 
 //Crea capitulos para cada empresa
     public void CrearCaps(int type){
