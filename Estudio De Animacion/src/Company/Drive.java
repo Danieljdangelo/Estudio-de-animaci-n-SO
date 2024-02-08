@@ -45,7 +45,6 @@ public class Drive {
         
     }
 
-<<<<<<< HEAD
     
     public void setGuiones(int guiones){
         this.guiones = guiones;
@@ -54,7 +53,6 @@ public class Drive {
     public int getGuiones(){
         return this.guiones;
     }
-=======
     public void setCapsDisponibles(int capsDisponibles) {
         
         this.capsDisponibles = capsDisponibles;
@@ -74,8 +72,6 @@ public class Drive {
         
         this.delivery = delivery;
     }
-    
->>>>>>> Develop-OG
     
     
     //Los print son para correr en frio pero hay que mostrarlo en la interfaz
@@ -107,14 +103,11 @@ public class Drive {
         if (guiones < 25){
             if (type == 0){
                 this.guiones += 1;
-<<<<<<< HEAD
                 db.getField().setText(Integer.toString(guiones));//Esta es la instrucción que muestra en el textfield
                 System.out.println("Guiones disponibles:" + this.guiones);
-=======
                 db.getField().setText(Integer.toString(guiones));
                 db.getField1().setText(Integer.toString(guiones));//Esta es la instrucción que muestra en el textfield
                 System.out.println("guiones disponibles:" + this.guiones);
->>>>>>> Develop-OG
             }
         }else System.out.println("El drive de guiones esta lleno");
     }
@@ -138,11 +131,8 @@ public class Drive {
                 db.getFieldDoblajes1().setText(Integer.toString(doblajes));
                 System.out.println("doblajes disponibles:" + this.doblajes);
             }
-<<<<<<< HEAD
         }else System.out.println("El drive de doblajes està lleno.");
-=======
-        }else System.out.println("El drive de doblajes esta lleno.");
->>>>>>> Develop-OG
+//        }else System.out.println("El drive de doblajes esta lleno.");
     }
 
     public int CapacidadDrive(){
@@ -151,13 +141,14 @@ public class Drive {
         
     }
     
-<<<<<<< HEAD
     public void CrearCap(String name){
         if (name.equals("Nickelodeon")){//para los ensamladores de Nick
             if(guiones == 2 && escenarios == 1 && animations == 4 && doblajes == 4){
                 this.capsDisponibles += 1;
                 db.getFieldComCapNick().setText(Integer.toString(capsDisponibles));
-=======
+            }
+        }
+    }
     //Solo crea capitulos de nick
     public void CrearCapNick(int type){
 //        if (empresa.getName().equals("Nickelodeon")){//para los ensamladores de Nick
@@ -193,7 +184,6 @@ public class Drive {
                     db.getFieldCapPlot().setText(Integer.toString(capsPlotTwist));
 
                 }
->>>>>>> Develop-OG
             }else{
                 System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
             }
