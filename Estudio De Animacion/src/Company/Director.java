@@ -55,7 +55,7 @@ public class Director extends Thread{
                 ObtenerSalario();
                 LaboresAdmin();
                 if(drive.delivery == 0){
-                    EnviarCaps();
+//                    EnviarCaps();
                 }
                 System.out.println("El director ha ganado: " + this.salarioAcc + "$");
                 sleep(this.dia);
@@ -66,18 +66,18 @@ public class Director extends Thread{
     }
     
     //no funciona
-    public void EnviarCaps(){
-            try {
-                this.sem.acquire();
-                this.drive.EntregarCaps();
-                this.drive.ReiniciarDeadline();
-                this.sem.release();
-                
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-    }
+//    public void EnviarCaps(){
+//            try {
+//                this.sem.acquire();
+//                this.drive.EntregarCaps();
+//                this.drive.ReiniciarDeadline();
+//                this.sem.release();
+//                
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        
+//    }
     
 
     public void LaboresAdmin() throws InterruptedException{
@@ -119,7 +119,7 @@ public class Director extends Thread{
             if(empresa.delivery > 0){
                 int horaAleatoria = random.nextInt(24);
                 System.out.println("Hora aleatoria " + horaAleatoria);
-                for (int minuto = 0; minuto <35; minuto++){
+                for (int minuto = 0; minuto < 35; minuto++){
                     if("Viendo anime".equals(db.getPmLabel().getText())){
                         System.out.println("El PM ESTARA VIENDO ANIME");
                         pm.setCantidadFaltas(pm.getCantidadFaltas()+1);

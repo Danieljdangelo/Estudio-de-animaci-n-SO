@@ -404,7 +404,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         CapPlot = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        jLabel76 = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
         pnlGrafica = new javax.swing.JPanel();
         jPanel3 = new ImagePanel1("/Images/Disney.jpg");
@@ -695,22 +694,23 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 49, -1, -1));
 
         jLabel32.setText("/ 25");
-        jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, 40, 30));
+        jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 40, 30));
 
         jLabel33.setText("/ 20");
-        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 460, 40, 30));
+        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 40, 30));
 
         jLabel34.setText("/ 55");
-        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 500, 40, 30));
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 500, 40, 30));
 
         jLabel35.setText("/ 35");
-        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 540, 40, 30));
+        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 540, 40, 30));
 
         jLabel36.setText("/ 10");
-        jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 580, 40, 30));
+        jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, 40, 30));
 
         cmpDeadline.setEditable(false);
         cmpDeadline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDeadline.setText("0");
         cmpDeadline.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmpDeadlineActionPerformed(evt);
@@ -720,54 +720,72 @@ public class Dashboard extends javax.swing.JFrame {
 
         cmpGanancias.setEditable(false);
         cmpGanancias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpGanancias.setText("0");
         jPanel2.add(cmpGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 231, 130, -1));
 
         cmpCostos.setEditable(false);
         cmpCostos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpCostos.setText("0");
         jPanel2.add(cmpCostos, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 273, 130, -1));
 
         cmpUtilidad.setEditable(false);
         cmpUtilidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpUtilidad.setText("0");
         jPanel2.add(cmpUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 315, 130, -1));
 
         cmpPM.setEditable(false);
+        cmpPM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpPM.setText("Está durmiendo");
         jPanel2.add(cmpPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 357, 129, -1));
 
         cmpFaltas.setEditable(false);
+        cmpFaltas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpFaltas.setText("0");
         jPanel2.add(cmpFaltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 399, 129, -1));
 
         cmpSalarioDesc.setEditable(false);
+        cmpSalarioDesc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpSalarioDesc.setText("0");
         jPanel2.add(cmpSalarioDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 441, 130, -1));
 
         cmpDirector.setEditable(false);
+        cmpDirector.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDirector.setText("Está durmiendo");
         jPanel2.add(cmpDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 483, 129, -1));
 
         cmpGuionistas.setEditable(false);
         cmpGuionistas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpGuionistas.setText("0");
         jPanel2.add(cmpGuionistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 145, 125, -1));
 
         cmpDiseñadores.setEditable(false);
         cmpDiseñadores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDiseñadores.setText("0");
         jPanel2.add(cmpDiseñadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 187, 125, -1));
 
         cmpAnimadores.setEditable(false);
         cmpAnimadores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpAnimadores.setText("0");
         jPanel2.add(cmpAnimadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 229, 125, -1));
 
         cmpActores.setEditable(false);
         cmpActores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpActores.setText("0");
         jPanel2.add(cmpActores, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 273, 125, -1));
 
         cmpPlotTwists.setEditable(false);
         cmpPlotTwists.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpPlotTwists.setText("0");
         jPanel2.add(cmpPlotTwists, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 125, -1));
 
         cmpEnsambladores.setEditable(false);
         cmpEnsambladores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpEnsambladores.setText("0");
         jPanel2.add(cmpEnsambladores, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 125, -1));
 
         cmpGuiones.setEditable(false);
-        cmpGuiones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cmpGuiones.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpGuiones.setText("0");
         cmpGuiones.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmpGuionesKeyPressed(evt);
@@ -776,35 +794,40 @@ public class Dashboard extends javax.swing.JFrame {
                 cmpGuionesKeyReleased(evt);
             }
         });
-        jPanel2.add(cmpGuiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 130, -1));
+        jPanel2.add(cmpGuiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 40, -1));
 
         cmpEscenarios.setEditable(false);
-        cmpEscenarios.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel2.add(cmpEscenarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 130, -1));
+        cmpEscenarios.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpEscenarios.setText("0");
+        jPanel2.add(cmpEscenarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 40, -1));
 
         cmpAnimaciones.setEditable(false);
-        cmpAnimaciones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cmpAnimaciones.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpAnimaciones.setText("0");
         cmpAnimaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmpAnimacionesActionPerformed(evt);
             }
         });
-        jPanel2.add(cmpAnimaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 500, 130, -1));
+        jPanel2.add(cmpAnimaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 500, 40, -1));
 
         cmpDoblajes.setEditable(false);
-        cmpDoblajes.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel2.add(cmpDoblajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 130, -1));
+        cmpDoblajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDoblajes.setText("0");
+        jPanel2.add(cmpDoblajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 40, -1));
 
-        cmpPlotDrive.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cmpPlotDrive.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpPlotDrive.setText("0");
         cmpPlotDrive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmpPlotDriveActionPerformed(evt);
             }
         });
-        jPanel2.add(cmpPlotDrive, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 580, 130, -1));
+        jPanel2.add(cmpPlotDrive, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 580, 40, -1));
 
         cmpCapEst.setEditable(false);
         cmpCapEst.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpCapEst.setText("0");
         cmpCapEst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmpCapEstActionPerformed(evt);
@@ -816,16 +839,17 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 150, -1, -1));
 
         cmpDia.setEditable(false);
-        cmpDia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel2.add(cmpDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 145, 104, -1));
+        cmpDia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDia.setText("0");
+        jPanel2.add(cmpDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 145, 60, -1));
 
         jLabel38.setText("ms");
-        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 150, -1, -1));
+        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
 
         jLabel39.setText("Uso del Drive: ");
         jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 640, -1, -1));
 
-        gbEnUso.setText("45");
+        gbEnUso.setText("0");
         jPanel2.add(gbEnUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 640, -1, -1));
 
         jLabel41.setText("/");
@@ -839,6 +863,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         CapPlot.setEditable(false);
         CapPlot.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CapPlot.setText("0");
         CapPlot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CapPlotActionPerformed(evt);
@@ -848,9 +873,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel30.setText("K");
         jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 10, -1));
-
-        jLabel76.setText("K");
-        jPanel2.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 10, -1));
 
         jLabel77.setText("K");
         jPanel2.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 10, -1));
@@ -883,66 +905,83 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel3.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 49, -1, -1));
 
         jLabel47.setText("/ 25");
-        jPanel3.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 430, -1, -1));
+        jPanel3.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, -1, -1));
 
         jLabel48.setText("/ 20");
-        jPanel3.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 470, -1, -1));
+        jPanel3.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, -1, -1));
 
         jLabel49.setText("/ 55");
-        jPanel3.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 510, -1, -1));
+        jPanel3.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 500, -1, -1));
 
         jLabel50.setText("/ 35");
-        jPanel3.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 550, -1, -1));
+        jPanel3.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 540, -1, -1));
 
         jLabel51.setText("/ 10");
-        jPanel3.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 600, -1, -1));
+        jPanel3.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, -1, -1));
 
         cmpDeadline1.setEditable(false);
         cmpDeadline1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDeadline1.setText("0");
         jPanel3.add(cmpDeadline1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 195, 129, -1));
 
         cmpGanancias1.setEditable(false);
         cmpGanancias1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpGanancias1.setText("0");
         jPanel3.add(cmpGanancias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 237, 129, -1));
 
         cmpCostos1.setEditable(false);
         cmpCostos1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpCostos1.setText("0");
         jPanel3.add(cmpCostos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 279, 129, -1));
 
         cmpUtilidad1.setEditable(false);
         cmpUtilidad1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpUtilidad1.setText("0");
         jPanel3.add(cmpUtilidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 321, 129, -1));
 
         cmpPM1.setEditable(false);
+        cmpPM1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpPM1.setText("Está durmiendo");
         jPanel3.add(cmpPM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 363, 129, -1));
 
         cmpFaltas1.setEditable(false);
+        cmpFaltas1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpFaltas1.setText("0");
         jPanel3.add(cmpFaltas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 405, 129, -1));
 
         cmpSalarioDesc1.setEditable(false);
+        cmpSalarioDesc1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpSalarioDesc1.setText("0");
         jPanel3.add(cmpSalarioDesc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 447, 129, -1));
 
         cmpDirector1.setEditable(false);
+        cmpDirector1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDirector1.setText("Está durmiendo");
         jPanel3.add(cmpDirector1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 489, 129, -1));
 
         cmpGuionistas1.setEditable(false);
         cmpGuionistas1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpGuionistas1.setText("0");
         jPanel3.add(cmpGuionistas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 145, 125, -1));
 
         cmpDiseñadores1.setEditable(false);
         cmpDiseñadores1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDiseñadores1.setText("0");
         jPanel3.add(cmpDiseñadores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 187, 125, -1));
 
         cmpAnimadores1.setEditable(false);
         cmpAnimadores1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpAnimadores1.setText("0");
         jPanel3.add(cmpAnimadores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 229, 125, -1));
 
         cmpActores1.setEditable(false);
         cmpActores1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpActores1.setText("0");
         jPanel3.add(cmpActores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 273, 125, -1));
 
         cmpPlotTwists1.setEditable(false);
         cmpPlotTwists1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpPlotTwists1.setText("0");
         cmpPlotTwists1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmpPlotTwists1ActionPerformed(evt);
@@ -952,10 +991,12 @@ public class Dashboard extends javax.swing.JFrame {
 
         cmpEnsambladores1.setEditable(false);
         cmpEnsambladores1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpEnsambladores1.setText("0");
         jPanel3.add(cmpEnsambladores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 125, -1));
 
         cmpGuiones1.setEditable(false);
-        cmpGuiones1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cmpGuiones1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpGuiones1.setText("0");
         cmpGuiones1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmpGuiones1KeyPressed(evt);
@@ -964,20 +1005,22 @@ public class Dashboard extends javax.swing.JFrame {
                 cmpGuiones1KeyReleased(evt);
             }
         });
-        jPanel3.add(cmpGuiones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 125, -1));
+        jPanel3.add(cmpGuiones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 50, -1));
 
         cmpEscenarios1.setEditable(false);
-        cmpEscenarios1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel3.add(cmpEscenarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 470, 125, -1));
+        cmpEscenarios1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpEscenarios1.setText("0");
+        jPanel3.add(cmpEscenarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 470, 50, -1));
 
         cmpAnimaciones1.setEditable(false);
-        cmpAnimaciones1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cmpAnimaciones1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpAnimaciones1.setText("0");
         cmpAnimaciones1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmpAnimaciones1ActionPerformed(evt);
             }
         });
-        jPanel3.add(cmpAnimaciones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 125, -1));
+        jPanel3.add(cmpAnimaciones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 50, -1));
 
         jLabel52.setText("Ganancias en bruto: ");
         jPanel3.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 242, -1, -1));
@@ -992,14 +1035,17 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel3.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 200, -1, -1));
 
         cmpDoblajes1.setEditable(false);
-        cmpDoblajes1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel3.add(cmpDoblajes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 550, 125, -1));
+        cmpDoblajes1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDoblajes1.setText("0");
+        jPanel3.add(cmpDoblajes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 550, 50, -1));
 
-        cmpPlotDrive1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel3.add(cmpPlotDrive1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 590, 125, -1));
+        cmpPlotDrive1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpPlotDrive1.setText("0");
+        jPanel3.add(cmpPlotDrive1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 590, 50, -1));
 
         cmpCapEst1.setEditable(false);
         cmpCapEst1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpCapEst1.setText("0");
         cmpCapEst1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmpCapEst1ActionPerformed(evt);
@@ -1008,6 +1054,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel3.add(cmpCapEst1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 553, 98, -1));
 
         cmpCapPlot1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpCapPlot1.setText("0");
         jPanel3.add(cmpCapPlot1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 595, 98, -1));
 
         jLabel56.setText("Project Manager:");
@@ -1020,14 +1067,15 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel3.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 494, -1, -1));
 
         cmpDia1.setEditable(false);
-        cmpDia1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel3.add(cmpDia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 145, 104, -1));
+        cmpDia1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDia1.setText("0");
+        jPanel3.add(cmpDia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 145, 60, -1));
 
         jLabel59.setText("Cantidad de faltas:");
         jPanel3.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 410, -1, -1));
 
         jLabel60.setText("ms");
-        jPanel3.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 150, -1, -1));
+        jPanel3.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
 
         jLabel61.setText("Salario descontado:");
         jPanel3.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 452, -1, -1));
@@ -1053,7 +1101,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel68.setText("Uso del Drive: ");
         jPanel3.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 660, -1, -1));
 
-        gbEnUso1.setText("45");
+        gbEnUso1.setText("0");
         jPanel3.add(gbEnUso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 660, -1, -1));
 
         jLabel69.setText("/");
@@ -1372,7 +1420,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
-    private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
