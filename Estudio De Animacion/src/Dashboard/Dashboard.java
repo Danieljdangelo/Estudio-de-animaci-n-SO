@@ -118,6 +118,11 @@ public class Dashboard extends javax.swing.JFrame {
         return cmpDeadline;
     }
     
+    public JTextField getCmpDirector(){
+        
+        return cmpDirector;
+    }
+    
     public JTextField getCmpCostos(){
         
         return cmpCostos;
