@@ -69,7 +69,7 @@ public class ProjectManager extends Thread{
     
     public void getSalario(){
         this.salarioAcc += this.salario*24;
-        this.drive.SacarCostosOperativos(this.salarioAcc-getSalarioDescontado());
+        this.drive.SacarCostosOperativos(this.salarioAcc - getSalarioDescontado());
         System.out.println("El project manager ha ganado: " + this.salarioAcc);
     }
     

@@ -5,8 +5,15 @@
 package Company;
 
 import Dashboard.Dashboard;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.concurrent.Semaphore;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -244,7 +251,7 @@ public class Drive {
                     animations -= 4;
                     doblajes -= 4;
                     System.out.println("Capitulos disponibles: " + this.capsDisponibles);
-                    db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
+                    db.getFieldCapitulos1().setText(Integer.toString(capsDisponibles));
                     
                     if(this.capsDisponibles % 5 == 0){
                         this.capsPlotTwist += 2;
@@ -338,13 +345,46 @@ public class Drive {
             con las ganancias en bruto y eso nos da como resultado la utilidad del estudio, esto es lo 
             que usaremos para responder la pregunta del informe. */
             
-            this.UtilidadTotalDisney = this.GananciasBrutoDisney - this.CostosTotalesDisney;
+            this.UtilidadTotalDisney = this.GananciasBrutoDisney - (this.CostosTotalesDisney/1000);
             db.setUtilidadTTL1(this.UtilidadTotalDisney);
             db.getCmpUtilidad1().setText(Float.toString(db.getUtilidadTTL1()));
             
+        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+        
+        datos.setValue(db.getUtilidadTTL(), "Utilidad", "Nickelodeon");
+        datos.setValue(db.getUtilidadTTL1(), "Utilidad", "Disney");
+        
+        JFreeChart grafico = ChartFactory.createBarChart3D(
+        "Utilidades Nickelodeon vs. Disney",
+        "Empresas",
+        "Utilidad",
+        datos,
+        PlotOrientation.VERTICAL,
+        true,
+        true,
+        false
+        );
+        
+        ChartPanel panel = new ChartPanel(grafico);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(400,600));
+        
+        db.getPnlGrafica1().setLayout(new BorderLayout());
+        db.getPnlGrafica1().add(panel, BorderLayout.NORTH);
+        
+        ChartPanel panel1 = new ChartPanel(grafico);
+        panel1.setMouseWheelEnabled(true);
+        panel1.setPreferredSize(new Dimension(400,600));
+        
+        db.getPnlGrafica().setLayout(new BorderLayout());
+        db.getPnlGrafica().add(panel1, BorderLayout.NORTH);
+        
+//        pack();
+//        repaint();
+            
         }else{
             
-            this.UtilidadTotalNick = this.GananciasBrutoNick - this.CostosTotalesNick;
+            this.UtilidadTotalNick = this.GananciasBrutoNick - (this.CostosTotalesNick/1000);
             db.setUtilidadTTL(this.UtilidadTotalNick);
             db.getCmpUtilidad().setText(Float.toString(db.getUtilidadTTL()));
             
