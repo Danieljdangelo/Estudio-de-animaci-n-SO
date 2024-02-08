@@ -250,9 +250,42 @@ public class Drive {
         } else {
             System.out.println("Es Nick");
         }
-  
     }
 
+    public int SacarCostosOperativos(){
+        if("Disney".equals(this.name)){
+            /*Hay que crear unas variables globales (Aquí en el drive. Ej: CostosTotalesDisney y CostosTotalesNick) 
+            que almacenen la suma de los salarios de cada trabajador por cada empresa empresa y al retornarlos, 
+            usas el getter y setter del JTextField para mostrarlos en la interfaz.
+            A estos costos operativos le restamos lo que se le descuenta al Project Manager con cada falta.
+            Aquí deberiamos retornar una variable con todo ese monto*/
+        }else{
+            
+        }
+        return 0;
+    }
+    
+    public int SacarGananciasEnBruto(){
+        if("Disney".equals(this.name)){
+            /*Las ganancias en bruto la sacamos sumando todas las ganancias sin restar los costos.
+            Igual que la función de arriba, hay que retornar un int que luego castearemos a String para poder montarlo en la interfaz*/
+        }else{
+            
+        }
+        return 0;
+    }
+    
+    public int SacarUtilidadTotal(){
+        if("Disney".equals(this.name)){
+            /*Para sacar la utilidad total, lo que tenemos que hacer es restar los costos operativos 
+            con las ganancias en bruto y eso nos da como resultado la utilidad del estudio, esto es lo 
+            que usaremos para responder la pregunta del informe. */
+        }else{
+            
+        }
+        return 0;
+    }
+    
     public void MostrarCapsDisponibles(int capsDisponibles){
         if("Disney".equals(this.name)){
             db.getFieldCapitulos1().setText(Integer.toString(capsDisponibles));
