@@ -61,21 +61,12 @@ public class Ensambladores extends Thread {
     }
     
     public void ArmandoCaps(){
-<<<<<<< HEAD
-        this.contador += 0.5;
-        if (this.contador >= 1) {
-            try {
-                this.sem.acquire();
-                this.drive.CrearCap("Nickelodeon");
-                this.drive.CrearCap("Disney");
-=======
         this.contador += 1;
         if (this.contador >= 2) {//Contador son los días que faltan para que completen la tarea, si son cada 4, diariamente tienen que sumarle 1 al contador hasta llegar a 4
             try {
                 this.sem.acquire();
                 this.drive.CrearCapNick(5);
                 this.drive.CrearCapDisney(5);
->>>>>>> Develop-OG
                 this.sem.release();
                 this.contador = 0;
                 
