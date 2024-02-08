@@ -56,7 +56,7 @@ public class Empresa {
             
             Semaphore mainMutex = new Semaphore(1);
             ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
-            Director director = new Director(db, drive, mainMutex, pm, delivery, dayDuration);
+            Director director = new Director(db, drive, mainMutex, pm, delivery, dayDuration, this);
             
             int counter1 = screenWriters + designers;
             int counter2 = screenWriters + designers + animators;

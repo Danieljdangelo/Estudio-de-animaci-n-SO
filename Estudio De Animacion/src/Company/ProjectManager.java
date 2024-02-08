@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 public class ProjectManager extends Thread{
     
     private int salario;
+    private int salarioAcc;
     private Drive drive;
     private Semaphore sem;
     private boolean trabaja;
@@ -33,6 +34,7 @@ public class ProjectManager extends Thread{
         this.dia = dia;
         this.deadline = delivery;
         this.db = db;
+        this.salarioAcc = 0;
     }
 
     public int getSalarioDescontado() {
@@ -59,6 +61,7 @@ public class ProjectManager extends Thread{
             try{
                 getSalario();
                 mostrarGbEnUso();
+                System.out.println("El project manager ha ganado: " + this.salarioAcc);
                 work();
                 sleep(dia);
             } catch (InterruptedException ex) {
@@ -68,7 +71,8 @@ public class ProjectManager extends Thread{
     }
     
     public void getSalario(){
-        this.salario += salario*24;
+        this.salarioAcc += this.salario*24;
+        System.out.println("El project manager ha ganado: " + this.salarioAcc);
     }
     
     private void mostrarGbEnUso(){
@@ -98,7 +102,7 @@ public class ProjectManager extends Thread{
     }
     
     public void work(){
-        while (drive.delivery > 0) {
+
             for (int hora = 1; hora <= 16; hora++) {
                 if (hora % 2 == 1) {
                     db.getPmLabel().setText(verAnime(hora/2));
@@ -110,10 +114,11 @@ public class ProjectManager extends Thread{
             }
             for (int hora = 17; hora <= 24; hora++) {
                 trabajar(1);
+            
             }
             
             this.drive.ActualizarDeadlinePm();
-        }
+
     }
     
     

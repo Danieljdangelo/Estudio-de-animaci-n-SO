@@ -242,26 +242,11 @@ public class Drive {
     
     // hay que hacer que el contador baje hasta 0, poner variables de ingresos para capitulos
     public void EntregarCaps(){
-        
- //       if(empresa.delivery == 0){
-            System.out.println("Enviando capitulos");
-            //this.capsDisponibles = 0;
-            //setCapsPlotTwist(0);
-            System.out.println("Se han enviado los capitulos");
-                
-//        }
-//        if(this.capsDisponibles > 0 && this.capsPlotTwist > 0){
-//            if(type == 10){
-//                setCapsDisponibles(0);
-//                setCapsPlotTwist(0);
-//                MostrarCapsDisponibles(capsDisponibles);
-//                MostrarCapsPlotDisponibles(capsPlotTwist);
-//                
-//                System.out.println("Los capitulos se han enviado");
-//            }else{
-//                System.out.println("No hay capitulos para enviar");
-//            }
-//        }
+        if(!"Nickelodeon".equals(empresa.getName())) {
+        } else {
+            System.out.println("Es disney");
+        }
+  
     }
     
 
