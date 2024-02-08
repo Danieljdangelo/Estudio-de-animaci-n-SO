@@ -4,6 +4,7 @@
  */
 package Company;
 
+import Dashboard.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,8 +22,9 @@ public class Ensambladores extends Thread {
     private float contador;
     private Drive drive;
     private Semaphore sem;
+    public Dashboard db;
 
-    public Ensambladores(int type, int name, Drive d, Semaphore m, int dia) {
+    public Ensambladores(int type, int name, Drive d, Semaphore m, int dia, Dashboard db) {
         this.type = type;
         this.name = name;
         this.salario = 50;
@@ -31,6 +33,7 @@ public class Ensambladores extends Thread {
         this.sem = m;
         this.contador = 0;
         this.duracionDia = dia;
+        this.db = db;
     }
     
     @Override
@@ -41,9 +44,8 @@ public class Ensambladores extends Thread {
                     obtenerSalario();
                     System.out.println("Ensamblador: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     ArmandoCaps();
+                    System.out.println("armando cap");
                     sleep(this.duracionDia);
-                    
-                    
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Ensambladores.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -53,15 +55,27 @@ public class Ensambladores extends Thread {
     
     public void obtenerSalario(){
         this.salarioAcumulado += this.salario*24;
+        db.setCostosOP(this.salarioAcumulado);
+        db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
+        db.getCmpCostos1().setText(Float.toString(db.getCostosOP()));
     }
     
     public void ArmandoCaps(){
+<<<<<<< HEAD
         this.contador += 0.5;
         if (this.contador >= 1) {
             try {
                 this.sem.acquire();
                 this.drive.CrearCap("Nickelodeon");
                 this.drive.CrearCap("Disney");
+=======
+        this.contador += 1;
+        if (this.contador >= 2) {//Contador son los días que faltan para que completen la tarea, si son cada 4, diariamente tienen que sumarle 1 al contador hasta llegar a 4
+            try {
+                this.sem.acquire();
+                this.drive.CrearCapNick(5);
+                this.drive.CrearCapDisney(5);
+>>>>>>> Develop-OG
                 this.sem.release();
                 this.contador = 0;
                 
@@ -71,29 +85,4 @@ public class Ensambladores extends Thread {
             
         }
     }
-    
-    
-    
-//    public void GetSalario(){
-//        
-//        this.salaryAcc += this.salary*24;
-//        
-//    }
-//    
-//    public void Run(){
-//        while (true){
-//            try{
-//                GetSalario();
-//                EnsamblarCap();
-//                //Tiene que retornar el cap listo, mostrarlo y agregarlo al drive
-//                sleep(this.duracionDia);
-//            }catch (InterruptedException ex) {
-//                Logger.getLogger(Ensambladores.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//    }
-//    
-//    public void EnsamblarCap(){
-//        //Tiene que ingresar al drive y ver cuantas partes hay para poder armar un cap, si estan las suficientes, las junta y sube al drive.
-//    }
 }

@@ -4,6 +4,7 @@
  */
 package Company;
 
+import Dashboard.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,8 +23,9 @@ public class DiseñadoresEsc extends Thread{
     private float contador;
     private int escenariosListos;
     private int duracionDia;
+    public Dashboard db;
 
-    public DiseñadoresEsc(int type, int name, Drive d, Semaphore m, int dia) {
+    public DiseñadoresEsc(int type, int name, Drive d, Semaphore m, int dia, Dashboard db) {
         this.type = type;
         this.name = name;
         this.salario = 26;
@@ -33,6 +35,7 @@ public class DiseñadoresEsc extends Thread{
         this.contador = 0;
         this.escenariosListos = 0;
         this.duracionDia = dia;
+        this.db = db;
     }
     
     @Override
@@ -55,6 +58,9 @@ public class DiseñadoresEsc extends Thread{
     
     public void obtenerSalario(){
         this.salarioAcumulado += this.salario*24;
+        db.setCostosOP(this.salarioAcumulado);
+        db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
+        db.getCmpCostos1().setText(Float.toString(db.getCostosOP()));
     }
     
     public void trabajando(){

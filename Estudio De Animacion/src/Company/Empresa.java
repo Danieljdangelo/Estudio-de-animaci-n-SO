@@ -35,11 +35,17 @@ public class Empresa {
             this.plotTwists = plotTwists;
             this.assemblers = assemblers;
             this.delivery = delivery;
-            this.drive = new Drive(delivery, db);
+            this.drive = new Drive(this.name, delivery, db, this);
             this.db = db;
             
         }
+
+    public String getName() {
+        return name;
+    }
     
+        
+        
         public Drive getDrive(){
             
             return this.drive;
@@ -47,31 +53,37 @@ public class Empresa {
         }
         
         public void createThreads(){
+            
+            Semaphore mainMutex = new Semaphore(1);
+            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
+            Director director = new Director(db, drive, mainMutex, pm, delivery, dayDuration);
+            
             int counter1 = screenWriters + designers;
             int counter2 = screenWriters + designers + animators;
             int counter3 = screenWriters + designers + animators + actors;
             int counter4 = screenWriters + designers + animators + actors + plotTwists;
             int counter5 = screenWriters + designers + animators + actors + plotTwists + assemblers;
             
-            Semaphore mainMutex = new Semaphore(1);
-            Drive drive = new Drive(delivery, db);
+            
+            //Drive drive = new Drive(delivery, db);
             Thread threads[] = new Thread[counter5];
-            Director director = new Director(drive, mainMutex);
-            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery);
+//            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
+//            Director director = new Director(db, drive, mainMutex, pm, delivery, dayDuration);
+
             
             for(int i = 0; i < threads.length; i++){
                 if(i < screenWriters){
-                    threads[i] = new Guionistas(0, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new Guionistas(0, i+1, drive, mainMutex, dayDuration, db);
                 }else if(i < counter1){
-                    threads[i] = new DiseñadoresEsc(1, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new DiseñadoresEsc(1, i+1, drive, mainMutex, dayDuration, db);
                 }else if(i < counter2){
-                    threads[i] = new AnimadoresPer(2, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new AnimadoresPer(2, i+1, drive, mainMutex, dayDuration, db);
                 }else if(i < counter3){
-                    threads[i] = new ActoresDoblaje(3, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new ActoresDoblaje(3, i+1, drive, mainMutex, dayDuration, db);
                 }else if (i < counter4){
-                    threads[i] = new GuionistasPlot(4, i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new GuionistasPlot(4, i+1, drive, mainMutex, dayDuration, db);
                 }else if (i <= counter5){
-                    threads[i] = new Ensambladores(5,  i+1, drive, mainMutex, dayDuration);
+                    threads[i] = new Ensambladores(5,  i+1, drive, mainMutex, dayDuration, db);
                 }
             }
             
@@ -112,6 +124,24 @@ public class Empresa {
 //            threads[3].start();
 //            threads[4].start();
 //            threads[5].start();
+//            threads[0].start();
+//            threads[1].start();
+//            threads[2].start();
+//            threads[3].start();
+//            threads[4].start();
+//            threads[5].start();
+            pm.start();
+            director.start();
+
+//            threads[0].start();
+//            threads[1].start();
+//            threads[2].start();
+//            threads[3].start();
+//            threads[4].start();
+//            threads[5].start();
+//            pm.start();
+//            director.start();
+
 //            threads[6].start();
 //            threads[7].start();
 //            threads[8].start();
