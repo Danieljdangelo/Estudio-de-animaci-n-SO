@@ -337,17 +337,15 @@ public class Drive {
         }
     }
     
-<<<<<<< HEAD
 //(No funciona) hay que hacer que el contador baje hasta 0, poner variables de ingresos para capitulos
-    public void EntregarCaps(){
-        if("Disney".equals(empresa.getName())) {
-            System.out.println("Es Disney");
-        } else {
-            System.out.println("Es Nick");
-        }
-    }
-=======
->>>>>>> Develop-OG
+//    public void EntregarCaps(){
+//        if("Disney".equals(empresa.getName())) {
+//            System.out.println("Es Disney");
+//        } else {
+//            System.out.println("Es Nick");
+//        }
+//    }
+
 
     public void SacarCostosOperativos(float salarios){
         if("Disney".equals(this.name)){
