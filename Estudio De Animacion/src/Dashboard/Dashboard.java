@@ -8,6 +8,8 @@ import Class.ManejoDeData;
 import Company.Drive;
 import Company.Empresa;
 import Company.Guionistas;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -19,10 +21,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -193,7 +202,6 @@ public class Dashboard extends javax.swing.JFrame {
         
         return cmpDeadline;
     }
-    
 
     public JTextField getCmpDirector(){
         
@@ -291,12 +299,21 @@ public class Dashboard extends javax.swing.JFrame {
         return cmpGanancias1;
     }
     
-//    public JTextField getFieldPlotTwists(){
-//
-//        return cmpPlotDrive;
-//
-//    }
-
+    public JPanel getPnlGrafica1(){
+        
+        return pnlGrafica1;
+    }
+    
+    public JPanel getPnlGrafica(){
+        
+        return pnlGrafica;
+    }
+    
+    public JSpinner getSpnEntrega(){
+        
+        return spnEntrega;
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -389,6 +406,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
+        pnlGrafica = new javax.swing.JPanel();
         jPanel3 = new ImagePanel1("/Images/Disney.jpg");
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -448,6 +466,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel78 = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
+        pnlGrafica1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -515,11 +534,11 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(startSimBtn)
@@ -532,7 +551,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(spnDiseñadores, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(spnGuionistas, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(spnDuracion, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 145, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -571,7 +590,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(spnEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveConfigBtn)
                     .addComponent(startSimBtn))
@@ -586,7 +605,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
         pnlImage1Layout.setVerticalGroup(
             pnlImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -600,11 +619,10 @@ public class Dashboard extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(pnlImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlImage1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -693,6 +711,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         cmpDeadline.setEditable(false);
         cmpDeadline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDeadline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpDeadlineActionPerformed(evt);
+            }
+        });
         jPanel2.add(cmpDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 189, 129, -1));
 
         cmpGanancias.setEditable(false);
@@ -800,16 +823,16 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 150, -1, -1));
 
         jLabel39.setText("Uso del Drive: ");
-        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(866, 568, -1, -1));
+        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 640, -1, -1));
 
         gbEnUso.setText("45");
-        jPanel2.add(gbEnUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(964, 568, -1, -1));
+        jPanel2.add(gbEnUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 640, -1, -1));
 
         jLabel41.setText("/");
-        jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(986, 568, -1, -1));
+        jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, -1, -1));
 
         jLabel42.setText("135Gb");
-        jPanel2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(999, 568, -1, -1));
+        jPanel2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 640, -1, -1));
 
         jLabel40.setText("Capitulos con PlotTwist: ");
         jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, -1, -1));
@@ -831,6 +854,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel77.setText("K");
         jPanel2.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 10, -1));
+
+        javax.swing.GroupLayout pnlGraficaLayout = new javax.swing.GroupLayout(pnlGrafica);
+        pnlGrafica.setLayout(pnlGraficaLayout);
+        pnlGraficaLayout.setHorizontalGroup(
+            pnlGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        pnlGraficaLayout.setVerticalGroup(
+            pnlGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(pnlGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 80, 640, 600));
 
         disneyTabbedPane.addTab("Nickelodeon", jPanel2);
 
@@ -1015,16 +1051,16 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel3.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 362, -1, -1));
 
         jLabel68.setText("Uso del Drive: ");
-        jPanel3.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(874, 568, -1, -1));
+        jPanel3.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 660, -1, -1));
 
         gbEnUso1.setText("45");
-        jPanel3.add(gbEnUso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(972, 568, -1, -1));
+        jPanel3.add(gbEnUso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 660, -1, -1));
 
         jLabel69.setText("/");
-        jPanel3.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(994, 568, -1, -1));
+        jPanel3.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 660, -1, -1));
 
         jLabel70.setText("135Gb");
-        jPanel3.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(1007, 568, -1, -1));
+        jPanel3.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 660, -1, -1));
 
         jLabel71.setText("Guiones en Drive:");
         jPanel3.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, -1, -1));
@@ -1049,6 +1085,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel45.setText("K");
         jPanel3.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 10, -1));
+
+        javax.swing.GroupLayout pnlGrafica1Layout = new javax.swing.GroupLayout(pnlGrafica1);
+        pnlGrafica1.setLayout(pnlGrafica1Layout);
+        pnlGrafica1Layout.setHorizontalGroup(
+            pnlGrafica1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
+        pnlGrafica1Layout.setVerticalGroup(
+            pnlGrafica1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(pnlGrafica1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, 650, 600));
 
         disneyTabbedPane.addTab("Disney Channel", jPanel3);
 
@@ -1095,9 +1144,8 @@ public class Dashboard extends javax.swing.JFrame {
         cmpPlotTwists1.setText(String.valueOf(plotTwists));
         cmpEnsambladores1.setText(String.valueOf(assemblers));
         cmpDeadline1.setText(String.valueOf(company2.drive.delivery));
-
     }//GEN-LAST:event_startSimBtnActionPerformed
-
+    
     private void saveConfigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveConfigBtnActionPerformed
         // TODO add your handling code here:
         
@@ -1163,6 +1211,10 @@ public class Dashboard extends javax.swing.JFrame {
     private void cmpPlotTwists1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpPlotTwists1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmpPlotTwists1ActionPerformed
+
+    private void cmpDeadlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpDeadlineActionPerformed
+       
+    }//GEN-LAST:event_cmpDeadlineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1331,6 +1383,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JPanel pnlGrafica;
+    private javax.swing.JPanel pnlGrafica1;
     private javax.swing.JPanel pnlImage1;
     public javax.swing.JButton saveConfigBtn;
     private javax.swing.JSpinner spnActores;

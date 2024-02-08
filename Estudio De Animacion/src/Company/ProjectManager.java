@@ -69,7 +69,7 @@ public class ProjectManager extends Thread{
     
     public void getSalario(){
         this.salarioAcc += this.salario*24;
-        this.drive.SacarCostosOperativos(this.salarioAcc-getSalarioDescontado());
+        this.drive.SacarCostosOperativos(this.salarioAcc - getSalarioDescontado());
         System.out.println("El project manager ha ganado: " + this.salarioAcc);
     }
     
@@ -105,10 +105,8 @@ public class ProjectManager extends Thread{
         if("Disney".equals(this.drive.name)){
             for (int hora = 1; hora <= 16; hora++) {
                 if (hora % 2 == 1) {
-                    //db.getPmLabel().setText(verAnime(hora/2));
                     db.getPmLabel1().setText(verAnime(hora/2));
                 } else {
-                    //db.getPmLabel().setText(trabajar(hora/2));
                     db.getPmLabel1().setText(trabajar(hora/2));
                 }
             }
@@ -120,10 +118,8 @@ public class ProjectManager extends Thread{
             for (int hora = 1; hora <= 16; hora++) {
                 if (hora % 2 == 1) {
                     db.getPmLabel().setText(verAnime(hora/2));
-                    //db.getPmLabel1().setText(verAnime(hora/2));
                 } else {
                     db.getPmLabel().setText(trabajar(hora/2));
-                    //db.getPmLabel1().setText(trabajar(hora/2));
                 }
             }
             for (int hora = 17; hora <= 24; hora++) {
@@ -133,20 +129,3 @@ public class ProjectManager extends Thread{
         }
     }
 }
-
-//for (int hora = 1; hora <= 16; hora++) {
-//                if (hora % 2 == 1) {
-//                    db.getPmLabel().setText(verAnime(hora/2));
-//                    db.getPmLabel1().setText(verAnime(hora/2));
-//                } else {
-//                    db.getPmLabel().setText(trabajar(hora/2));
-//                    db.getPmLabel1().setText(trabajar(hora/2));
-//                }
-//            }
-//            for (int hora = 17; hora <= 24; hora++) {
-//                trabajar(1);
-//            
-//            }
-//            
-//            this.drive.ActualizarDeadlinePm();
-//

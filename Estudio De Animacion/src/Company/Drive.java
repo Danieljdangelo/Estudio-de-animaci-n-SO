@@ -5,8 +5,15 @@
 package Company;
 
 import Dashboard.Dashboard;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.concurrent.Semaphore;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -128,10 +135,7 @@ public class Drive {
             if (plotTwist < 10){
                 if (type == 4) {
                     this.plotTwist += 1;
-    //                db.getFieldPlotTwists().setText(Integer.toString(guiones));
-                    //db.getFieldPlot().setText(Integer.toString(plotTwist));
                     db.getFieldPlot1().setText(Integer.toString(plotTwist));
-    //                db.getFieldPlotTwists().setText(Integer.toString(guiones));
                     System.out.println("PlotTwists de Disney disponibles:" + this.plotTwist);
                 }
             }else System.out.println("El drive de plottwists de Disney esta lleno.");
@@ -139,10 +143,7 @@ public class Drive {
             if (plotTwist < 10){
                 if (type == 4) {
                     this.plotTwist += 1;
-    //                db.getFieldPlotTwists().setText(Integer.toString(guiones));
                     db.getFieldPlot().setText(Integer.toString(plotTwist));
-                    //db.getFieldPlot1().setText(Integer.toString(plotTwist));
-    //                db.getFieldPlotTwists().setText(Integer.toString(guiones));
                     System.out.println("PlotTwists de Nick disponibles:" + this.plotTwist);
                 }
             }else System.out.println("El drive de plottwists de Nick esta lleno.");
@@ -165,8 +166,7 @@ public class Drive {
             if (guiones < 25){
                 if (type == 0){
                     this.guiones += 1;
-                    db.getField().setText(Integer.toString(guiones));
-//                    db.getField1().setText(Integer.toString(guiones));//Esta es la instrucción que muestra en el textfield
+                    db.getField1().setText(Integer.toString(guiones));
                     System.out.println("Guiones Disney disponibles:" + this.guiones);
                 }
             }else System.out.println("El drive de guiones de disney esta lleno");
@@ -174,8 +174,7 @@ public class Drive {
             if (guiones < 25){
                 if (type == 0){
                     this.guiones += 1;
-//                    db.getField().setText(Integer.toString(guiones));
-                    db.getField1().setText(Integer.toString(guiones));//Esta es la instrucción que muestra en el textfield
+                    db.getField().setText(Integer.toString(guiones));
                     System.out.println("Guiones Nick disponibles:" + this.guiones);
                 }
             }else System.out.println("El drive de guiones de nick esta lleno");
@@ -187,8 +186,7 @@ public class Drive {
             if (escenarios < 20){
                 if (type == 1){
                     this.escenarios += 1;
-                    db.getFieldEscenarios().setText(Integer.toString(escenarios));
-                    //db.getFieldEscenarios1().setText(Integer.toString(escenarios));
+                    db.getFieldEscenarios1().setText(Integer.toString(escenarios));
                     System.out.println("Escenarios de Disney disponibles:" + this.escenarios);
                 }
             }else System.out.println("El drive de escenarios de Disney esta lleno.");
@@ -196,8 +194,7 @@ public class Drive {
             if (escenarios < 20){
                 if (type == 1){
                     this.escenarios += 1;
-                    //db.getFieldEscenarios().setText(Integer.toString(escenarios));
-                    db.getFieldEscenarios1().setText(Integer.toString(escenarios));
+                    db.getFieldEscenarios().setText(Integer.toString(escenarios));
                     System.out.println("Escenarios de Nick disponibles:" + this.escenarios);
                 }
             }else System.out.println("El drive de escenarios de Nick esta lleno.");
@@ -218,7 +215,6 @@ public class Drive {
             if(doblajes < 35){
                 if (type == 3){
                     this.doblajes += 1;
-                    //db.getFieldDoblajes().setText(Integer.toString(doblajes));
                     db.getFieldDoblajes1().setText(Integer.toString(doblajes));
                     System.out.println("Doblajes de Disney disponibles:" + this.doblajes);
                 }
@@ -228,7 +224,6 @@ public class Drive {
                 if (type == 3){
                     this.doblajes += 1;
                     db.getFieldDoblajes().setText(Integer.toString(doblajes));
-                    //db.getFieldDoblajes1().setText(Integer.toString(doblajes));
                     System.out.println("Doblajes de Nick disponibles:" + this.doblajes);
                 }
             }else System.out.println("El drive de doblajes de Nick esta lleno.");
@@ -284,20 +279,18 @@ public class Drive {
                     this.capsDisponibles += 1;
                     
                     SacarGananciasEnBruto();
-//                    SacarUtilidadTotal();
                     
                     guiones -= 1;
                     escenarios -= 1;
                     animations -= 2;
                     doblajes -= 4;
                     System.out.println("Capitulos disponibles: " + this.capsDisponibles);
-                    db.getFieldCapitulos().setText(Integer.toString(this.capsDisponibles));
+                    db.getFieldCapitulos1().setText(Integer.toString(this.capsDisponibles));
                     
-                    if(this.capsDisponibles % 2 ==0){
+                    if(this.capsDisponibles % 2 == 0){
                         this.capsPlotTwist += 3;
                         
                         SacarGananciasEnBruto();
-//                        SacarUtilidadTotal();
                                 
                         this.plotTwist -= 3;
                         this.guiones -= 1;
@@ -317,7 +310,6 @@ public class Drive {
                     this.capsDisponibles += 1;
                     
                     SacarGananciasEnBruto();
-//                    SacarUtilidadTotal();
                     
                     guiones -= 2;
                     escenarios -= 1;
@@ -330,7 +322,6 @@ public class Drive {
                         this.capsPlotTwist += 2;
                         
                         SacarGananciasEnBruto();
-//                        SacarUtilidadTotal();
                         
                         this.plotTwist -= 2;
                         this.guiones -= 2;
@@ -346,6 +337,7 @@ public class Drive {
         }
     }
     
+<<<<<<< HEAD
 //(No funciona) hay que hacer que el contador baje hasta 0, poner variables de ingresos para capitulos
     public void EntregarCaps(){
         if("Disney".equals(empresa.getName())) {
@@ -354,6 +346,8 @@ public class Drive {
             System.out.println("Es Nick");
         }
     }
+=======
+>>>>>>> Develop-OG
 
     public void SacarCostosOperativos(float salarios){
         if("Disney".equals(this.name)){
@@ -373,7 +367,6 @@ public class Drive {
             db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
             SacarUtilidadTotal();
         }
-//        return 0;
     }
     
     public void SacarGananciasEnBruto(){
@@ -410,7 +403,7 @@ public class Drive {
             }
             
         }
-//        return this.GananciasBruto;
+
     }
     
     public void SacarUtilidadTotal(){
@@ -419,18 +412,50 @@ public class Drive {
             con las ganancias en bruto y eso nos da como resultado la utilidad del estudio, esto es lo 
             que usaremos para responder la pregunta del informe. */
             
-            this.UtilidadTotalDisney = this.GananciasBrutoDisney - this.CostosTotalesDisney;
+            this.UtilidadTotalDisney = this.GananciasBrutoDisney - (this.CostosTotalesDisney/1000);
             db.setUtilidadTTL1(this.UtilidadTotalDisney);
             db.getCmpUtilidad1().setText(Float.toString(db.getUtilidadTTL1()));
             
+        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+        
+        datos.setValue(db.getUtilidadTTL(), "Utilidad", "Nickelodeon");
+        datos.setValue(db.getUtilidadTTL1(), "Utilidad", "Disney");
+        
+        JFreeChart grafico = ChartFactory.createBarChart3D(
+        "Utilidades Nickelodeon vs. Disney",
+        "Empresas",
+        "Utilidad",
+        datos,
+        PlotOrientation.VERTICAL,
+        true,
+        true,
+        false
+        );
+        
+        ChartPanel panel = new ChartPanel(grafico);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(400,600));
+        
+        db.getPnlGrafica1().setLayout(new BorderLayout());
+        db.getPnlGrafica1().add(panel, BorderLayout.NORTH);
+        
+        ChartPanel panel1 = new ChartPanel(grafico);
+        panel1.setMouseWheelEnabled(true);
+        panel1.setPreferredSize(new Dimension(400,600));
+        
+        db.getPnlGrafica().setLayout(new BorderLayout());
+        db.getPnlGrafica().add(panel1, BorderLayout.NORTH);
+        
+
+            
         }else{
             
-            this.UtilidadTotalNick = this.GananciasBrutoNick - this.CostosTotalesNick;
+            this.UtilidadTotalNick = this.GananciasBrutoNick - (this.CostosTotalesNick/1000);
             db.setUtilidadTTL(this.UtilidadTotalNick);
             db.getCmpUtilidad().setText(Float.toString(db.getUtilidadTTL()));
             
         }
-//        return 0;
+
     }
     
     public void MostrarCapsDisponibles(int capsDisponibles){
@@ -456,118 +481,23 @@ public class Drive {
             db.getCmpDeadline().setText(Integer.toString(empresa.delivery--));
         }
     }
-    //no funciona
+    
+    //No funciona
+    public void EntregarCaps(){
+    if("Disney".equals(this.name)) {
+        this.capsDisponibles = 0;
+        this.capsPlotTwist = 0;
+        System.out.println("Los capitulos de Disney han sido enviados: " + capsDisponibles + " y " + capsPlotTwist);
+    } else {
+        this.capsDisponibles = 0;
+        this.capsPlotTwist = 0;
+        System.out.println("Los capitulos de Nick han sido enviados: " + capsDisponibles + " y " + capsPlotTwist);
+    }
+}
+    //No Funciona
     public void ReiniciarDeadline(){
-        int deadline = Integer.parseInt(db.getCmpDeadline().getText());
-        if(deadline == 0){
-            this.capsDisponibles = 0;
-            this.capsPlotTwist = 0;
+        while(this.capsDisponibles == 0 && this.capsPlotTwist ==0){
+            this.delivery = Integer.parseInt(db.getSpnEntrega().getValue().toString());
         }
     }
 }
-////        if (empresa.getName().equals("Nickelodeon")){//para los ensamladores de Nick
-//            if(type == 5 && this.guiones >= 2 && this.escenarios >= 1 && this.animations >= 4 && this.doblajes >= 4){
-//                this.capsDisponibles += 1;
-//                
-////                db.setUtilidadTTL((float) 450);
-////                db.setGanaciaBruto();
-////                db.getCmpUtilidad().setText(Float.toString(db.getGananciaBruto()));
-////                db.getCmpGanancia().setText(Float.toString(db.getUtilidadTTL()));
-//  
-//                guiones -= 2;
-//                escenarios -= 1;
-//                animations -= 4;
-//                doblajes -= 4;
-//                System.out.println("Capitulos disponibles: " + this.capsDisponibles);
-//                db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
-//
-////                this.capsDisponibles >= 5
-//                if(this.capsDisponibles % 5 == 0){
-//                    this.capsPlotTwist += 2;
-//                    
-//                    db.setUtilidadTTL((float) 500*2);
-//                    db.setGanaciaBruto();
-//                    db.getCmpUtilidad().setText(Float.toString(db.getGananciaBruto()));
-//                    db.getCmpGanancia().setText(Float.toString(db.getUtilidadTTL()));
-//                    
-//                    this.plotTwist -= 2;
-//                    this.guiones -= 2;
-//                    this.escenarios -= 1;
-//                    this.animations -= 4;
-//                    this.doblajes -= 4;
-//                    db.getFieldCapPlot().setText(Integer.toString(capsPlotTwist));
-//
-//                }
-//            }else{
-//                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
-//            }
-//        }else if(empresa.getName().equals("Disney")){//para los ensambladores de Disney
-//            if (type == 5 && guiones == 1 && escenarios == 2 && animations == 6 && doblajes == 5){
-//                this.capsDisponibles +=1;
-//                
-//                db.setUtilidadTTL((float) 250);
-//                db.setGanaciaBruto();
-//                db.getCmpUtilidad().setText(Float.toString(db.getGananciaBruto()));
-//                db.getCmpGanancia().setText(Float.toString(db.getUtilidadTTL()));
-//                
-//                guiones -= 1;
-//                escenarios -= 2;
-//                animations -= 6;
-//                doblajes -= 5;
-//                db.getFieldCapitulos1().setText(Integer.toString(capsDisponibles));
-//            }else{
-//                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
-//            }  
-        
-//        }else { System.out.println("No está entrando el type");//if (empresa.name.equals("Disney")){//para los ensambladores de Disney
-//            if (type == 5 && guiones == 1 && escenarios == 2 && animations == 6 && doblajes == 5){
-//                this.capsDisponibles +=1;
-//                guiones -= 1;
-//                escenarios -= 2;
-//                animations -= 6;
-//                doblajes -= 5;
-//                db.getFieldCapitulos2().setText(Integer.toString(capsDisponibles));
-//            }else{
-//                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
-//            }
-//        }
-                
-    
-    
-//    public void CrearCapDisney(int type){
-//            if(type == 5 && this.guiones >= 1 && this.escenarios >= 1 && this.animations >= 2 && this.doblajes >= 4){
-//                this.capsDisponibles += 1;
-//                
-////                db.setUtilidadTTL1((float) 250);
-////                db.setGanaciaBruto1();
-////                db.getCmpUtilidad1().setText(Float.toString(db.getGananciaBruto1()));
-////                db.getCmpGanancia1().setText(Float.toString(db.getUtilidadTTL1()));
-//  
-//                guiones -= 1;
-//                escenarios -= 1;
-//                animations -= 2;
-//                doblajes -= 4;
-//                System.out.println("Capitulos disponibles: " + this.capsDisponibles);
-//
-//                db.getFieldCapitulos1().setText(Integer.toString(capsDisponibles));
-//
-//                if(this.capsDisponibles % 2 == 0){
-//                    this.capsPlotTwist += 3;
-//                    
-////                    db.setUtilidadTTL1((float) 600*3);
-////                    db.setGanaciaBruto1();
-////                    db.getCmpUtilidad1().setText(Float.toString(db.getGananciaBruto1()));
-////                    db.getCmpGanancia1().setText(Float.toString(db.getUtilidadTTL1()));
-//                    
-//                    this.plotTwist -= 3;
-//                    this.guiones -= 1;
-//                    this.escenarios -= 1;
-//                    this.animations -= 2;
-//                    this.doblajes -= 4;
-//
-//                    db.getFieldCapPlot1().setText(Integer.toString(capsPlotTwist));
-//                }
-//            }else{
-//                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
-//            }
-//    }
