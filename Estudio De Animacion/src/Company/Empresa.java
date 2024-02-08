@@ -35,21 +35,19 @@ public class Empresa {
             this.plotTwists = plotTwists;
             this.assemblers = assemblers;
             this.delivery = delivery;
-            this.drive = new Drive(this.name, delivery, db, this);
+            this.drive = new Drive(name, delivery, db, this);
             this.db = db;
             
         }
 
     public String getName() {
+        
         return name;
     }
     
-        
-        
         public Drive getDrive(){
             
             return this.drive;
-            
         }
         
         public void createThreads(){
@@ -65,10 +63,7 @@ public class Empresa {
             int counter5 = screenWriters + designers + animators + actors + plotTwists + assemblers;
             
             
-            //Drive drive = new Drive(delivery, db);
             Thread threads[] = new Thread[counter5];
-//            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
-//            Director director = new Director(db, drive, mainMutex, pm, delivery, dayDuration);
 
             
             for(int i = 0; i < threads.length; i++){
@@ -112,6 +107,8 @@ public class Empresa {
 
 
 //               Descomentar para ejecutar todos los hilos
+            pm.start();
+            director.start();
             for(int i = 0; i < threads.length; i++){
                 threads[i].start();
             }
@@ -130,8 +127,7 @@ public class Empresa {
 //            threads[3].start();
 //            threads[4].start();
 //            threads[5].start();
-            pm.start();
-            director.start();
+            
 
 //            threads[0].start();
 //            threads[1].start();

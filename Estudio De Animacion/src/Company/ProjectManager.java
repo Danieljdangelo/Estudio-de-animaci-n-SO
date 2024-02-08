@@ -52,9 +52,6 @@ public class ProjectManager extends Thread{
     public void setCantidadFaltas(int cantidadFaltas) {
         this.cantidadFaltas = cantidadFaltas;
     }
-    
-    
-    //Poner en el run el estado de lo que esta haciendo el pm usando los getters de los labels del dashboard
     @Override
     public void run(){
         while (true){
@@ -76,14 +73,17 @@ public class ProjectManager extends Thread{
     }
     
     private void mostrarGbEnUso(){
-        db.getGbEnUso().setText(Integer.toString(drive.CapacidadDrive()));
+        if("Disney".equals(this.drive.name)){
+            db.getGbEnUso1().setText(Integer.toString(this.drive.CapacidadDrive()));
+        }else{
+            db.getGbEnUso().setText(Integer.toString(drive.CapacidadDrive()));
+        }
     }
     
     private String verAnime(int dias) {
         String estado = "Viendo anime";
         try {
             sleep(dias);
-            
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -94,7 +94,6 @@ public class ProjectManager extends Thread{
         String estado = "Trabajando";
         try {
             sleep(dias);
-            
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -102,24 +101,51 @@ public class ProjectManager extends Thread{
     }
     
     public void work(){
-
+        if("Disney".equals(this.drive.name)){
             for (int hora = 1; hora <= 16; hora++) {
                 if (hora % 2 == 1) {
-                    db.getPmLabel().setText(verAnime(hora/2));
+                    //db.getPmLabel().setText(verAnime(hora/2));
                     db.getPmLabel1().setText(verAnime(hora/2));
                 } else {
-                    db.getPmLabel().setText(trabajar(hora/2));
+                    //db.getPmLabel().setText(trabajar(hora/2));
                     db.getPmLabel1().setText(trabajar(hora/2));
                 }
             }
             for (int hora = 17; hora <= 24; hora++) {
                 trabajar(1);
-            
             }
-            
             this.drive.ActualizarDeadlinePm();
-
+        }else{
+            for (int hora = 1; hora <= 16; hora++) {
+                if (hora % 2 == 1) {
+                    db.getPmLabel().setText(verAnime(hora/2));
+                    //db.getPmLabel1().setText(verAnime(hora/2));
+                } else {
+                    db.getPmLabel().setText(trabajar(hora/2));
+                    //db.getPmLabel1().setText(trabajar(hora/2));
+                }
+            }
+            for (int hora = 17; hora <= 24; hora++) {
+                trabajar(1);
+            }
+            this.drive.ActualizarDeadlinePm();
+        }
     }
-    
-    
 }
+
+//for (int hora = 1; hora <= 16; hora++) {
+//                if (hora % 2 == 1) {
+//                    db.getPmLabel().setText(verAnime(hora/2));
+//                    db.getPmLabel1().setText(verAnime(hora/2));
+//                } else {
+//                    db.getPmLabel().setText(trabajar(hora/2));
+//                    db.getPmLabel1().setText(trabajar(hora/2));
+//                }
+//            }
+//            for (int hora = 17; hora <= 24; hora++) {
+//                trabajar(1);
+//            
+//            }
+//            
+//            this.drive.ActualizarDeadlinePm();
+//

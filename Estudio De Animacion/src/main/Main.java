@@ -16,7 +16,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author danieldangelo
  */
 public class Main {
-    private static ManejoDeData mdd;
     /**
      * @param args the command line arguments
      */
@@ -27,13 +26,16 @@ public class Main {
         d.setVisible(true);
         d.setResizable(false);
         d.setLocationRelativeTo(null);
-        
-//        File masterdata = cargarMasterData();
+    }   
+            
+
+    
+}
+
+//File masterdata = cargarMasterData();
 //        if (masterdata != null) {
 //            mdd = new ManejoDeData(masterdata);
 //        }
-    }   
-            
 //    private static File cargarMasterData() {
 //        JFileChooser fileChooser = new JFileChooser();
 //        fileChooser.setAcceptAllFileFilterUsed(false);
@@ -47,5 +49,3 @@ public class Main {
 //        JOptionPane.showMessageDialog(null, "Asegúrese de seleccionar un archivo");
 //        return null;
 //    }
-    
-}
