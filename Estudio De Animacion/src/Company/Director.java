@@ -45,6 +45,7 @@ public class Director extends Thread{
     public void ObtenerSalario(){
         
         this.salarioAcc += this.salario*24;
+        this.drive.SacarCostosOperativos(this.salarioAcc);
     }
     
     @Override

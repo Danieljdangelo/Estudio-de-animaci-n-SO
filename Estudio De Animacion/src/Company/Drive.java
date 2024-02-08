@@ -5,7 +5,15 @@
 package Company;
 
 import Dashboard.Dashboard;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.util.concurrent.Semaphore;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -27,7 +35,13 @@ public class Drive {
     public Dashboard db;
     public Empresa empresa;
     public int sumaSalarios;
-    
+    static float CostosTotalesDisney;
+    static float CostosTotalesNick;
+    static float GananciasBrutoDisney;
+    static float GananciasBrutoNick;
+    static float UtilidadTotalDisney;
+    static float UtilidadTotalNick; 
+    public int SalarioDescPM;
     
     
     public Drive(String name, int delivery, Dashboard db, Empresa empresa){
@@ -196,15 +210,22 @@ public class Drive {
                     
                     this.capsDisponibles += 1;
                     
+                    SacarGananciasEnBruto();
+//                    SacarUtilidadTotal();
+                    
                     guiones -= 1;
                     escenarios -= 1;
                     animations -= 2;
                     doblajes -= 4;
                     System.out.println("Capitulos disponibles: " + this.capsDisponibles);
-                    db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
+                    db.getFieldCapitulos().setText(Integer.toString(this.capsDisponibles));
                     
                     if(this.capsDisponibles % 2 ==0){
                         this.capsPlotTwist += 3;
+                        
+                        SacarGananciasEnBruto();
+//                        SacarUtilidadTotal();
+                                
                         this.plotTwist -= 3;
                         this.guiones -= 1;
                         this.escenarios -= 1;
@@ -221,15 +242,23 @@ public class Drive {
             if(type == 5){
                 if(this.guiones >= 2 && this.escenarios >= 1 && this.animations >= 4 && this.doblajes >= 4){
                     this.capsDisponibles += 1;
+                    
+                    SacarGananciasEnBruto();
+//                    SacarUtilidadTotal();
+                    
                     guiones -= 2;
                     escenarios -= 1;
                     animations -= 4;
                     doblajes -= 4;
                     System.out.println("Capitulos disponibles: " + this.capsDisponibles);
-                    db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
+                    db.getFieldCapitulos1().setText(Integer.toString(capsDisponibles));
                     
                     if(this.capsDisponibles % 5 == 0){
                         this.capsPlotTwist += 2;
+                        
+                        SacarGananciasEnBruto();
+//                        SacarUtilidadTotal();
+                        
                         this.plotTwist -= 2;
                         this.guiones -= 2;
                         this.escenarios -= 1;
@@ -252,38 +281,115 @@ public class Drive {
         }
     }
 
-    public int SacarCostosOperativos(){
+    public void SacarCostosOperativos(float salarios){
         if("Disney".equals(this.name)){
             /*Hay que crear unas variables globales (Aquí en el drive. Ej: CostosTotalesDisney y CostosTotalesNick) 
             que almacenen la suma de los salarios de cada trabajador por cada empresa empresa y al retornarlos, 
             usas el getter y setter del JTextField para mostrarlos en la interfaz.
             A estos costos operativos le restamos lo que se le descuenta al Project Manager con cada falta.
             Aquí deberiamos retornar una variable con todo ese monto*/
-        }else{
+            this.CostosTotalesDisney = salarios;
+            db.setCostosOP1(this.CostosTotalesDisney);
+            db.getCmpCostos1().setText(Float.toString(db.getCostosOP1()));
+            SacarUtilidadTotal();
             
+        }else{
+            this.CostosTotalesNick = salarios;
+            db.setCostosOP(this.CostosTotalesNick);
+            db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
+            SacarUtilidadTotal();
         }
-        return 0;
+//        return 0;
     }
     
-    public int SacarGananciasEnBruto(){
+    public void SacarGananciasEnBruto(){
         if("Disney".equals(this.name)){
             /*Las ganancias en bruto la sacamos sumando todas las ganancias sin restar los costos.
             Igual que la función de arriba, hay que retornar un int que luego castearemos a String para poder montarlo en la interfaz*/
+            
+            this.GananciasBrutoDisney += 250;
+            db.setGanaciaBruto1(this.GananciasBrutoDisney);
+            db.getCmpGanancia1().setText(Float.toString(db.getGananciaBruto1()));
+            
+            if(this.capsDisponibles % 2 ==0){
+
+                this.GananciasBrutoDisney += 600*3;
+                db.setGanaciaBruto1(this.GananciasBrutoDisney);
+                db.getCmpGanancia1().setText(Float.toString(db.getGananciaBruto1()));
+                           
+            }else{
+                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
+            }
         }else{
+            this.GananciasBrutoNick += 450;
+            db.setGanaciaBruto(this.GananciasBrutoNick);
+            db.getCmpGanancia().setText(Float.toString(db.getGananciaBruto()));
+            
+            if(this.capsDisponibles % 5 ==0){
+
+                this.GananciasBrutoNick += 500*2;
+                db.setGanaciaBruto(this.GananciasBrutoNick);
+                db.getCmpGanancia().setText(Float.toString(db.getGananciaBruto()));
+                      
+            }else{
+                System.out.println("Todavía no se puede crear un capitulo completo con lo que se ha subido al drive.");
+            }
             
         }
-        return 0;
+//        return this.GananciasBruto;
     }
     
-    public int SacarUtilidadTotal(){
+    public void SacarUtilidadTotal(){
         if("Disney".equals(this.name)){
             /*Para sacar la utilidad total, lo que tenemos que hacer es restar los costos operativos 
             con las ganancias en bruto y eso nos da como resultado la utilidad del estudio, esto es lo 
             que usaremos para responder la pregunta del informe. */
+            
+            this.UtilidadTotalDisney = this.GananciasBrutoDisney - (this.CostosTotalesDisney/1000);
+            db.setUtilidadTTL1(this.UtilidadTotalDisney);
+            db.getCmpUtilidad1().setText(Float.toString(db.getUtilidadTTL1()));
+            
+        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+        
+        datos.setValue(db.getUtilidadTTL(), "Utilidad", "Nickelodeon");
+        datos.setValue(db.getUtilidadTTL1(), "Utilidad", "Disney");
+        
+        JFreeChart grafico = ChartFactory.createBarChart3D(
+        "Utilidades Nickelodeon vs. Disney",
+        "Empresas",
+        "Utilidad",
+        datos,
+        PlotOrientation.VERTICAL,
+        true,
+        true,
+        false
+        );
+        
+        ChartPanel panel = new ChartPanel(grafico);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(400,600));
+        
+        db.getPnlGrafica1().setLayout(new BorderLayout());
+        db.getPnlGrafica1().add(panel, BorderLayout.NORTH);
+        
+        ChartPanel panel1 = new ChartPanel(grafico);
+        panel1.setMouseWheelEnabled(true);
+        panel1.setPreferredSize(new Dimension(400,600));
+        
+        db.getPnlGrafica().setLayout(new BorderLayout());
+        db.getPnlGrafica().add(panel1, BorderLayout.NORTH);
+        
+//        pack();
+//        repaint();
+            
         }else{
             
+            this.UtilidadTotalNick = this.GananciasBrutoNick - (this.CostosTotalesNick/1000);
+            db.setUtilidadTTL(this.UtilidadTotalNick);
+            db.getCmpUtilidad().setText(Float.toString(db.getUtilidadTTL()));
+            
         }
-        return 0;
+//        return 0;
     }
     
     public void MostrarCapsDisponibles(int capsDisponibles){
