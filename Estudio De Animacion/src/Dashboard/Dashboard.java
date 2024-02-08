@@ -38,6 +38,7 @@ public class Dashboard extends javax.swing.JFrame {
     ManejoDeData data = new ManejoDeData();
     public int guionesDB;
     public float costosOP;
+    public float costosOP1;
     public float utilidadTTL;
     public float gananciaBruto;
     public float utilidadTTL1;
@@ -216,12 +217,20 @@ public class Dashboard extends javax.swing.JFrame {
     
     public void setCostosOP(float costos){
         this.costosOP += costos;
-//        getCmpCostos().setText(Float.toString(this.costosOP));
+    }
+    
+    public void setCostosOP1(float costos){
+        this.costosOP1 += costos;
     }
     
     public float getCostosOP(){
         
         return this.costosOP;
+    }
+    
+    public float getCostosOP1(){
+        
+        return this.costosOP1;
     }
     
     public void setUtilidadTTL(float utilidad){
@@ -250,12 +259,12 @@ public class Dashboard extends javax.swing.JFrame {
         return cmpUtilidad1;
     }
     
-    public void setGanaciaBruto(){
-        this.gananciaBruto = this.utilidadTTL - this.costosOP;
+    public void setGanaciaBruto(float ganacias){
+        this.gananciaBruto = ganacias;
     }
     
-    public void setGanaciaBruto1(){
-        this.gananciaBruto1 = this.utilidadTTL1 - this.costosOP;
+    public void setGanaciaBruto1(float ganancias){
+        this.gananciaBruto1 = ganancias;
     }
     
     public float getGananciaBruto(){

@@ -45,6 +45,7 @@ public class Director extends Thread{
     public void ObtenerSalario(){
         
         this.salarioAcc += this.salario*24;
+        this.drive.SacarCostosOperativos(this.salarioAcc);
     }
     
     @Override
@@ -120,6 +121,8 @@ public class Director extends Thread{
                         System.out.println("El PM ESTARA VIENDO ANIME");
                         pm.setCantidadFaltas(pm.getCantidadFaltas()+1);
                         pm.setSalarioDescontado(pm.getSalarioDescontado()+100);
+//                        this.drive.UtilidadTotalDisney -= 100;
+//                        this.drive.UtilidadTotalNick -= 100;
                         db.getPmFaltas1().setText(Integer.toString(pm.getCantidadFaltas()));
                         db.getSalarioDesc1().setText(Integer.toString(pm.getSalarioDescontado()));
                         estado = true;
