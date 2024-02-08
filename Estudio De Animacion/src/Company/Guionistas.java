@@ -46,8 +46,6 @@ public class Guionistas extends Thread{
                 
                 try {
                     obtenerSalario();
-//                    db.setCostosOP(this.salarioAcumulado);
-//                    db.getCmpCostos().setText(Float.toString(this.salarioAcumulado));
                     System.out.println("Guionista: " + type + "." + name +  " ha ganado: "+this.salarioAcumulado+"$");
                     trabajando();
                     sleep(this.duracionDia);
@@ -61,19 +59,13 @@ public class Guionistas extends Thread{
         }
     
     public void obtenerSalario(){
-//        if("Disney".equals(drive.name)){
             this.salarioAcumulado += this.salario*24;
             this.drive.SacarCostosOperativos(this.salarioAcumulado);
-//            this.drive.SacarUtilidadTotal();
-//            db.setCostosOP(this.salarioAcumulado);
-//            db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
-//            db.getCmpCostos1().setText(Float.toString(db.getCostosOP()));
-//        }
     }
     
     
     public void trabajando(){
-        this.contador += 0.34f;
+        this.contador += 0.34;
         if (this.contador >= 1) {
             this.contador = 0;
             try {
