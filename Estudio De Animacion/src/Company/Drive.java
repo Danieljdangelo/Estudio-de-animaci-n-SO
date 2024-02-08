@@ -27,6 +27,8 @@ public class Drive {
     public Dashboard db;
     public Empresa empresa;
     public int sumaSalarios;
+    static float CostosTotalesDisney;
+    static float CostosTotalesNick;
     
     
     
@@ -73,20 +75,21 @@ public class Drive {
         
         this.delivery = delivery;
     }
-<<<<<<< HEAD
     
     
     //Los print son para correr en frio pero hay que mostrarlo en la interfaz
-    public void addAnimation(int type){
-        if (animations < 55){
-            if (type == 2){
-                this.animations += 3;
-                db.getFieldAnimaciones().setText(Integer.toString(animations));
-                db.getFieldAnimaciones1().setText(Integer.toString(animations));
-                System.out.println("animaciones disponibles:" + this.animations);
-            }
-        }else System.out.println("El drive de animaciones esta lleno.");
-=======
+//    public void addAnimation(int type){
+//        if (animations < 55){
+//            if (type == 2){
+//                this.animations += 3;
+//                db.getFieldAnimaciones().setText(Integer.toString(animations));
+//                db.getFieldAnimaciones1().setText(Integer.toString(animations));
+//                System.out.println("animaciones disponibles:" + this.animations);
+//            }
+//        }else System.out.println("El drive de animaciones esta lleno.");
+//    }
+
+
     //Los print son para correr en frio pero hay que mostrarlo en la interfaz
     public void addAnimation(int type){
         if("Disney".equals(this.name))
@@ -109,8 +112,9 @@ public class Drive {
                 }
             }else System.out.println("El drive de animaciones de Nick esta lleno.");
         }
->>>>>>> Develop-OG
     }
+
+
     
     public void addPlotTwist(int type){
         if("Disney".equals(this.name)){
@@ -140,7 +144,6 @@ public class Drive {
     }
     
     public void addGuiones(int type){
-<<<<<<< HEAD
         if (guiones < 25){
             if (type == 0){
                 this.guiones += 1;
@@ -151,7 +154,6 @@ public class Drive {
                 System.out.println("guiones disponibles:" + this.guiones);
             }
         }else System.out.println("El drive de guiones esta lleno");
-=======
         if("Disney".equals(this.name)){
             if (guiones < 25){
                 if (type == 0){
@@ -171,7 +173,6 @@ public class Drive {
                 }
             }else System.out.println("El drive de guiones de nick esta lleno");
         }
->>>>>>> Develop-OG
     }
     
     public void addEscenarios(int type){
@@ -197,7 +198,6 @@ public class Drive {
     }
     
     public void addDoblajes(int type){
-<<<<<<< HEAD
         if(doblajes < 35){
             if (type == 3){
                 this.doblajes += 5;
@@ -207,7 +207,6 @@ public class Drive {
             }
         }else System.out.println("El drive de doblajes està lleno.");
 //        }else System.out.println("El drive de doblajes esta lleno.");
-=======
         if("Disney".equals(this.name)){
             if(doblajes < 35){
                 if (type == 3){
@@ -228,7 +227,6 @@ public class Drive {
             }else System.out.println("El drive de doblajes de Nick esta lleno.");
         }
     
->>>>>>> Develop-OG
     }
 
     public int CapacidadDrive(){
@@ -236,7 +234,6 @@ public class Drive {
         return this.capacidadTotal = this.animations + this.plotTwist + this.guiones + this.escenarios + this.doblajes;
         
     }
-<<<<<<< HEAD
     
     public void CrearCap(String name){
         if (name.equals("Nickelodeon")){//para los ensamladores de Nick
@@ -267,13 +264,15 @@ public class Drive {
 //                this.capsDisponibles >= 5
                 if(this.capsDisponibles % 5 == 0){
                     this.capsPlotTwist += 2;
-=======
-    //Crea capitulos para cada empresa
+                }
+            }
+    }
+
+//Crea capitulos para cada empresa
     public void CrearCaps(int type){
         if("Disney".equals(this.name)){
             if(type == 5){
                 if(this.guiones >= 1 && this.escenarios >= 1 && this.animations >= 2 && this.doblajes >= 4){
->>>>>>> Develop-OG
                     
                     this.capsDisponibles += 1;
                     
@@ -324,7 +323,8 @@ public class Drive {
             }
         }
     }
-    //(No funciona) hay que hacer que el contador baje hasta 0, poner variables de ingresos para capitulos
+    
+//(No funciona) hay que hacer que el contador baje hasta 0, poner variables de ingresos para capitulos
     public void EntregarCaps(){
         if("Disney".equals(empresa.getName())) {
             System.out.println("Es Disney");
