@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 public class ProjectManager extends Thread{
     
     private int salario;
+    private int salarioAcc;
     private Drive drive;
     private Semaphore sem;
     private boolean trabaja;
@@ -33,6 +34,7 @@ public class ProjectManager extends Thread{
         this.dia = dia;
         this.deadline = delivery;
         this.db = db;
+        this.salarioAcc = 0;
     }
 
     public int getSalarioDescontado() {
@@ -50,15 +52,13 @@ public class ProjectManager extends Thread{
     public void setCantidadFaltas(int cantidadFaltas) {
         this.cantidadFaltas = cantidadFaltas;
     }
-    
-    
-    //Poner en el run el estado de lo que esta haciendo el pm usando los getters de los labels del dashboard
     @Override
     public void run(){
         while (true){
             try{
                 getSalario();
                 mostrarGbEnUso();
+                System.out.println("El project manager ha ganado: " + this.salarioAcc);
                 work();
                 sleep(dia);
             } catch (InterruptedException ex) {
@@ -68,18 +68,22 @@ public class ProjectManager extends Thread{
     }
     
     public void getSalario(){
-        this.salario += salario*24;
+        this.salarioAcc += this.salario*24;
+        System.out.println("El project manager ha ganado: " + this.salarioAcc);
     }
     
     private void mostrarGbEnUso(){
-        db.getGbEnUso().setText(Integer.toString(drive.CapacidadDrive()));
+        if("Disney".equals(this.drive.name)){
+            db.getGbEnUso1().setText(Integer.toString(this.drive.CapacidadDrive()));
+        }else{
+            db.getGbEnUso().setText(Integer.toString(drive.CapacidadDrive()));
+        }
     }
     
     private String verAnime(int dias) {
         String estado = "Viendo anime";
         try {
             sleep(dias);
-            
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,7 +94,6 @@ public class ProjectManager extends Thread{
         String estado = "Trabajando";
         try {
             sleep(dias);
-            
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -98,23 +101,51 @@ public class ProjectManager extends Thread{
     }
     
     public void work(){
-        while (drive.delivery > 0) {
+        if("Disney".equals(this.drive.name)){
             for (int hora = 1; hora <= 16; hora++) {
                 if (hora % 2 == 1) {
-                    db.getPmLabel().setText(verAnime(hora/2));
+                    //db.getPmLabel().setText(verAnime(hora/2));
                     db.getPmLabel1().setText(verAnime(hora/2));
                 } else {
-                    db.getPmLabel().setText(trabajar(hora/2));
+                    //db.getPmLabel().setText(trabajar(hora/2));
                     db.getPmLabel1().setText(trabajar(hora/2));
                 }
             }
             for (int hora = 17; hora <= 24; hora++) {
                 trabajar(1);
             }
-            
+            this.drive.ActualizarDeadlinePm();
+        }else{
+            for (int hora = 1; hora <= 16; hora++) {
+                if (hora % 2 == 1) {
+                    db.getPmLabel().setText(verAnime(hora/2));
+                    //db.getPmLabel1().setText(verAnime(hora/2));
+                } else {
+                    db.getPmLabel().setText(trabajar(hora/2));
+                    //db.getPmLabel1().setText(trabajar(hora/2));
+                }
+            }
+            for (int hora = 17; hora <= 24; hora++) {
+                trabajar(1);
+            }
             this.drive.ActualizarDeadlinePm();
         }
     }
-    
-    
 }
+
+//for (int hora = 1; hora <= 16; hora++) {
+//                if (hora % 2 == 1) {
+//                    db.getPmLabel().setText(verAnime(hora/2));
+//                    db.getPmLabel1().setText(verAnime(hora/2));
+//                } else {
+//                    db.getPmLabel().setText(trabajar(hora/2));
+//                    db.getPmLabel1().setText(trabajar(hora/2));
+//                }
+//            }
+//            for (int hora = 17; hora <= 24; hora++) {
+//                trabajar(1);
+//            
+//            }
+//            
+//            this.drive.ActualizarDeadlinePm();
+//

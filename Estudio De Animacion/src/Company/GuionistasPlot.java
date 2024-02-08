@@ -56,9 +56,9 @@ public class GuionistasPlot extends Thread{
     
     public void obtenerSalario(){
         this.salarioAcumulado += this.salario*24;
-        db.setCostosOP(this.salarioAcumulado);
-        db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
-        db.getCmpCostos1().setText(Float.toString(db.getCostosOP()));
+//        db.setCostosOP(this.salarioAcumulado);
+//        db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
+//        db.getCmpCostos1().setText(Float.toString(db.getCostosOP()));
     }
     
     public void trabajando(){

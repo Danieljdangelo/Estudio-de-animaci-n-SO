@@ -5,6 +5,7 @@
 package Company;
 
 import Dashboard.Dashboard;
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,8 +24,11 @@ public class Director extends Thread{
     private int delivery;
     private int dia;
     private Dashboard db;
+    private int type;
+    private Empresa empresa;
+    private Random random;
     
-    public Director(Dashboard db, Drive d, Semaphore s, ProjectManager pm, int delivery, int dia){
+    public Director(Dashboard db, Drive d, Semaphore s, ProjectManager pm, int delivery, int dia, Empresa empresa){
         
         this.salarioAcc = 0;
         this.db = db;
@@ -33,6 +37,9 @@ public class Director extends Thread{
         this.pm = pm;
         this.delivery = delivery;
         this.dia = dia;
+        this.type = 10;
+        this.empresa = empresa;
+        this.random = new Random();
     }
     
     public void ObtenerSalario(){
@@ -45,19 +52,8 @@ public class Director extends Thread{
         while(true){
             try {
                 ObtenerSalario();
-                SupervisarPm();
-                
-                if(this.drive.delivery <= 0){
-                    EnviarCaps();
-                    this.drive.ReiniciarDeadline();
-                    //db.getCmpDeadline().setText(Integer.toString(deadline));//Encontrar forma de actualizar deadline de la interfaz
-                    sleep(this.dia);
-                }else{
-                    //LaboresAdmin();
-                    //SupervisarPm();
-                    sleep(this.dia);
-                }
-                
+                LaboresAdmin();
+                EnviarCaps();
                 System.out.println("El director ha ganado: " + this.salarioAcc + "$");
                 sleep(this.dia);
             } catch (InterruptedException ex) {
@@ -68,36 +64,91 @@ public class Director extends Thread{
     
     //no funciona
     public void EnviarCaps(){
-        if (this.drive.delivery == 0){
             try {
                 this.sem.acquire();
                 this.drive.EntregarCaps();
                 this.sem.release();
-//                this.drive.setCapsDisponibles(0);//tiene que ir en la funcion del drive
-//                this.drive.setCapsPlotTwist(0);//tiene que ir en la funcion del drive
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-    }
-    
-    public void LaboresAdmin(){
         
     }
     
-    public void SupervisarPm(){
-        if("Viendo anime".equals(db.getPmLabel().getText()) || "Viendo anime".equals(db.getPmLabel1().getText())){
-            pm.setCantidadFaltas(pm.getCantidadFaltas()+1);
-            pm.setSalarioDescontado(pm.getSalarioDescontado()+100);
-            db.getPmFaltas().setText(Integer.toString(pm.getCantidadFaltas()));
-            db.getPmFaltas1().setText(Integer.toString(pm.getCantidadFaltas()));
-            db.getSalarioDesc().setText(Integer.toString(pm.getSalarioDescontado()));
-            db.getSalarioDesc1().setText(Integer.toString(pm.getSalarioDescontado()));
+
+    public void LaboresAdmin() throws InterruptedException{
+        boolean estado = SupervisarPm();
+        if("Disney".equals(this.drive.name)){
+            try {
+                if (estado == true){
+
+                    db.getCmpDirector1().setText("Supervisando");
+
+                    }else if (SupervisarPm() == false){
+                    db.getCmpDirector1().setText("Trabajando");
+                }   
+                } catch (InterruptedException ex) {
+
+                    Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
         }else{
-            System.out.println("El PM está trabajando");
+            try {
+                if (estado == true){
+
+                    db.getCmpDirector().setText("Supervisando");
+
+                    }else if (SupervisarPm() == false){
+                    db.getCmpDirector().setText("Trabajando");
+                }   
+                } catch (InterruptedException ex) {
+
+                    Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+        }    
+    }
+        
+    public boolean SupervisarPm() throws InterruptedException{
+        boolean estado = false;
+        if("Disney".equals(this.drive.name)){
+            if(empresa.delivery > 0){
+                int horaAleatoria = random.nextInt(24);
+                System.out.println("Hora aleatoria " + horaAleatoria);
+                for (int minuto = 0; minuto <35; minuto++){
+                    if("Viendo anime".equals(db.getPmLabel().getText())){
+                        System.out.println("El PM ESTARA VIENDO ANIME");
+                        pm.setCantidadFaltas(pm.getCantidadFaltas()+1);
+                        pm.setSalarioDescontado(pm.getSalarioDescontado()+100);
+                        db.getPmFaltas1().setText(Integer.toString(pm.getCantidadFaltas()));
+                        db.getSalarioDesc1().setText(Integer.toString(pm.getSalarioDescontado()));
+                        estado = true;
+                    }else{
+                        System.out.println("El PM está trabajando");
+                        estado = false;
+                    }
+                }
+            }  
+        }else{
+            if(empresa.delivery > 0){
+                int horaAleatoria = random.nextInt(24);
+                System.out.println("Hora aleatoria " + horaAleatoria);
+                for (int minuto = 0; minuto <35; minuto++){
+                    if("Viendo anime".equals(db.getPmLabel().getText())){
+                        System.out.println("El PM ESTARA VIENDO ANIME");
+                        pm.setCantidadFaltas(pm.getCantidadFaltas()+1);
+                        pm.setSalarioDescontado(pm.getSalarioDescontado()+100);
+                        db.getPmFaltas().setText(Integer.toString(pm.getCantidadFaltas()));
+                        db.getSalarioDesc().setText(Integer.toString(pm.getSalarioDescontado()));
+                        estado = true;
+                    }else{
+                        System.out.println("El PM está trabajando");
+                        estado = false;
+                    }
+                }
+            }
         }
-            
+        return estado;
     }
     
     public double GananciasCap(){
