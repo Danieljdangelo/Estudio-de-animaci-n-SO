@@ -31,27 +31,14 @@ public class ManejoDeData {
         File file = masterData;
         int[] valores = new int[8];
         int j = 0;
-//        int i = 0;
         
         try{
-//            String[] data;
             if (!file.exists()){
                 file.createNewFile();
             }else{
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
                 while((line = br.readLine()) != null){
-//                    char[] characters = line.toCharArray();
-//                    for (int i = 0; i < characters.length; i++){
-//                        if(Character.isDigit(characters[i])){
-//                            int number =  Character.getNumericValue(characters[i]);                            
-//                            valores[j] = number;
-//                            j++;
-//                        }
-//                        
-//                    } 
-                    
-
                      int number = Integer.parseInt(line);
                      
                      valores[j] = number;
@@ -64,10 +51,6 @@ public class ManejoDeData {
         catch(Exception er){
             JOptionPane.showMessageDialog(null,"Ocurrio un problema al leer el archivo");
         }
-//        for(int n = 0; n < valores.length; n++){
-//            JOptionPane.showMessageDialog(null, valores[n]);
-//        }
-        
         return valores;
     }
     
@@ -83,16 +66,6 @@ public class ManejoDeData {
                 pw.print("\n" + plotTwists);
                 pw.print("\n" + ensambladores);
                 pw.print("\n" + entrega);
-                
-                
-//                pw.print("Duración del día: " + duracion);
-//                pw.print("\nNúmnero de guionistas: " + guionistas);
-//                pw.print("\nNúmero de diseñadores de escenarios: " + diseñadores);
-//                pw.print("\nNumero de animadores de personajes: " + animadores);
-//                pw.print("\nNúmero de actores de doblaje: " + actores);
-//                pw.print("\nNúmero de guionistas de PlotTwists: " + plotTwists);
-//                pw.print("\nNúmero de ensambladores: " + ensambladores);
-//                pw.print("\nDías disponibles para la entrega: " + entrega);
             }
         }
         catch(Exception er){

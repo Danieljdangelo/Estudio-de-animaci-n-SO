@@ -59,9 +59,6 @@ public class DiseñadoresEsc extends Thread{
     public void obtenerSalario(){
         this.salarioAcumulado += this.salario*24;
         this.drive.SacarCostosOperativos(this.salarioAcumulado);
-//        db.setCostosOP(this.salarioAcumulado);
-//        db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
-//        db.getCmpCostos1().setText(Float.toString(db.getCostosOP()));
     }
     
     public void trabajando(){
@@ -70,7 +67,7 @@ public class DiseñadoresEsc extends Thread{
             this.contador = 0;
             try {
                 this.sem.acquire();
-                this.drive.addEscenarios(type);//no se que parametro va aqui
+                this.drive.addEscenarios(this.type);
                 this.sem.release();
                 
             } catch (InterruptedException ex) {
