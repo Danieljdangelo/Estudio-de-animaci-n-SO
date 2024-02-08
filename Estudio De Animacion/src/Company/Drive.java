@@ -218,9 +218,9 @@ public class Drive {
                     animations -= 2;
                     doblajes -= 4;
                     System.out.println("Capitulos disponibles: " + this.capsDisponibles);
-                    db.getFieldCapitulos().setText(Integer.toString(this.capsDisponibles));
+                    db.getFieldCapitulos1().setText(Integer.toString(this.capsDisponibles));
                     
-                    if(this.capsDisponibles % 2 ==0){
+                    if(this.capsDisponibles % 2 == 0){
                         this.capsPlotTwist += 3;
                         
                         SacarGananciasEnBruto();
@@ -251,7 +251,7 @@ public class Drive {
                     animations -= 4;
                     doblajes -= 4;
                     System.out.println("Capitulos disponibles: " + this.capsDisponibles);
-                    db.getFieldCapitulos1().setText(Integer.toString(capsDisponibles));
+                    db.getFieldCapitulos().setText(Integer.toString(capsDisponibles));
                     
                     if(this.capsDisponibles % 5 == 0){
                         this.capsPlotTwist += 2;
