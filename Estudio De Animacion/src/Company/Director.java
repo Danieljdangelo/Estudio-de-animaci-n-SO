@@ -87,11 +87,13 @@ public class Director extends Thread{
     }
     
     public void SupervisarPm(){
-        if("Viendo anime".equals(db.getPmLabel().getText())){
+        if("Viendo anime".equals(db.getPmLabel().getText()) || "Viendo anime".equals(db.getPmLabel1().getText())){
             pm.setCantidadFaltas(pm.getCantidadFaltas()+1);
             pm.setSalarioDescontado(pm.getSalarioDescontado()+100);
             db.getPmFaltas().setText(Integer.toString(pm.getCantidadFaltas()));
+            db.getPmFaltas1().setText(Integer.toString(pm.getCantidadFaltas()));
             db.getSalarioDesc().setText(Integer.toString(pm.getSalarioDescontado()));
+            db.getSalarioDesc1().setText(Integer.toString(pm.getSalarioDescontado()));
         }else{
             System.out.println("El PM está trabajando");
         }

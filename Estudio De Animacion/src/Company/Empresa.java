@@ -67,12 +67,9 @@ public class Empresa {
             
             //Drive drive = new Drive(delivery, db);
             Thread threads[] = new Thread[counter5];
-<<<<<<< HEAD
-            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
-//            Director director = new Director(drive, mainMutex, pm, delivery, dayDuration);
-=======
-            
->>>>>>> 40c4607920393759aecfb66da5d64fce8e56e724
+//            ProjectManager pm = new ProjectManager(drive, mainMutex, dayDuration, delivery, db);
+//            Director director = new Director(db, drive, mainMutex, pm, delivery, dayDuration);
+
             
             for(int i = 0; i < threads.length; i++){
                 if(i < screenWriters){
@@ -115,13 +112,12 @@ public class Empresa {
 
 
 //               Descomentar para ejecutar todos los hilos
-//            for(int i = 0; i < threads.length; i++){
-//                threads[i].start();
-//            }
+            for(int i = 0; i < threads.length; i++){
+                threads[i].start();
+            }
 
 
 
-<<<<<<< HEAD
 //            threads[0].start();
 //            threads[1].start();
 //            threads[2].start();
@@ -134,18 +130,18 @@ public class Empresa {
 //            threads[3].start();
 //            threads[4].start();
 //            threads[5].start();
-            pm.start();
-//            director.start();
-=======
-            threads[0].start();
-            threads[1].start();
-            threads[2].start();
-            threads[3].start();
-            threads[4].start();
-            threads[5].start();
             pm.start();
             director.start();
->>>>>>> 40c4607920393759aecfb66da5d64fce8e56e724
+
+//            threads[0].start();
+//            threads[1].start();
+//            threads[2].start();
+//            threads[3].start();
+//            threads[4].start();
+//            threads[5].start();
+//            pm.start();
+//            director.start();
+
 //            threads[6].start();
 //            threads[7].start();
 //            threads[8].start();

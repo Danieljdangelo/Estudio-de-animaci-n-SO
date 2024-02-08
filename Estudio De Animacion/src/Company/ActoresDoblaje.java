@@ -60,6 +60,7 @@ public class ActoresDoblaje extends Thread{
         this.salarioAcumulado += this.salario*24;
         db.setCostosOP(this.salarioAcumulado);
         db.getCmpCostos().setText(Float.toString(db.getCostosOP()));
+        db.getCmpCostos1().setText(Float.toString(db.getCostosOP()));
     }
     
     public void trabajando(){
