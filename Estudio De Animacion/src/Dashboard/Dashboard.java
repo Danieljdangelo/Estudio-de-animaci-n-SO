@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
@@ -302,12 +303,11 @@ public class Dashboard extends javax.swing.JFrame {
         return pnlGrafica;
     }
     
-//    public JTextField getFieldPlotTwists(){
-//
-//        return cmpPlotDrive;
-//
-//    }
-
+    public JSpinner getSpnEntrega(){
+        
+        return spnEntrega;
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -528,11 +528,11 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(startSimBtn)
@@ -545,7 +545,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(spnDiseñadores, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(spnGuionistas, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(spnDuracion, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 145, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -584,7 +584,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(spnEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveConfigBtn)
                     .addComponent(startSimBtn))
@@ -705,6 +705,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         cmpDeadline.setEditable(false);
         cmpDeadline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDeadline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpDeadlineActionPerformed(evt);
+            }
+        });
         jPanel2.add(cmpDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 189, 129, -1));
 
         cmpGanancias.setEditable(false);
@@ -1133,34 +1138,8 @@ public class Dashboard extends javax.swing.JFrame {
         cmpPlotTwists1.setText(String.valueOf(plotTwists));
         cmpEnsambladores1.setText(String.valueOf(assemblers));
         cmpDeadline1.setText(String.valueOf(company2.drive.delivery));
-        
-//        DefaultCategoryDataset datos = new DefaultCategoryDataset();
-//        
-//        datos.setValue(getUtilidadTTL(), "Utilidad", "Nickelodeon");
-//        datos.setValue(getUtilidadTTL1(), "Utilidad", "Disney");
-//        
-//        JFreeChart grafico = ChartFactory.createBarChart3D(
-//        "Utilidades Nickelodeon vs. Disney",
-//        "Empresas",
-//        "Utilidad",
-//        datos,
-//        PlotOrientation.VERTICAL,
-//        true,
-//        true,
-//        false
-//        );
-//        
-//        ChartPanel panel = new ChartPanel(grafico);
-//        panel.setMouseWheelEnabled(true);
-//        panel.setPreferredSize(new Dimension(400,600));
-//        
-//        pnlGrafica1.setLayout(new BorderLayout());
-//        pnlGrafica1.add(panel, BorderLayout.NORTH);
-//        
-//        pack();
-//        repaint();
     }//GEN-LAST:event_startSimBtnActionPerformed
-
+    
     private void saveConfigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveConfigBtnActionPerformed
         // TODO add your handling code here:
         
@@ -1226,6 +1205,10 @@ public class Dashboard extends javax.swing.JFrame {
     private void cmpPlotTwists1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpPlotTwists1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmpPlotTwists1ActionPerformed
+
+    private void cmpDeadlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpDeadlineActionPerformed
+       
+    }//GEN-LAST:event_cmpDeadlineActionPerformed
 
     /**
      * @param args the command line arguments

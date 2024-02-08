@@ -54,7 +54,9 @@ public class Director extends Thread{
             try {
                 ObtenerSalario();
                 LaboresAdmin();
-                EnviarCaps();
+                if(drive.delivery == 0){
+                    EnviarCaps();
+                }
                 System.out.println("El director ha ganado: " + this.salarioAcc + "$");
                 sleep(this.dia);
             } catch (InterruptedException ex) {
@@ -68,6 +70,7 @@ public class Director extends Thread{
             try {
                 this.sem.acquire();
                 this.drive.EntregarCaps();
+                this.drive.ReiniciarDeadline();
                 this.sem.release();
                 
             } catch (InterruptedException ex) {
@@ -152,7 +155,5 @@ public class Director extends Thread{
         return estado;
     }
     
-    public double GananciasCap(){
-        return 0;
-    }
+
 }
