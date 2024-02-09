@@ -81,7 +81,7 @@ public class ProjectManager extends Thread{
         }
     }
     
-    private String verAnime(int dias) {
+    public String verAnime(int dias) {
         String estado = "Viendo anime";
         try {
             sleep(dias);

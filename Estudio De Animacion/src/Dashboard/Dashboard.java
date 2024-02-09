@@ -463,7 +463,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel74 = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
-        jLabel79 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         pnlGrafica1 = new javax.swing.JPanel();
 
@@ -550,14 +549,14 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(spnDiseñadores, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(spnGuionistas, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(spnDuracion, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addGap(0, 145, Short.MAX_VALUE))
+                .addGap(0, 211, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jLabel1)
-                .addGap(78, 78, 78)
+                .addGap(117, 117, 117)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(spnDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -589,7 +588,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(spnEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveConfigBtn)
                     .addComponent(startSimBtn))
@@ -1128,9 +1127,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel78.setText("K");
         jPanel3.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 30, 20));
 
-        jLabel79.setText("K");
-        jPanel3.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 20, 30));
-
         jLabel45.setText("K");
         jPanel3.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 10, -1));
 
@@ -1422,7 +1418,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
-    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

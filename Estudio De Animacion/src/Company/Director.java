@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,9 +55,7 @@ public class Director extends Thread{
             try {
                 ObtenerSalario();
                 LaboresAdmin();
-                if(drive.delivery == 0){
-//                    EnviarCaps();
-                }
+//                pm.work();
                 System.out.println("El director ha ganado: " + this.salarioAcc + "$");
                 sleep(this.dia);
             } catch (InterruptedException ex) {
@@ -65,95 +64,121 @@ public class Director extends Thread{
         }
     }
     
-    //no funciona
-//    public void EnviarCaps(){
-//            try {
-//                this.sem.acquire();
-//                this.drive.EntregarCaps();
-//                this.drive.ReiniciarDeadline();
-//                this.sem.release();
-//                
-//            } catch (InterruptedException ex) {
-//                Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        
-//    }
-    
-
     public void LaboresAdmin() throws InterruptedException{
-        boolean estado = SupervisarPm();
+        int horaAleatoria = random.nextInt(24);
         if("Disney".equals(this.drive.name)){
-            try {
-                if (estado == true){
-
-                    db.getCmpDirector1().setText("Supervisando");
-
-                    }else if (SupervisarPm() == false){
-                    db.getCmpDirector1().setText("Trabajando");
-                }   
-                } catch (InterruptedException ex) {
-
-                    Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-
-            }
-        }else{
-            try {
-                if (estado == true){
-
-                    db.getCmpDirector().setText("Supervisando");
-
-                    }else if (SupervisarPm() == false){
-                    db.getCmpDirector().setText("Trabajando");
-                }   
-                } catch (InterruptedException ex) {
-
-                    Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-
-            }
-        }    
-    }
-        
-    public boolean SupervisarPm() throws InterruptedException{
-        boolean estado = false;
-        if("Disney".equals(this.drive.name)){
-            if(empresa.delivery > 0){
-                int horaAleatoria = random.nextInt(24);
-                System.out.println("Hora aleatoria " + horaAleatoria);
-                for (int minuto = 0; minuto < 35; minuto++){
-                    if("Viendo anime".equals(db.getPmLabel().getText())){
-                        System.out.println("El PM ESTARA VIENDO ANIME");
-                        pm.setCantidadFaltas(pm.getCantidadFaltas()+1);
-                        pm.setSalarioDescontado(pm.getSalarioDescontado()+100);
+            int counter = 0;
+            for (int hora = 1; hora < horaAleatoria+1; hora++) {
+                if (hora % 2 == 1) {
+                    counter++;
+                    if (counter == 1){
+                        db.getCmpDirector1().setText("Supervisando");
+                        pm.setCantidadFaltas(pm.getCantidadFaltas() + 1);
+                        pm.setSalarioDescontado(pm.getSalarioDescontado() + 100);
                         db.getPmFaltas1().setText(Integer.toString(pm.getCantidadFaltas()));
                         db.getSalarioDesc1().setText(Integer.toString(pm.getSalarioDescontado()));
-                        estado = true;
-                    }else{
-                        System.out.println("El PM está trabajando");
-                        estado = false;
+                        sleep(this.dia/(this.dia/100));
                     }
+                } else {
+                    db.getCmpDirector1().setText("Trabajando");
                 }
-            }  
+            }
         }else{
-            if(empresa.delivery > 0){
-                int horaAleatoria = random.nextInt(24);
-                System.out.println("Hora aleatoria " + horaAleatoria);
-                for (int minuto = 0; minuto <35; minuto++){
-                    if("Viendo anime".equals(db.getPmLabel().getText())){
-                        System.out.println("El PM ESTARA VIENDO ANIME");
+            int counter = 0;
+            for (int hora = 1; hora < horaAleatoria+1; hora++) {
+                if (hora % 2 == 1) {
+                    counter ++;
+                    if (counter == 1){
+                        db.getCmpDirector().setText("Supervisando");
                         pm.setCantidadFaltas(pm.getCantidadFaltas()+1);
                         pm.setSalarioDescontado(pm.getSalarioDescontado()+100);
                         db.getPmFaltas().setText(Integer.toString(pm.getCantidadFaltas()));
-                        db.getSalarioDesc().setText(Integer.toString(pm.getSalarioDescontado()));
-                        estado = true;
-                    }else{
-                        System.out.println("El PM está trabajando");
-                        estado = false;
+                        db.getSalarioDesc().setText(Integer.toString(pm.getSalarioDescontado())); 
+                        sleep(this.dia/(this.dia/100));
                     }
+                    
+                } else {
+                    db.getCmpDirector().setText("Trabajando");
                 }
             }
         }
-        return estado;
     }
+    
+
+//    public void LaboresAdmin() throws InterruptedException{
+//        boolean estado = SupervisarPm();
+//        if("Disney".equals(this.drive.name)){
+//            try {
+//                if (estado == true){
+//                    db.getCmpDirector1().setText("Supervisando");
+//                    }else if (SupervisarPm() == false){
+//                    db.getCmpDirector1().setText("Trabajando");
+//                }   
+//                } catch (InterruptedException ex) {
+//
+//                    Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+//
+//            }
+//        }else{
+//            try {
+//                if (estado == true){
+//
+//                    db.getCmpDirector().setText("Supervisando");
+//                    }else if (SupervisarPm() == false){
+//                    db.getCmpDirector().setText("Trabajando");
+//                }   
+//                } catch (InterruptedException ex) {
+//
+//                    Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+//
+//            }
+//        }    
+//    }
+
+    
+//    public boolean SupervisarPm() throws InterruptedException{
+//        boolean estado = false;
+////        int counter = 0;
+//        if("Disney".equals(this.drive.name)){
+//            if(empresa.delivery > 0){
+//                int horaAleatoria = random.nextInt(24);
+//                System.out.println("Hora aleatoria " + horaAleatoria);
+//                for (int minuto = 0; minuto < 35; minuto++){
+//                    if("Viendo anime".equals(db.getPmLabel().getText())){
+////                        counter++;
+//                        System.out.println("El PM ESTARA VIENDO ANIME");
+//                        pm.setCantidadFaltas(pm.getCantidadFaltas() + 1);
+//                        pm.setSalarioDescontado(pm.getSalarioDescontado() + 100);
+//                        db.getPmFaltas1().setText(Integer.toString(pm.getCantidadFaltas()));
+//                        db.getSalarioDesc1().setText(Integer.toString(pm.getSalarioDescontado()));
+//                        estado = true;
+//                    }else{
+//                        System.out.println("El PM está trabajando");
+//                        estado = false;
+//                    }
+//                }
+//            }  
+//        }else{
+//            if(empresa.delivery > 0){
+//                int horaAleatoria = random.nextInt(24);
+//                System.out.println("Hora aleatoria " + horaAleatoria);
+//                for (int minuto = 0; minuto <35; minuto++){
+//                    if("Viendo anime".equals(db.getPmLabel().getText())){
+//                        System.out.println("El PM ESTARA VIENDO ANIME");
+//                        pm.setCantidadFaltas(pm.getCantidadFaltas()+1);
+//                        pm.setSalarioDescontado(pm.getSalarioDescontado()+100);
+//                        db.getPmFaltas().setText(Integer.toString(pm.getCantidadFaltas()));
+//                        db.getSalarioDesc().setText(Integer.toString(pm.getSalarioDescontado()));
+//                        estado = true;
+//                    }else{
+//                        System.out.println("El PM está trabajando");
+//                        estado = false;
+//                    }
+//                }
+//            }
+//        }
+//        return estado;
+//    }
     
 
 }

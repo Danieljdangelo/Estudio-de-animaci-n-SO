@@ -81,12 +81,13 @@ public class Empresa {
                 threads[i] = new Ensambladores(5,  i+1, drive, mainMutex, dayDuration, db);
             }
         }
-//          Descomentar para ejecutar todos los hilos
-            pm.start();
-            director.start();
+            
             for(int i = 0; i < threads.length; i++){
                 threads[i].start();
             }
-        }
+            
+            pm.start();
+            director.start();
+    }
 }
 

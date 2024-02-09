@@ -27,25 +27,5 @@ public class Main {
         d.setResizable(false);
         d.setLocationRelativeTo(null);
     }   
-            
-
-    
+ 
 }
-
-//File masterdata = cargarMasterData();
-//        if (masterdata != null) {
-//            mdd = new ManejoDeData(masterdata);
-//        }
-//    private static File cargarMasterData() {
-//        JFileChooser fileChooser = new JFileChooser();
-//        fileChooser.setAcceptAllFileFilterUsed(false);
-//        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos de texto (TXT)", "txt"));
-//        fileChooser.showOpenDialog(null);
-//        File archivo = fileChooser.getSelectedFile();
-//        if (archivo != null) {
-//            return archivo;
-//        }
-//    
-//        JOptionPane.showMessageDialog(null, "Asegúrese de seleccionar un archivo");
-//        return null;
-//    }
