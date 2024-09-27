@@ -8,6 +8,8 @@ import Class.ManejoDeData;
 import Company.Drive;
 import Company.Empresa;
 import Company.Guionistas;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -16,12 +18,20 @@ import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import static java.lang.Thread.sleep;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -35,17 +45,20 @@ public class Dashboard extends javax.swing.JFrame {
     public Empresa company;
     public Empresa company2;
     ManejoDeData data = new ManejoDeData();
-    //Drive drive = new Drive();
     public int guionesDB;
+    public float costosOP;
+    public float costosOP1;
+    public float utilidadTTL;
+    public float gananciaBruto;
+    public float utilidadTTL1;
+    public float gananciaBruto1;
     
     public Dashboard() {
         initComponents();
-    //this.guionesDB = drive.guiones;
     }
     
     public void mostrar(int guiones){
         cmpGuiones.setText(String.valueOf(guiones));
-//        JOptionPane.showMessageDialog(null, guionesDB);
     }
     
     public JTextField getField(){
@@ -54,15 +67,33 @@ public class Dashboard extends javax.swing.JFrame {
         
     }
     
+    public JTextField getField1(){
+        
+        return cmpGuiones1;
+        
+    }
+    
     public JTextField getFieldEscenarios(){
 
         return cmpEscenarios;
+
+    }
+    
+    public JTextField getFieldEscenarios1(){
+
+        return cmpEscenarios1;
 
     }
 
     public JTextField getFieldAnimaciones(){
 
         return cmpAnimaciones;
+
+    }
+    
+    public JTextField getFieldAnimaciones1(){
+
+        return cmpAnimaciones1;
 
     }
 
@@ -72,12 +103,211 @@ public class Dashboard extends javax.swing.JFrame {
 
     }
     
+    public JTextField getFieldDoblajes1(){
+
+        return cmpDoblajes1;
+
+    }
+    
     public JTextField getFieldPlotTwists(){
 
         return cmpPlotDrive;
 
     }
     
+    public JTextField getFieldPlotTwists1(){
+
+        return cmpPlotDrive1;
+
+    }
+
+    public JTextField getFieldCapitulos(){
+        
+        return cmpCapEst;
+    }
+    
+    public JTextField getFieldCapitulos1(){
+        
+        return cmpCapEst1;
+    }
+    
+    public JTextField getFieldPlot(){
+        
+        return cmpPlotDrive;
+    }
+    
+    public JTextField getFieldPlot1(){
+        
+        return cmpPlotDrive1;
+    }
+    
+    public JTextField getFieldCapPlot(){
+        
+        return CapPlot;
+    }
+    
+    public JTextField getFieldCapPlot1(){
+        
+        return cmpCapPlot1;
+    }
+    
+    public JLabel getGbEnUso(){
+        
+        return gbEnUso;
+    }
+    
+    public JLabel getGbEnUso1(){
+        
+        return gbEnUso1;
+    }
+    
+    public JTextField getPmLabel(){
+        
+        return cmpPM;
+    }
+    
+    public JTextField getPmLabel1(){
+        
+        return cmpPM1;
+    }
+    
+    
+    public JTextField getPmFaltas(){
+        
+        return cmpFaltas;
+    }
+    
+    public JTextField getPmFaltas1(){
+        
+        return cmpFaltas1;
+    }
+    
+    public JTextField getSalarioDesc(){
+        
+        return cmpSalarioDesc;
+    }
+    
+    public JTextField getSalarioDesc1(){
+        
+        return cmpSalarioDesc1;
+    }
+    
+    public JTextField getCmpDeadline(){
+        
+        return cmpDeadline;
+    }
+
+    public JTextField getCmpDirector(){
+        
+        return cmpDirector;
+    }
+    
+    public JTextField getCmpDirector1(){
+        
+        return cmpDirector1;
+    }
+
+    public JTextField getCmpDeadline1(){
+        
+        return cmpDeadline1;
+
+    }
+    
+    public JTextField getCmpCostos(){
+        
+        return cmpCostos;
+    }
+    
+    public JTextField getCmpCostos1(){
+        
+        return cmpCostos1;
+    }
+    
+    public void setCostosOP(float costos){
+        this.costosOP += costos;
+    }
+    
+    public void setCostosOP1(float costos){
+        this.costosOP1 += costos;
+    }
+    
+    public float getCostosOP(){
+        
+        return this.costosOP;
+    }
+    
+    public float getCostosOP1(){
+        
+        return this.costosOP1;
+    }
+    
+    public void setUtilidadTTL(float utilidad){
+        this.utilidadTTL += utilidad;
+    }
+    
+    public void setUtilidadTTL1(float utilidad){
+        this.utilidadTTL1 += utilidad;
+    }
+    
+    public float getUtilidadTTL(){
+       return this.utilidadTTL;
+    }
+    
+    public float getUtilidadTTL1(){
+       return this.utilidadTTL1;
+    }
+    
+    public JTextField getCmpUtilidad(){
+        
+        return cmpUtilidad;
+    }
+    
+    public JTextField getCmpUtilidad1(){
+        
+        return cmpUtilidad1;
+    }
+    
+    public void setGanaciaBruto(float ganacias){
+        this.gananciaBruto = ganacias;
+    }
+    
+    public void setGanaciaBruto1(float ganancias){
+        this.gananciaBruto1 = ganancias;
+    }
+    
+    public float getGananciaBruto(){
+        return this.gananciaBruto;
+    }
+    
+    public float getGananciaBruto1(){
+        return this.gananciaBruto1;
+    }
+    
+    public JTextField getCmpGanancia(){
+        
+        return cmpGanancias;
+    }
+    
+    public JTextField getCmpGanancia1(){
+        
+        return cmpGanancias1;
+    }
+    
+    public JPanel getPnlGrafica1(){
+        
+        return pnlGrafica1;
+    }
+    
+    public JPanel getPnlGrafica(){
+        
+        return pnlGrafica;
+    }
+    
+    public JSpinner getSpnEntrega(){
+        
+        return spnEntrega;
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,7 +362,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
@@ -159,7 +388,6 @@ public class Dashboard extends javax.swing.JFrame {
         cmpDoblajes = new javax.swing.JTextField();
         cmpPlotDrive = new javax.swing.JTextField();
         cmpCapEst = new javax.swing.JTextField();
-        cmpCapPlot = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         cmpDia = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
@@ -168,11 +396,14 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        CapPlot = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        pnlGrafica = new javax.swing.JPanel();
         jPanel3 = new ImagePanel1("/Images/Disney.jpg");
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -224,9 +455,12 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel71 = new javax.swing.JLabel();
         jLabel72 = new javax.swing.JLabel();
         jLabel73 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel74 = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        pnlGrafica1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -294,11 +528,11 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(startSimBtn)
@@ -311,7 +545,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(spnDiseñadores, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(spnGuionistas, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(spnDuracion, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addGap(0, 181, Short.MAX_VALUE))
+                .addGap(0, 145, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +584,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(spnEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveConfigBtn)
                     .addComponent(startSimBtn))
@@ -365,7 +599,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
         pnlImage1Layout.setVerticalGroup(
             pnlImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -379,108 +613,152 @@ public class Dashboard extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(pnlImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlImage1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         disneyTabbedPane.addTab("Configuración", jPanel1);
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel10.setText("Ganancias en bruto: ");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 236, -1, -1));
 
         jLabel11.setText("Costos operativos:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 278, -1, -1));
 
         jLabel12.setText("Utilidad total:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 320, -1, -1));
 
         jLabel13.setText("Deadline:");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 194, -1, -1));
 
         jLabel14.setText("Project Manager:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 362, -1, -1));
 
         jLabel15.setText("Director:");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 488, -1, -1));
 
         jLabel16.setText("Cantidad de faltas:");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 404, -1, -1));
 
         jLabel17.setText("Salario descontado:");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 446, -1, -1));
 
         jLabel18.setText("Número de guionistas:");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 150, -1, -1));
 
         jLabel19.setText("Número de diseñadores:");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 192, -1, -1));
 
         jLabel20.setText("Número de animadores:");
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 234, -1, -1));
 
         jLabel21.setText("Número de Actores:");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 278, -1, -1));
 
-        jLabel22.setText("Número de guionistas de plottwists:");
+        jLabel22.setText("Número de guionistas de PlotTwists:");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 320, -1, -1));
 
         jLabel23.setText("Número de ensambladores:");
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 362, -1, -1));
 
         jLabel24.setText("Guiones en Drive:");
+        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, -1, -1));
 
         jLabel25.setText("Animaciones en Drive:");
+        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
 
         jLabel26.setText("Doblajes en Drive:");
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 550, -1, -1));
 
-        jLabel27.setText("Escenarios em Drive:");
+        jLabel27.setText("Escenarios en Drive:");
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, -1, -1));
 
         jLabel28.setText("PlotTwists en Drive:");
+        jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 590, -1, -1));
 
         jLabel29.setText("Capítulos listos tipo estandar:");
-
-        jLabel30.setText("Capìtulos listos tipo PlotTwists:");
+        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, -1, -1));
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel31.setText("Simulación Nickelodeon:");
+        jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 49, -1, -1));
 
         jLabel32.setText("/ 25");
+        jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, 40, 30));
 
         jLabel33.setText("/ 20");
+        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 460, 40, 30));
 
         jLabel34.setText("/ 55");
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 500, 40, 30));
 
         jLabel35.setText("/ 35");
+        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 540, 40, 30));
 
         jLabel36.setText("/ 10");
+        jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 580, 40, 30));
 
         cmpDeadline.setEditable(false);
         cmpDeadline.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpDeadline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpDeadlineActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cmpDeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 189, 129, -1));
 
         cmpGanancias.setEditable(false);
         cmpGanancias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 231, 130, -1));
 
         cmpCostos.setEditable(false);
         cmpCostos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpCostos, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 273, 130, -1));
 
         cmpUtilidad.setEditable(false);
         cmpUtilidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 315, 130, -1));
 
         cmpPM.setEditable(false);
+        jPanel2.add(cmpPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 357, 129, -1));
 
         cmpFaltas.setEditable(false);
+        jPanel2.add(cmpFaltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 399, 129, -1));
 
         cmpSalarioDesc.setEditable(false);
+        jPanel2.add(cmpSalarioDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 441, 130, -1));
 
         cmpDirector.setEditable(false);
+        jPanel2.add(cmpDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 483, 129, -1));
 
         cmpGuionistas.setEditable(false);
         cmpGuionistas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpGuionistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 145, 125, -1));
 
         cmpDiseñadores.setEditable(false);
         cmpDiseñadores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpDiseñadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 187, 125, -1));
 
         cmpAnimadores.setEditable(false);
         cmpAnimadores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpAnimadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 229, 125, -1));
 
         cmpActores.setEditable(false);
         cmpActores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpActores, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 273, 125, -1));
 
         cmpPlotTwists.setEditable(false);
         cmpPlotTwists.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpPlotTwists, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 125, -1));
 
         cmpEnsambladores.setEditable(false);
         cmpEnsambladores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpEnsambladores, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 125, -1));
 
         cmpGuiones.setEditable(false);
         cmpGuiones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -492,9 +770,11 @@ public class Dashboard extends javax.swing.JFrame {
                 cmpGuionesKeyReleased(evt);
             }
         });
+        jPanel2.add(cmpGuiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 130, -1));
 
         cmpEscenarios.setEditable(false);
         cmpEscenarios.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel2.add(cmpEscenarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 130, -1));
 
         cmpAnimaciones.setEditable(false);
         cmpAnimaciones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -503,11 +783,19 @@ public class Dashboard extends javax.swing.JFrame {
                 cmpAnimacionesActionPerformed(evt);
             }
         });
+        jPanel2.add(cmpAnimaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 500, 130, -1));
 
         cmpDoblajes.setEditable(false);
         cmpDoblajes.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel2.add(cmpDoblajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 130, -1));
 
         cmpPlotDrive.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cmpPlotDrive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpPlotDriveActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cmpPlotDrive, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 580, 130, -1));
 
         cmpCapEst.setEditable(false);
         cmpCapEst.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -516,310 +804,149 @@ public class Dashboard extends javax.swing.JFrame {
                 cmpCapEstActionPerformed(evt);
             }
         });
-
-        cmpCapPlot.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(cmpCapEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 98, -1));
 
         jLabel37.setText("Duración del día:");
+        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 150, -1, -1));
 
         cmpDia.setEditable(false);
         cmpDia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel2.add(cmpDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 145, 104, -1));
 
         jLabel38.setText("ms");
+        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 150, -1, -1));
 
         jLabel39.setText("Uso del Drive: ");
+        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 640, -1, -1));
 
         gbEnUso.setText("45");
+        jPanel2.add(gbEnUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 640, -1, -1));
 
         jLabel41.setText("/");
+        jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, -1, -1));
 
         jLabel42.setText("135Gb");
+        jPanel2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 640, -1, -1));
 
         jLabel40.setText("Capitulos con PlotTwist: ");
+        jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, -1, -1));
 
-        jTextField1.setEditable(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        CapPlot.setEditable(false);
+        CapPlot.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CapPlot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                CapPlotActionPerformed(evt);
             }
         });
+        jPanel2.add(CapPlot, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, 98, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel30)
-                                .addGap(25, 25, 25)
-                                .addComponent(cmpCapPlot, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel13)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel12)
-                                        .addComponent(jLabel14)
-                                        .addComponent(jLabel16)
-                                        .addComponent(jLabel17)
-                                        .addComponent(jLabel15)
-                                        .addComponent(jLabel37))
-                                    .addGap(54, 54, 54)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(cmpDeadline)
-                                        .addComponent(cmpGanancias)
-                                        .addComponent(cmpCostos)
-                                        .addComponent(cmpUtilidad)
-                                        .addComponent(cmpPM)
-                                        .addComponent(cmpFaltas)
-                                        .addComponent(cmpSalarioDesc)
-                                        .addComponent(cmpDirector)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(cmpDia, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel38))))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel29)
-                                        .addComponent(jLabel40))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField1)
-                                        .addComponent(cmpCapEst, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))))
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel22)
-                                    .addComponent(jLabel23))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmpPlotTwists)
-                                    .addComponent(cmpEnsambladores, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel24)
-                                    .addComponent(jLabel27)
-                                    .addComponent(jLabel25)
-                                    .addComponent(jLabel26)
-                                    .addComponent(jLabel28))
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmpPlotDrive, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                                    .addComponent(cmpDoblajes)
-                                    .addComponent(cmpAnimaciones)
-                                    .addComponent(cmpGuiones)
-                                    .addComponent(cmpEscenarios))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(134, 134, 134)
-                                .addComponent(jLabel39)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gbEnUso)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel41)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel42))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel21))
-                                .addGap(78, 78, 78)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmpDiseñadores, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmpGuionistas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmpAnimadores, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmpActores, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 389, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel31)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        jLabel30.setText("K");
+        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 10, -1));
+
+        jLabel76.setText("K");
+        jPanel2.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 10, -1));
+
+        jLabel77.setText("K");
+        jPanel2.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 10, -1));
+
+        javax.swing.GroupLayout pnlGraficaLayout = new javax.swing.GroupLayout(pnlGrafica);
+        pnlGrafica.setLayout(pnlGraficaLayout);
+        pnlGraficaLayout.setHorizontalGroup(
+            pnlGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(cmpGuionistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel37)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel38))))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(cmpDiseñadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel20)
-                            .addComponent(cmpAnimadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(cmpActores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
-                            .addComponent(cmpPlotTwists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(cmpEnsambladores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel24)
-                            .addComponent(cmpGuiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel32))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel27)
-                            .addComponent(cmpEscenarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33))
-                        .addGap(16, 16, 16))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(cmpDeadline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmpGanancias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmpCostos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(cmpUtilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpPM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(cmpSalarioDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(cmpDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmpAnimaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel34)
-                    .addComponent(cmpCapEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpDoblajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel35)
-                            .addComponent(jLabel26)
-                            .addComponent(jLabel39)
-                            .addComponent(gbEnUso)
-                            .addComponent(jLabel41)
-                            .addComponent(jLabel42)
-                            .addComponent(jLabel40)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpPlotDrive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28)
-                            .addComponent(jLabel36)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel30)
-                            .addComponent(cmpCapPlot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        pnlGraficaLayout.setVerticalGroup(
+            pnlGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
+
+        jPanel2.add(pnlGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 80, 640, 600));
 
         disneyTabbedPane.addTab("Nickelodeon", jPanel2);
 
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel43.setText("PlotTwists en Drive:");
+        jPanel3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 600, -1, -1));
 
         jLabel44.setText("Capítulos listos tipo estandar:");
-
-        jLabel45.setText("Capìtulos listos tipo PlotTwists:");
+        jPanel3.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 558, -1, -1));
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel46.setText("Simulación Disney:");
+        jPanel3.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 49, -1, -1));
 
         jLabel47.setText("/ 25");
+        jPanel3.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 430, -1, -1));
 
         jLabel48.setText("/ 20");
+        jPanel3.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 470, -1, -1));
 
         jLabel49.setText("/ 55");
+        jPanel3.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 510, -1, -1));
 
         jLabel50.setText("/ 35");
+        jPanel3.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 550, -1, -1));
 
         jLabel51.setText("/ 10");
+        jPanel3.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 600, -1, -1));
 
         cmpDeadline1.setEditable(false);
         cmpDeadline1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpDeadline1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 195, 129, -1));
 
         cmpGanancias1.setEditable(false);
         cmpGanancias1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpGanancias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 237, 129, -1));
 
         cmpCostos1.setEditable(false);
         cmpCostos1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpCostos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 279, 129, -1));
 
         cmpUtilidad1.setEditable(false);
         cmpUtilidad1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpUtilidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 321, 129, -1));
 
         cmpPM1.setEditable(false);
+        jPanel3.add(cmpPM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 363, 129, -1));
 
         cmpFaltas1.setEditable(false);
+        jPanel3.add(cmpFaltas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 405, 129, -1));
 
         cmpSalarioDesc1.setEditable(false);
+        jPanel3.add(cmpSalarioDesc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 447, 129, -1));
 
         cmpDirector1.setEditable(false);
+        jPanel3.add(cmpDirector1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 489, 129, -1));
 
         cmpGuionistas1.setEditable(false);
         cmpGuionistas1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpGuionistas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 145, 125, -1));
 
         cmpDiseñadores1.setEditable(false);
         cmpDiseñadores1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpDiseñadores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 187, 125, -1));
 
         cmpAnimadores1.setEditable(false);
         cmpAnimadores1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpAnimadores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 229, 125, -1));
 
         cmpActores1.setEditable(false);
         cmpActores1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpActores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 273, 125, -1));
 
         cmpPlotTwists1.setEditable(false);
         cmpPlotTwists1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpPlotTwists1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpPlotTwists1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cmpPlotTwists1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 125, -1));
 
         cmpEnsambladores1.setEditable(false);
         cmpEnsambladores1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpEnsambladores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 125, -1));
 
         cmpGuiones1.setEditable(false);
         cmpGuiones1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -831,9 +958,11 @@ public class Dashboard extends javax.swing.JFrame {
                 cmpGuiones1KeyReleased(evt);
             }
         });
+        jPanel3.add(cmpGuiones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 125, -1));
 
         cmpEscenarios1.setEditable(false);
         cmpEscenarios1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel3.add(cmpEscenarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 470, 125, -1));
 
         cmpAnimaciones1.setEditable(false);
         cmpAnimaciones1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -842,19 +971,26 @@ public class Dashboard extends javax.swing.JFrame {
                 cmpAnimaciones1ActionPerformed(evt);
             }
         });
+        jPanel3.add(cmpAnimaciones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 125, -1));
 
         jLabel52.setText("Ganancias en bruto: ");
+        jPanel3.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 242, -1, -1));
 
         jLabel53.setText("Costos operativos:");
+        jPanel3.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 284, -1, -1));
 
         jLabel54.setText("Utilidad total:");
+        jPanel3.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 326, -1, -1));
 
         jLabel55.setText("Deadline:");
+        jPanel3.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 200, -1, -1));
 
         cmpDoblajes1.setEditable(false);
         cmpDoblajes1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel3.add(cmpDoblajes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 550, 125, -1));
 
         cmpPlotDrive1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel3.add(cmpPlotDrive1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 590, 125, -1));
 
         cmpCapEst1.setEditable(false);
         cmpCapEst1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -863,285 +999,106 @@ public class Dashboard extends javax.swing.JFrame {
                 cmpCapEst1ActionPerformed(evt);
             }
         });
+        jPanel3.add(cmpCapEst1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 553, 98, -1));
 
         cmpCapPlot1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(cmpCapPlot1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 595, 98, -1));
 
         jLabel56.setText("Project Manager:");
+        jPanel3.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 368, -1, -1));
 
         jLabel57.setText("Duración del día:");
+        jPanel3.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 150, -1, -1));
 
         jLabel58.setText("Director:");
+        jPanel3.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 494, -1, -1));
 
         cmpDia1.setEditable(false);
         cmpDia1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel3.add(cmpDia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 145, 104, -1));
 
         jLabel59.setText("Cantidad de faltas:");
+        jPanel3.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 410, -1, -1));
 
         jLabel60.setText("ms");
+        jPanel3.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 150, -1, -1));
 
         jLabel61.setText("Salario descontado:");
+        jPanel3.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 452, -1, -1));
 
         jLabel62.setText("Número de guionistas:");
+        jPanel3.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 150, -1, -1));
 
         jLabel63.setText("Número de diseñadores:");
+        jPanel3.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 192, -1, -1));
 
         jLabel64.setText("Número de animadores:");
+        jPanel3.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 234, -1, -1));
 
         jLabel65.setText("Número de Actores:");
+        jPanel3.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 278, -1, -1));
 
         jLabel66.setText("Número de guionistas de plottwists:");
+        jPanel3.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 320, -1, -1));
 
         jLabel67.setText("Número de ensambladores:");
+        jPanel3.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 362, -1, -1));
 
         jLabel68.setText("Uso del Drive: ");
+        jPanel3.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 660, -1, -1));
 
         gbEnUso1.setText("45");
+        jPanel3.add(gbEnUso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 660, -1, -1));
 
         jLabel69.setText("/");
+        jPanel3.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 660, -1, -1));
 
         jLabel70.setText("135Gb");
+        jPanel3.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 660, -1, -1));
 
         jLabel71.setText("Guiones en Drive:");
+        jPanel3.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, -1, -1));
 
         jLabel72.setText("Capitulos con PlotTwist: ");
+        jPanel3.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 600, -1, -1));
 
         jLabel73.setText("Animaciones en Drive:");
-
-        jTextField2.setEditable(false);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
+        jPanel3.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
 
         jLabel74.setText("Doblajes en Drive:");
+        jPanel3.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 550, -1, -1));
 
-        jLabel75.setText("Escenarios em Drive:");
+        jLabel75.setText("Escenarios en Drive:");
+        jPanel3.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel45)
-                                .addGap(25, 25, 25)
-                                .addComponent(cmpCapPlot1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel52)
-                                        .addComponent(jLabel55)
-                                        .addComponent(jLabel53)
-                                        .addComponent(jLabel54)
-                                        .addComponent(jLabel56)
-                                        .addComponent(jLabel59)
-                                        .addComponent(jLabel61)
-                                        .addComponent(jLabel58)
-                                        .addComponent(jLabel57))
-                                    .addGap(54, 54, 54)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(cmpDeadline1)
-                                        .addComponent(cmpGanancias1)
-                                        .addComponent(cmpCostos1)
-                                        .addComponent(cmpUtilidad1)
-                                        .addComponent(cmpPM1)
-                                        .addComponent(cmpFaltas1)
-                                        .addComponent(cmpSalarioDesc1)
-                                        .addComponent(cmpDirector1)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                            .addComponent(cmpDia1, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel60))))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel44)
-                                        .addComponent(jLabel72))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField2)
-                                        .addComponent(cmpCapEst1, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))))
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel66)
-                                    .addComponent(jLabel67))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmpPlotTwists1)
-                                    .addComponent(cmpEnsambladores1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel71)
-                                    .addComponent(jLabel75)
-                                    .addComponent(jLabel73)
-                                    .addComponent(jLabel74)
-                                    .addComponent(jLabel43))
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmpPlotDrive1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                                    .addComponent(cmpDoblajes1)
-                                    .addComponent(cmpAnimaciones1)
-                                    .addComponent(cmpGuiones1)
-                                    .addComponent(cmpEscenarios1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(134, 134, 134)
-                                .addComponent(jLabel68)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gbEnUso1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel69)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel70))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel62)
-                                    .addComponent(jLabel63)
-                                    .addComponent(jLabel64)
-                                    .addComponent(jLabel65))
-                                .addGap(78, 78, 78)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmpDiseñadores1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmpGuionistas1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmpAnimadores1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmpActores1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 389, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel46)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        jLabel78.setText("K");
+        jPanel3.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 30, 20));
+
+        jLabel79.setText("K");
+        jPanel3.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 20, 30));
+
+        jLabel45.setText("K");
+        jPanel3.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 10, -1));
+
+        javax.swing.GroupLayout pnlGrafica1Layout = new javax.swing.GroupLayout(pnlGrafica1);
+        pnlGrafica1.setLayout(pnlGrafica1Layout);
+        pnlGrafica1Layout.setHorizontalGroup(
+            pnlGrafica1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel46)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel62)
-                            .addComponent(cmpGuionistas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel57)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpDia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel60))))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel63)
-                            .addComponent(cmpDiseñadores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel64)
-                            .addComponent(cmpAnimadores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel65)
-                            .addComponent(cmpActores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel66)
-                            .addComponent(cmpPlotTwists1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel67)
-                            .addComponent(cmpEnsambladores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel71)
-                            .addComponent(cmpGuiones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel47))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel75)
-                            .addComponent(cmpEscenarios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel48))
-                        .addGap(16, 16, 16))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel55)
-                            .addComponent(cmpDeadline1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel52, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmpGanancias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmpCostos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel54)
-                            .addComponent(cmpUtilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpPM1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel56))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpFaltas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel59))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel61)
-                            .addComponent(cmpSalarioDesc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel58)
-                            .addComponent(cmpDirector1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmpAnimaciones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel73)
-                    .addComponent(jLabel49)
-                    .addComponent(cmpCapEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel44))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpDoblajes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel50)
-                            .addComponent(jLabel74)
-                            .addComponent(jLabel68)
-                            .addComponent(gbEnUso1)
-                            .addComponent(jLabel69)
-                            .addComponent(jLabel70)
-                            .addComponent(jLabel72)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmpPlotDrive1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel43)
-                            .addComponent(jLabel51)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel45)
-                            .addComponent(cmpCapPlot1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        pnlGrafica1Layout.setVerticalGroup(
+            pnlGrafica1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
+
+        jPanel3.add(pnlGrafica1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, 650, 600));
 
         disneyTabbedPane.addTab("Disney Channel", jPanel3);
 
-        getContentPane().add(disneyTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1450, 650));
+        getContentPane().add(disneyTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1480, 790));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void startSimBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimBtnActionPerformed
@@ -1171,14 +1128,18 @@ public class Dashboard extends javax.swing.JFrame {
         cmpActores.setText(String.valueOf(actors));
         cmpPlotTwists.setText(String.valueOf(plotTwists));
         cmpEnsambladores.setText(String.valueOf(assemblers));
-        cmpDeadline.setText(String.valueOf(delivery));
+        cmpDeadline.setText(String.valueOf(company.drive.delivery));
         
-//        mostrar(guionesDB);
-        
-//        cmpGuiones.setText(String.valueOf(guionesDB));
-
+        cmpDia1.setText(String.valueOf(duration));
+        cmpGuionistas1.setText(String.valueOf(screenWriters));
+        cmpDiseñadores1.setText(String.valueOf(designers));
+        cmpAnimadores1.setText(String.valueOf(animators));
+        cmpActores1.setText(String.valueOf(actors));
+        cmpPlotTwists1.setText(String.valueOf(plotTwists));
+        cmpEnsambladores1.setText(String.valueOf(assemblers));
+        cmpDeadline1.setText(String.valueOf(company2.drive.delivery));
     }//GEN-LAST:event_startSimBtnActionPerformed
-
+    
     private void saveConfigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveConfigBtnActionPerformed
         // TODO add your handling code here:
         
@@ -1217,9 +1178,9 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmpCapEstActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void CapPlotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CapPlotActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_CapPlotActionPerformed
 
     private void cmpGuiones1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmpGuiones1KeyPressed
         // TODO add your handling code here:
@@ -1237,9 +1198,17 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmpCapEst1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void cmpPlotDriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpPlotDriveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_cmpPlotDriveActionPerformed
+
+    private void cmpPlotTwists1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpPlotTwists1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmpPlotTwists1ActionPerformed
+
+    private void cmpDeadlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpDeadlineActionPerformed
+       
+    }//GEN-LAST:event_cmpDeadlineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1277,6 +1246,7 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CapPlot;
     private javax.swing.JTextField cmpActores;
     private javax.swing.JTextField cmpActores1;
     private javax.swing.JTextField cmpAnimaciones;
@@ -1285,7 +1255,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField cmpAnimadores1;
     private javax.swing.JTextField cmpCapEst;
     private javax.swing.JTextField cmpCapEst1;
-    private javax.swing.JTextField cmpCapPlot;
     private javax.swing.JTextField cmpCapPlot1;
     private javax.swing.JTextField cmpCostos;
     private javax.swing.JTextField cmpCostos1;
@@ -1397,6 +1366,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -1404,8 +1377,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel pnlGrafica;
+    private javax.swing.JPanel pnlGrafica1;
     private javax.swing.JPanel pnlImage1;
     public javax.swing.JButton saveConfigBtn;
     private javax.swing.JSpinner spnActores;

@@ -23,10 +23,11 @@ public class Guionistas extends Thread{
     private float contador;
     private int guionesListos;
     private int duracionDia;
+    public Dashboard db;
 
-    Dashboard db = new Dashboard();
+//    Dashboard db = new Dashboard();
     
-    public Guionistas(int type, int name, Drive d, Semaphore m, int dia) {
+    public Guionistas(int type, int name, Drive d, Semaphore m, int dia, Dashboard db) {
         this.type = type;
         this.name = name;
         this.salario = 20;
@@ -36,6 +37,7 @@ public class Guionistas extends Thread{
         this.contador = 0;
         this.guionesListos = 0;
         this.duracionDia = dia;
+        this.db = db;
     }
     
     @Override
@@ -57,11 +59,13 @@ public class Guionistas extends Thread{
         }
     
     public void obtenerSalario(){
-        this.salarioAcumulado += this.salario*24;
+            this.salarioAcumulado += this.salario*24;
+            this.drive.SacarCostosOperativos(this.salarioAcumulado);
     }
     
+    
     public void trabajando(){
-        this.contador += 0.34f;
+        this.contador += 0.34;
         if (this.contador >= 1) {
             this.contador = 0;
             try {
